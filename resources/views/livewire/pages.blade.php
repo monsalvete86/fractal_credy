@@ -6,7 +6,7 @@
     </div>
 
     {{-- The data table --}}
-    <table class="min-w-full divide-y divide-black-200">
+    <table class="min-w-full divide-y divide-gray-200">
         <thead>
             <tr>
                 <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-winder">Title</th>
@@ -43,7 +43,7 @@
     {{-- Modal Form --}}
     <x-jet-dialog-modal wire:model="modalFormVisible">
         <x-slot name="title">
-            {{ __('Save Page') }}
+            {{ __('Save Page') }} {{ $modelId }}
         </x-slot>
 
         <x-slot name="content">
@@ -81,14 +81,20 @@
         </x-slot>
 
         <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('modalFormVisible')"
-                                    wire:loading.attr="disabled">
-                {{ __('Cancel') }}
+            <x-jet-secondary-button wire:click="$toggle('modalFormVisible')" wire:loading.attr="disabled">
+                {{ __('Nevermind') }}
             </x-jet-secondary-button>
 
-            <x-jet-button wire:click="create" wire:loading.attr="disabled">
-                {{ __('Save') }}
-            </x-jet-danger-button>
+            @if ($modelId)
+                <x-jet-button  class="ml-2" wire:click="update" wire:loading.attr="disabled">
+                    {{ __('Update') }}
+                </x-jet-danger-button>
+            @else
+                <x-jet-button  class="ml-2" wire:click="create" wire:loading.attr="disabled">
+                    {{ __('Create') }}
+                </x-jet-danger-button>
+            @endif
+            
         </x-slot>
     </x-jet-dialog-modal>
 </div>

@@ -9,6 +9,7 @@ use Livewire\Component;
 class Pages extends Component
 {
     public $modalFormVisible = false;
+    public $modelId;
     public $slug;
     public $title;
     public $content;
@@ -62,6 +63,11 @@ class Pages extends Component
         return Page::paginate(5);
     }
 
+    public function update()
+    {
+        dd("Updating...");
+    }
+
     /**
      * shows the form modal
      * of the create fuction.
@@ -70,7 +76,36 @@ class Pages extends Component
      */
     public function createShowModal()
     {
+        $this->resetVars();
         $this->modalFormVisible = true;
+    }
+
+    /**
+     * Shows the form model
+     * in update mode.
+     * 
+     * @param mixed $id
+     * @return void
+     */
+    public function updateShowModal($id)
+    {
+        $this->modelId = $id;
+        $this->modalFormVisible = true;
+        $this->loadModel();
+    }
+
+    /**
+     * Loads the model data
+     * of this component.
+     * 
+     * @return void
+     */
+    public function loadModel()
+    {
+        $data = Page::find($this->modelId);
+        $this->title = $data->title;
+        $this->slug = $data->slug;
+        $this->content = $data->content;
     }
 
     /**
@@ -96,6 +131,7 @@ class Pages extends Component
      */
     public function resetVars()
     {
+        $this->modelId = null;
         $this->title = null;
         $this->slug = null;
         $this->content = null;
@@ -110,10 +146,9 @@ class Pages extends Component
      */
     private function generateSlug($value)
     {
-        $process1 = str_replace('','-', $value);
+        $process1 = str_replace('', '-', $value);
         $process2 = strtolower($process1);
         $this->slug = $process2;
-
     }
 
     /**
