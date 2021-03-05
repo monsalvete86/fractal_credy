@@ -15,7 +15,7 @@
 
     <style>
         body {
-            font-family: 'Nunito';
+            font-family: 'Poppins', sans-serif;;
             background: #f7fafc;
         }
     </style>
