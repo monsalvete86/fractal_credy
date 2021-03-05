@@ -16,7 +16,7 @@
                 </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('pages') }}" :active="request()->routeIs('pages')">
                     {{ __('Pages') }}
-                </x-jet-nav-link>|
+                </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('simulador') }}" :active="request()->routeIs('simulador')">
                     {{ __('Simulador') }}
                 </x-jet-nav-link>

@@ -1,6 +1,6 @@
-@import 'tailwindcss/base';
+/* @import 'tailwindcss/base';
 @import 'tailwindcss/components';
-@import 'tailwindcss/tilities';
+@import 'tailwindcss/tilities'; */
 
 .body-content {
     max-height: 300px !important;
