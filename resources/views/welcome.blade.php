@@ -8,14 +8,14 @@
     <title>Laravel</title>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <style>
         body {
-            font-family: 'Nunito';
+            font-family: 'Poppins', sans-serif;;
             background: #f7fafc;
         }
     </style>
@@ -24,6 +24,7 @@
     <div class="container-fluid fixed-top p-4">
         <div class="col-12">
             <div class="d-flex justify-content-end">
+            
                 @if (Route::has('login'))
                     <div class="">
                         @auth
@@ -62,8 +63,13 @@
                                     <div class="pl-3">
                                         <div class="mb-2">
                                             <a href="https://laravel.com/docs" class="h5 font-weight-bolder text-dark">Documentation</a>
+                                            <button class="btn btn-primary"></button>
+                                            <button class="btn btn-secondary"></button>
+                                            <button class="btn btn-success"></button>
+                                            <button class="btn btn-danger"></button>
                                         </div>
                                         <p class="text-muted small">
+                                        
                                             Laravel has wonderful, thorough documentation covering every aspect of the framework. Whether you are new to the framework or have previous experience with Laravel, we recommend reading all of the documentation from beginning to end.
                                         </p>
                                     </div>

@@ -9,6 +9,8 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet"> 
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
@@ -31,7 +33,7 @@
                 {{ $header }}
             </div>
         </header>
-
+          
         <!-- Page Content -->
         <main class="container my-5 card-body bg-white px-5 py-3 border-bottom rounded-top">
             {{ $slot }}
