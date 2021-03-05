@@ -33,7 +33,7 @@
         </header>
 
         <!-- Page Content -->
-        <main class="container my-5">
+        <main class="container my-5 card-body bg-white px-5 py-3 border-bottom rounded-top">
             {{ $slot }}
         </main>
 
