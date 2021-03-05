@@ -31,7 +31,10 @@
                 {{ $header }}
             </div>
         </header>
-
+            <button class="btn btn-primary"></button>
+            <button class="btn btn-secondary"></button>
+            <button class="btn btn-success"></button>
+            <button class="btn btn-danger"></button>
         <!-- Page Content -->
         <main class="container my-5">
             {{ $slot }}
