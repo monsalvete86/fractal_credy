@@ -7,17 +7,17 @@
 
     {{-- The data table --}}
     <div class="flex flex-col">
-        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
-            <div class="py-2 aling-middle inline-block min-w-full sm:px-6 lg:px-8">
+        <div class="-my-2 overflow-x-auto sm:-mx-6">
+            <div class="py-2 aling-middle inline-block min-w-full">
                 <div class=" overflow-hidden border-b">
                     
-                    <table style=" width: 100%; " class="min-w-full divide-y ">
+                    <table style=" width: 100%; " class="min-w-full divide-y table">
                         <thead>
                             <tr>
-                                <th class="px-6 py-3 text-left text-xs leading-4 font-medium  uppercase tracking-winder">Title</th>
-                                <th class="px-6 py-3 text-left text-xs leading-4 font-medium  uppercase tracking-winder">Link</th>
-                                <th class="px-6 py-3 text-left text-xs leading-4 font-medium  uppercase tracking-winder">Content</th>
-                                <th class="px-6 py-3 text-left text-xs leading-4 font-medium  uppercase tracking-winder">Actions</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
