@@ -1,6 +1,6 @@
 <div class="p-12 ">
-    <div class="flex items-center justify-end px-4 py-3 text-right">
-        <x-jet-button wire:click="createShowModal">
+    <div class="flex items-center justify-end px-4 py-3 text-right sm:px-6">
+        <x-jet-button wire:click="createShowModal" class="btn-primary">
             {{ __('Create') }}
         </x-jet-button>
     </div>
