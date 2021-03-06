@@ -19,6 +19,7 @@
                 </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('simulador') }}" :active="request()->routeIs('simulador')">
                     {{ __('Simulador') }}
+                    <i class="fas fa-star"></i>
                 </x-jet-nav-link>
             </ul>
 

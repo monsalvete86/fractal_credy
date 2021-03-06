@@ -15,13 +15,13 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         @trixassets
-        <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css">
+        <!-- <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css"> -->
         @livewireStyles
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
-        <script src="https://unpkg.com/@popperjs/core@2"></script>
-        <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script>
+        <!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
+        <!-- <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script> -->
     </head>
     <body class="font-sans antialiased bg-light">
         <x-jet-banner />
