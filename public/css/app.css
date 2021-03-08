@@ -14939,3 +14939,12 @@ readers do not read off random characters that represent icons */
     color: red;
 }
 
+.text-dark-stroke {
+	color: transparent !important;
+	-webkit-text-stroke-width: 1px;
+	-webkit-text-stroke-color: #19191c;
+	transition: all 0.3s ease-in-out;
+}
+.text-primary-shadow {
+	text-shadow: 0.03em 0.03em 0 #ea110c;
+}
