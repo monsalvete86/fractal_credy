@@ -14,7 +14,7 @@
                     <table style=" width: 100%; " class="min-w-full divide-y table">
                         <thead>
                             <tr>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>
+                                <th style="background-color: rgb(189, 50, 50)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>
                                 <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>
                                 <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>
                                 <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
