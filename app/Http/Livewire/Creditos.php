@@ -9,6 +9,7 @@ use App\Models\Credito;
 
 class Creditos extends Component
 {
+    public $count=0;
     public function read(){
         return Credito::paginate(10);
     }
@@ -20,8 +21,7 @@ class Creditos extends Component
     }
 
     public function borrarCredito(){
-        return view('livewire.creditos', [
-        ]);
+        $this->count++;
     }
 
     

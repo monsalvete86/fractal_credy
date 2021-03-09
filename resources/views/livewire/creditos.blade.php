@@ -29,9 +29,11 @@
                         <td>$5000</td>
                         <th>
                             <!-- Boton eliminar -->
-                            <button class="btn btn-success" wire:click="borrarCredito();">
+                            <button class="btn btn-success" wire:click="borrarCredito">
                             <i class="fas fa-trash-alt"></i>
                             </button>
+
+                            {{$count}}
                         </th>
                     </tr>
                 @endforeach
