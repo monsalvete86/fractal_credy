@@ -30,9 +30,9 @@ Route::group(['middleware' => [
         return view('admin.pages');
     })->name('pages');
 
-    Route::get('/simulador', function () {
-        return view('livewire.simulador');
-    })->name('simulador');
+    Route::get('/creditos', function () {
+        return view('admin.creditos');
+    })->name('creditos');
 
 
 });

@@ -44,5 +44,10 @@
         @livewireScripts
 
         @stack('scripts')
+        <footer class="footer text-center col-12">
+            <small>
+                Powered By <a href="">FRACTAL AGENCIA DIGITAL</a>
+            </small>
+        </footer>
     </body>
 </html>

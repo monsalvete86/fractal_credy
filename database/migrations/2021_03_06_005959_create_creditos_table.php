@@ -15,7 +15,12 @@ class CreateCreditosTable extends Migration
     {
         Schema::create('creditos', function (Blueprint $table) {
             $table->id();
+            $table->integer('id_cliente');
+            $table->integer('id_deudor');
             $table->float('valor_credito');
+            $table->integer('nro_cuotas');
+            $table->integer('nro_cuotas_pagas');
+            $table->decimal('tasa_interes', $precision = 8, $scale = 2);
             $table->timestamps();
         });
     }
