@@ -14,10 +14,10 @@
                     <table style=" width: 100%; " class="min-w-full divide-y table">
                         <thead>
                             <tr>
-                                <th style="background-color: rgb(189, 50, 50)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
+                                <th style="background-color: rgb(12, 12, 12)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>
+                                <th style="background-color: rgb(12, 12, 12)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>
+                                <th style="background-color: rgb(12, 12, 12)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>
+                                <th style="background-color: rgb(12, 12, 12)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
@@ -25,14 +25,22 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->title }}</td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">dummy link</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">
+                                            <a
+                                                class="text-indigo-600 hover:text-indigo-900"
+                                                target="_blank"
+                                                href="{{ URL::to('/'.$item->slug)}}"
+                                            >
+                                                {{ $item->slug }}
+                                            </a>
+                                        </td>
                                         <td class="px-6 py-4 text-sm whitespace-no-wrap">{!! $item-> content !!}</td>
                                         <td class="px-6 py-4 text-right text-sm"> 
                                             <x-jet-button class="btn btn-primary" wire:click="updateShowModal({{ $item->id }})">
                                                 {{ __('Update') }}
                                             </x-jet-button>
-                                            <x-jet-button wire:click="createShowModal">
-                                                {{ __('Delet') }}
+                                            <x-jet-button class="btn btn-danger" wire:click="deleteShowModal({{ $item->id }})">
+                                                {{ __('Delete') }}
                                             </x-jet-button>    
                                         </td> 
                                     </tr>
@@ -56,7 +64,7 @@
     {{-- Modal Form --}}
     <x-jet-dialog-modal wire:model="modalFormVisible">
         <x-slot name="title">
-            {{ __('Save Page') }} {{ $modelId }}
+            {{ __('Save Page') }} 
         </x-slot>
 
         <x-slot name="content">
@@ -108,6 +116,28 @@
                 </x-jet-danger-button>
             @endif
 
+        </x-slot>
+    </x-jet-dialog-modal>
+
+    {{-- The Delete Modal --}}
+    
+    <x-jet-dialog-modal wire:model="modalComfirmDeleteVisible">
+        <x-slot name="title">
+            {{ __('Delete Page') }}
+        </x-slot>
+
+        <x-slot name="content">
+            {{ __('Are you sure you wantto delete this page? Once the page is deleted, all of its resources and data will be permanently deleted.') }}
+        </x-slot>
+
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="$toggle('modalConfirmDeleteVisible')" wire:loading.attr="disabled">
+                {{ __('Navermind') }}
+            </x-jet-secondary-button>
+
+            <x-jet-danger-button class="ml-2" wire:click="delete" wire:loading.attr="disabled">
+                {{ __('Delete Page') }}
+            </x-jet-danger-button>
         </x-slot>
     </x-jet-dialog-modal>
 </div>
