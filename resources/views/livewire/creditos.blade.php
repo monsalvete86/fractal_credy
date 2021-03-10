@@ -29,9 +29,9 @@
                         <td>$5000</td>
                         <th>
                             <!-- Boton eliminar -->
-                            <button class="btn btn-success" wire:click="borrarCredito">
-                            <i class="fas fa-trash-alt"></i>
-                            </button>
+                            <x-jet-button class="btn btn-success" wire:click="borrarCredito">
+                             <i class="fas fa-trash-alt"></i>{{ __('Delete') }}
+                            </x-jet-button>
 
                             {{$count}}
                         </th>

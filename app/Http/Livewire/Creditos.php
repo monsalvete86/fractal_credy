@@ -13,15 +13,17 @@ class Creditos extends Component
     public function read(){
         return Credito::paginate(10);
     }
+    
+
+    public function increment()
+    {
+        $this->count++;
+    }
     public function render()
     {
         return view('livewire.creditos', [
             'creditos' => $this->read(),
         ]);
-    }
-
-    public function borrarCredito(){
-        $this->count++;
     }
 
     
