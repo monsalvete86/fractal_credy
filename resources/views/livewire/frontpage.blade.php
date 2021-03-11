@@ -1,4 +1,3 @@
 <div>
-    <h1>{{ $title }}</h1>
-    {!! $content !!}
+    {{-- The best athlete wants his opponent at his best. --}}
 </div>

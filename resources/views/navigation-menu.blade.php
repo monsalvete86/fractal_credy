@@ -14,12 +14,18 @@
                 <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
                 </x-jet-nav-link>
+
+                <x-jet-nav-link href="{{ route('credystatus.index') }}" :active="request()->routeIs('credystatus.index')">
+                    {{ __('Credystatus') }}
+                </x-jet-nav-link>
+
                 <x-jet-nav-link href="{{ route('pages') }}" :active="request()->routeIs('pages')">
                     {{ __('Pages') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('simulador') }}" :active="request()->routeIs('simulador')">
-                    {{ __('Simulador') }}
-                    <i class="fas fa-star"></i>
+
+                <x-jet-nav-link href="{{ route('creditos') }}" :active="request()->routeIs('creditos')">
+                    <i class="fas fa-money-check-alt"></i>
+                    {{ __('Credito') }} 
                 </x-jet-nav-link>
             </ul>
 

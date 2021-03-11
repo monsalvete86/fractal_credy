@@ -11,7 +11,6 @@ class Pages extends Component
 {
     use WithPagination;
     public $modalFormVisible = false;
-    public $modalConfirmDeleteVisible = false;
     public $modelId;
     public $slug;
     public $title;
@@ -26,12 +25,24 @@ class Pages extends Component
     {
         return [
             'title' => 'required',
-            'slug' => ['required', Rule::unique('pages', 'slug')->ignore($this->modelId)],
+            'slug' => ['required', Rule::unique('pages', 'slug')],
             'content' => 'required',
         ];
     }
 
-     /**
+    /**
+     * Runs everytime the title
+     * variable is updated.
+     * 
+     * @param mixed $value
+     * @return void
+     */
+
+    public function updatedTitle($value)
+    {
+        $this->generateSlug($value);
+    }
+    /**
      * The create function.
      * 
      * @return void
@@ -45,29 +56,6 @@ class Pages extends Component
     }
 
     /**
-     * Runs everytime the title
-     * variable is updated.
-     * 
-     * @param mixed $value
-     * @return void
-     */
-    public function updatedTitle($value)
-    {
-        $this->generateSlug($value);
-    }
-
-    /**
-     * The livewire mount funtion
-     * 
-     * @return void
-     */
-    public function mount()
-    {
-        // Resets the pagination after reloading the page
-        $this->resetPage();
-    }
-
-    /**
      * The read funtion.
      * 
      * @return void
@@ -77,43 +65,11 @@ class Pages extends Component
         return Page::paginate(5);
     }
 
-    /**
-     * The update funtion
-     * 
-     * 
-     * @return void
-     */
-
     public function update()
     {
         $this->validate();
         Page::find($this->modelId)->update($this->modelData());
         $this->modalFormVisible = false;
-    }
-
-    /**
-     * The delete function.
-     * 
-     * @return void
-     */
-
-    public function delete()
-    {
-        Page::destroy($this->modelId);
-        $this->modalComfirmDeleteVisible = false;
-        $this->resetPage();
-    }
-
-    /**
-     * Shows the delete confirmation modal.
-     * 
-     * @param mixed $id
-     * @return void
-     */
-    public function deleteShowModal($id)
-    {
-        $this->modelId = $id;
-        $this->modalConfirmDeleteVisible = true;
     }
 
     /**
@@ -129,8 +85,8 @@ class Pages extends Component
         $this->modalFormVisible = true;
     }
 
-     /**
-     * Shows the form modal
+    /**
+     * Shows the form model
      * in update mode.
      * 
      * @param mixed $id

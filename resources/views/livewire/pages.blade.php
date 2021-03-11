@@ -14,10 +14,10 @@
                     <table style=" width: 100%; " class="min-w-full divide-y table">
                         <thead>
                             <tr>
-                                <th style="background-color: rgb(12, 12, 12)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>
-                                <th style="background-color: rgb(12, 12, 12)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>
-                                <th style="background-color: rgb(12, 12, 12)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>
-                                <th style="background-color: rgb(12, 12, 12)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
                             </tr>
                         </thead>
                         <tbody class="divide-y divide-gray-200">
@@ -25,15 +25,7 @@
                                 @foreach ($data as $item)
                                     <tr>
                                         <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->title }}</td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">
-                                            <a
-                                                class="text-indigo-600 hover:text-indigo-900"
-                                                target="_blank"
-                                                href="{{ URL::to('/'.$item->slug)}}"
-                                            >
-                                                {{ $item->slug }}
-                                            </a>
-                                        </td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">dummy link</td>
                                         <td class="px-6 py-4 text-sm whitespace-no-wrap">{!! $item-> content !!}</td>
                                         <td class="px-6 py-4 text-right text-sm"> 
                                             <x-jet-button class="btn btn-primary" wire:click="updateShowModal({{ $item->id }})">
@@ -65,7 +57,7 @@
     {{-- Modal Form --}}
     <x-jet-dialog-modal wire:model="modalFormVisible">
         <x-slot name="title">
-            {{ __('Save Page') }} 
+            {{ __('Save Page') }} {{ $modelId }}
         </x-slot>
 
         <x-slot name="content">

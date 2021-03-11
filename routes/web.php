@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\frontpage;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,10 +13,14 @@ use App\Http\Livewire\frontpage;
 |
 */
 
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::group(['middleware' => [
     'auth:sanctum',
     'verified',
-]], function () {
+]], function (){
 
     Route::get('/dashboard', function () {
         return view('dashboard');
@@ -27,12 +30,11 @@ Route::group(['middleware' => [
         return view('admin.pages');
     })->name('pages');
 
-    Route::get('/simulador', function () {
-        return view('livewire.simulador');
-    })->name('simulador');
+    Route::get('/creditos', function () {
+        return view('admin.creditos');
+    })->name('creditos');
 
+    Route::resource( name: 'credystatus', controller:\App\Http\Controllers\CredystatusController::class);
+       
 
 });
-
-Route::get('/{urlslug}', Frontpage::class);
-Route::get('/', Frontpage::class);

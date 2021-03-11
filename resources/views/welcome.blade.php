@@ -67,6 +67,7 @@
                                             <button class="btn btn-secondary"></button>
                                             <button class="btn btn-success"></button>
                                             <button class="btn btn-danger"></button>
+                                            
                                         </div>
                                         <p class="text-muted small">
                                         

@@ -1,3 +1,3 @@
 require('./bootstrap');
-require('sweetalert2');
+// require('sweetalert2');
 require('alpinejs');
