@@ -39,8 +39,9 @@
                                             <x-jet-button class="btn btn-primary" wire:click="updateShowModal({{ $item->id }})">
                                                 {{ __('Update') }}
                                             </x-jet-button>
-                                            <x-jet-button class="btn btn-danger" wire:click="deleteShowModal({{ $item->id }})">
-                                                {{ __('Delete') }}
+                                            <input type="button" onclick="test()" value="ss"> 
+                                            <x-jet-button class="btn btn-danger" click="test()">
+                                               Borrar
                                             </x-jet-button>    
                                         </td> 
                                     </tr>
@@ -120,24 +121,48 @@
     </x-jet-dialog-modal>
 
     {{-- The Delete Modal --}}
-    
+    {{--
     <x-jet-dialog-modal wire:model="modalComfirmDeleteVisible">
         <x-slot name="title">
             {{ __('Delete Page') }}
         </x-slot>
 
-        <x-slot name="content">
-            {{ __('Are you sure you wantto delete this page? Once the page is deleted, all of its resources and data will be permanently deleted.') }}
-        </x-slot>
+        
 
         <x-slot name="footer">
             <x-jet-secondary-button wire:click="$toggle('modalConfirmDeleteVisible')" wire:loading.attr="disabled">
                 {{ __('Navermind') }}
             </x-jet-secondary-button>
 
-            <x-jet-danger-button class="ml-2" wire:click="delete" wire:loading.attr="disabled">
-                {{ __('Delete Page') }}
-            </x-jet-danger-button>
+            
         </x-slot>
-    </x-jet-dialog-modal>
+    </x-jet-dialog-modal>--}}
 </div>
+
+<script>
+  //const Swal = require('sweetalert2')
+function test(){
+    Swal.fire({
+        title: 'Estas seguro?',
+        text: "Estas seguro de inactivar este cliente!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonClass: 'danger',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Si, inactivar!',
+        cancelButtonText: 'No, cancelar'
+    })
+    .then((result) => {
+        if (result.isConfirmed) {
+            Swal.fire(
+            'Inactivado!',
+            'Inactivado correctamente.',
+            ''
+            )
+        }
+        
+    })
+  
+}
+
+</script>

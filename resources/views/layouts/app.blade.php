@@ -11,7 +11,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
         <link rel="preconnect" href="https://fonts.gstatic.com">
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet"> 
-
+        <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         @trixassets
