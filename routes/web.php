@@ -32,9 +32,6 @@ Route::group(['middleware' => [
 
     Route::get('/creditos', function () {
         return view('admin.creditos');
-    })->name('creditos');
-
-    Route::resource( name: 'credystatus', controller:\App\Http\Controllers\CredystatusController::class);
-       
+    })->name('creditos');   
 
 });
