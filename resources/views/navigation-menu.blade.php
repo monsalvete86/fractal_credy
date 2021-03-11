@@ -18,8 +18,9 @@
                     {{ __('Pages') }}
                 </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('creditos') }}" :active="request()->routeIs('creditos')">
+                    <i class="fas fa-money-check-alt"></i>
                     {{ __('Credito') }}
-                    <i class="fas fa-star"></i>
+                  
                 </x-jet-nav-link>
             </ul>
 
