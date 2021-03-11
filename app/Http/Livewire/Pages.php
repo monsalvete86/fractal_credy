@@ -15,6 +15,16 @@ class Pages extends Component
     public $slug;
     public $title;
     public $content;
+    public $nombre;
+    public $apellido;
+    public $cedula;
+    public $fecha_nacimiento;
+    public $edad;
+    public $sexo;
+    public $celular1;
+    public $celular2;
+    public $direccion;
+    public $estado_civil;
 
     /**
      * The validation rules
@@ -27,6 +37,16 @@ class Pages extends Component
             'title' => 'required',
             'slug' => ['required', Rule::unique('pages', 'slug')],
             'content' => 'required',
+            'nombre' => 'required',
+            'apellido' => 'required',
+            'cedula' => 'required',
+            'fecha_nacimiento' => 'required',
+            'edad' => 'required',
+            'sexo' => 'required',
+            'celular1' => 'required',
+            'celular2' => 'required',
+            'direccion' => 'required',
+            'estado_civil' => 'required',
         ];
     }
 
@@ -62,7 +82,7 @@ class Pages extends Component
      */
     public function read()
     {
-        return Page::paginate(5);
+        return Page::paginate(15);
     }
 
     public function update()
@@ -113,6 +133,16 @@ class Pages extends Component
         $this->title = $data->title;
         $this->slug = $data->slug;
         $this->content = $data->content;
+        $this->nombre = $data->nombre;
+        $this->apellido = $data->apellido;
+        $this->cedula = $data->cedula;
+        $this->fecha_nacimiento = $data->fecha_nacimiento;
+        $this->edad = $data->edad;
+        $this->sexo = $data->sexo;
+        $this->celular1 = $data->celular1;
+        $this->celular2 = $data->celular2;
+        $this->direccion = $data->direccion;
+        $this->estado_civil = $data->estado_civil;
     }
 
     /**
@@ -127,6 +157,16 @@ class Pages extends Component
             'title' => $this->title,
             'slug' => $this->slug,
             'content' => $this->content,
+            'nombre' => $this->nombre,
+            'apellido' => $this->apellido,
+            'cedula' => $this->cedula,
+            'fecha_nacimiento' => $this->fecha_nacimiento,
+            'edad' => $this->edad,
+            'sexo' => $this->sexo,
+            'celular1' => $this->celular1,
+            'celular2' => $this->celular2,
+            'direccion' => $this->direccion,
+            'estado_civil' => $this->estado_civil,
         ];
     }
 
@@ -142,6 +182,16 @@ class Pages extends Component
         $this->title = null;
         $this->slug = null;
         $this->content = null;
+        $this->nombre = null;
+        $this->apellido = null;
+        $this->cedula = null;
+        $this->fecha_nacimiento = null;
+        $this->edad = null;
+        $this->sexo = null;
+        $this->celular1 = null;
+        $this->celular2 = null;
+        $this->direccion = null;
+        $this->estado_civil = null;
     }
 
     /**

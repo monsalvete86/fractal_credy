@@ -14,9 +14,19 @@
                     <table style=" width: 100%; " class="min-w-full divide-y table">
                         <thead>
                             <tr>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>
+                                <!--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>-->
+                                <!--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>-->
+                                <!--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>-->
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Nombre</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Apellido</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Cedula</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Fecha_Nacimiento</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Edad</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Sexo</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular1</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular2</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Direccion</th>
+                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Estado_civil</th>
                                 <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
                             </tr>
                         </thead>
@@ -24,9 +34,19 @@
                             @if ($data->count())
                                 @foreach ($data as $item)
                                     <tr>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->title }}</td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">dummy link</td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">{!! $item-> content !!}</td>
+                                        <!--<td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->title }}</td>-->
+                                        <!--<td class="px-6 py-4 text-sm whitespace-no-wrap">dummy link</td>-->
+                                        <!--<td class="px-6 py-4 text-sm whitespace-no-wrap">{!! $item-> content !!}</td>-->
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">andres</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">gutierres</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">1123314566</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">12/09/1965</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">42</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">hombre</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">3135446755</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">3146778844</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">cra/12-34 65</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">soltero</td>
                                         <td class="px-6 py-4 text-right text-sm"> 
                                             <x-jet-button class="btn btn-primary" wire:click="updateShowModal({{ $item->id }})">
                                                 {{ __('Update') }}
@@ -62,6 +82,54 @@
         </x-slot>
 
         <x-slot name="content">
+            <div class="mt-4">
+                <x-jet-label for="title" value="{{ _('Title') }}" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="nombre" value="{{ _('Nombre') }}" />
+                <x-jet-input id="nombre" class="block mt-1 w-full" type="nombre" wire:model.debounce.800ms="nombre" />
+                @error('nombre') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="title" value="{{ _('Title') }}" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="title" value="{{ _('Title') }}" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="title" value="{{ _('Title') }}" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="title" value="{{ _('Title') }}" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="title" value="{{ _('Title') }}" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="title" value="{{ _('Title') }}" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
             <div class="mt-4">
                 <x-jet-label for="title" value="{{ _('Title') }}" />
                 <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
