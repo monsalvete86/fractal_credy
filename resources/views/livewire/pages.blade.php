@@ -1,71 +1,84 @@
 <div class="p-12 ">
-    <div class="flex items-center justify-end px-4 py-3 text-right sm:px-6">
-        <x-jet-button wire:click="createShowModal" class="btn-primary">
-            {{ __('Create') }}
-        </x-jet-button>
-    </div>
+    
 
     {{-- The data table --}}
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto sm:-mx-6">
             <div class="py-2 aling-middle inline-block min-w-full">
                 <div class=" overflow-hidden border-b">
-                    
-                    <table style=" width: 100%; " class="min-w-full divide-y table">
-                        <thead>
-                            <tr>
-                                <!--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>-->
-                                <!--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>-->
-                                <!--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>-->
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Nombre</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Apellido</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Cedula</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Fecha_Nacimiento</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Edad</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Sexo</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular1</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular2</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Direccion</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Estado_civil</th>
-                                <th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-gray-200">
-                            @if ($data->count())
-                                @foreach ($data as $item)
-                                    <tr>
-                                        <!--<td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->title }}</td>-->
-                                        <!--<td class="px-6 py-4 text-sm whitespace-no-wrap">dummy link</td>-->
-                                        <!--<td class="px-6 py-4 text-sm whitespace-no-wrap">{!! $item-> content !!}</td>-->
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">andres</td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">gutierres</td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">1123314566</td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">12/09/1965</td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">42</td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">hombre</td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">3135446755</td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">3146778844</td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">cra/12-34 65</td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">soltero</td>
-                                        <td class="px-6 py-4 text-right text-sm"> 
-                                            <x-jet-button class="btn btn-primary" wire:click="updateShowModal({{ $item->id }})">
-                                                {{ __('Update') }}
-                                            </x-jet-button>
-                                            <input type="button" onclick="test()" value="ss"> 
-                                            <x-jet-button class="btn btn-danger" click="test()">
-                                               Borrar
-                                            </x-jet-button>    
-                                        </td> 
-                                    </tr>
-                                @endforeach
-                            @else 
-                                    <tr>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap" colspan="4">No Results Found</td>
-                                    </tr>
-                            @endif
-                        </tbody>
-                    </table>
-
+                    <div class="table-responsive">
+                        <div class="">
+                            <x-jet-button wire:click="createShowModal" class="btn-primary">
+                                {{ __('Create') }}
+                            </x-jet-button>
+                        </div> 
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Buscar</button>
+                        </form> 
+                        <table style=" width: 100%; " class="min-w-full divide-y table">
+                            <thead>
+                                <tr>
+                                    {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>--}}
+                                    {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>--}}
+                                    {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>--}}
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Id</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Nombre</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Apellido</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Cedula</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Fecha_Nacimiento</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Genero</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular1</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular2</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Direccion</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Estado_civil</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Lugar_Trabajo</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Cargo</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Independiente</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Foto</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
+                                </tr>
+                            </thead>
+                            <tbody class="divide-y divide-gray-200">
+                                @if ($data->count())
+                                    @foreach ($data as $item)
+                                        <tr>
+                                            {{--<td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->title }}</td>--}}
+                                            {{--<td class="px-6 py-4 text-sm whitespace-no-wrap">dummy link</td>--}}
+                                            {{--<td class="px-6 py-4 text-sm whitespace-no-wrap">{!! $item-> content !!}</td>--}}
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">1</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">andres</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">gutierres</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">1123314566</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">12/09/1965</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">hombre</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">3135446755</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">3146778844</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">cra/12-34 65</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">soltero</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">fractal</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">programador</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">si</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="..." class="img-fluid" alt="..."></td>
+                                            <td class="px-6 py-4 text-right text-sm"> 
+                                                <x-jet-button class="btn btn-primary" wire:click="updateShowModal({{ $item->id }})">
+                                                    {{ __('Update') }}
+                                                </x-jet-button>
+                                                <input type="button" onclick="test()" value="ss"> 
+                                                <x-jet-button class="btn btn-danger" click="test()">
+                                                Borrar
+                                                </x-jet-button>    
+                                            </td> 
+                                        </tr>
+                                    @endforeach
+                                @else 
+                                        <tr>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap" colspan="4">No Results Found</td>
+                                        </tr>
+                                @endif
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
@@ -78,15 +91,15 @@
     {{-- Modal Form --}}
     <x-jet-dialog-modal wire:model="modalFormVisible">
         <x-slot name="title">
-            {{ __('Save Page') }} {{ $modelId }}
+            {{ __('Crear_Cliente') }} {{ $modelId }}
         </x-slot>
 
         <x-slot name="content">
-            <div class="mt-4">
+            {{--<div class="mt-4">
                 <x-jet-label for="title" value="{{ _('Title') }}" />
                 <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
                 @error('title') <span class="error">{{ $message }}</span> @enderror
-            </div>
+            </div>--}}
 
             <div class="mt-4">
                 <x-jet-label for="nombre" value="{{ _('Nombre') }}" />
@@ -95,47 +108,79 @@
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="title" value="{{ _('Title') }}" />
-                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
-                @error('title') <span class="error">{{ $message }}</span> @enderror
+                <x-jet-label for="apellido" value="{{ _('Apellido') }}" />
+                <x-jet-input id="apellido" class="block mt-1 w-full" type="apellido" wire:model.debounce.800ms="apellido" />
+                @error('apellido') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="title" value="{{ _('Title') }}" />
-                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
-                @error('title') <span class="error">{{ $message }}</span> @enderror
+                <x-jet-label for="cedula" value="{{ _('Cedula') }}" />
+                <x-jet-input id="cedula" class="block mt-1 w-full" type="cedula" wire:model.debounce.800ms="cedula" />
+                @error('cedula') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="title" value="{{ _('Title') }}" />
-                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
-                @error('title') <span class="error">{{ $message }}</span> @enderror
+                <x-jet-label for="fecha_nacimiento" value="{{ _('Fecha_Nacimiento') }}" />
+                <x-jet-input id="fecha_nacimiento" class="block mt-1 w-full" type="fecha_nacimiento" wire:model.debounce.800ms="fecha_nacimiento" />
+                @error('fecha_nacimiento') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="title" value="{{ _('Title') }}" />
-                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
-                @error('title') <span class="error">{{ $message }}</span> @enderror
+                <x-jet-label for="genero" value="{{ _('Genero') }}" />
+                <x-jet-input id="genero" class="block mt-1 w-full" type="genero" wire:model.debounce.800ms="genero" />
+                @error('genero') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="title" value="{{ _('Title') }}" />
-                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
-                @error('title') <span class="error">{{ $message }}</span> @enderror
+                <x-jet-label for="celular1" value="{{ _('Celular1') }}" />
+                <x-jet-input id="celular1" class="block mt-1 w-full" type="celular1" wire:model.debounce.800ms="celular1" />
+                @error('celular1') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="title" value="{{ _('Title') }}" />
-                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
-                @error('title') <span class="error">{{ $message }}</span> @enderror
+                <x-jet-label for="celular2" value="{{ _('Celular2') }}" />
+                <x-jet-input id="celular2" class="block mt-1 w-full" type="celular2" wire:model.debounce.800ms="celular2" />
+                @error('celular2') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="title" value="{{ _('Title') }}" />
-                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
-                @error('title') <span class="error">{{ $message }}</span> @enderror
+                <x-jet-label for="direccion" value="{{ _('Direccion') }}" />
+                <x-jet-input id="direccion" class="block mt-1 w-full" type="direccion" wire:model.debounce.800ms="direccion" />
+                @error('direccion') <span class="error">{{ $message }}</span> @enderror
             </div>
+
             <div class="mt-4">
+                <x-jet-label for="estado_civil" value="{{ _('Estado_Civil') }}" />
+                <x-jet-input id="estado_civil" class="block mt-1 w-full" type="estado_civil" wire:model.debounce.800ms="estado_civil" />
+                @error('estado_civil') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="lugar_trabajo" value="{{ _('Lugar_Trabajo') }}" />
+                <x-jet-input id="lugar_trabajo" class="block mt-1 w-full" type="lugar_trabajo" wire:model.debounce.800ms="lugar_trabajo" />
+                @error('lugar_trabajo') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="cargo" value="{{ _('Cargo') }}" />
+                <x-jet-input id="cargo" class="block mt-1 w-full" type="cargo" wire:model.debounce.800ms="cargo" />
+                @error('cargo') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="independiente" value="{{ _('Independiente') }}" />
+                <x-jet-input id="independiente" class="block mt-1 w-full" type="independiente" wire:model.debounce.800ms="independiente" />
+                @error('independiente') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
+            <div class="mt-4">
+                <x-jet-label for="formFileSm" class="form-label" value="{{ _('Foto') }}" />
+                <x-jet-input id="formFileSm" class="form-control"  type="file" wire:model.debounce.800ms="foto" />
+                @error('foto') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
+
+            {{--<div class="mt-4">
                 <x-jet-label for="title" value="{{ _('Slug') }}" />
                 <div class="mt-1 flex rounded-md shadow-sm">
                     <span class="inline-flex items-center px-3 rounded-1-md border border-r-0 border-gray-300  text-sm">
@@ -144,8 +189,8 @@
                     <input wire:model="slug" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="url-slug">
                 </div> 
                 @error('slug') <span class="error">{{ $message }}</span> @enderror
-            </div>
-            <div class="mt-4">
+            </div>--}}
+            {{--<div class="mt-4">
                 <x-jet-label for="title" value="{{ _('Content') }}" />
                 <div class="rounded-md shadow-sm">
                     <div class="mt-1">
@@ -160,7 +205,7 @@
                     </div>
                 </div>
                 @error('content') <span class="error">{{ $message }}</span> @enderror
-            </div>       
+            </div>--}}       
         </x-slot>
 
         <x-slot name="footer">
