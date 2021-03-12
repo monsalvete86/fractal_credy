@@ -67,19 +67,74 @@
                 @error('valor_credito') <span class="error">{{ $message }}</span> @enderror
             </div>
             <div class="mt-4">
-                <x-jet-label for="nro_cuotas" value="{{ _('Cantidad cuotas') }}" />
-                <x-jet-input type="number" step="any" id="nro_cuotas" class="block mt-1 w-full" wire:model.debounce.800ms="nro_cuotas" />
-                @error('nro_cuotas') <span class="error">{{ $message }}</span> @enderror
+                <x-jet-label for="interes_mensual" value="{{ _('Interés mensual') }}" />
+                <x-jet-input type="number" step="any" id="interes_mensual" class="block mt-1 w-full" wire:model.debounce.800ms="interes_mensual" />
+                @error('interes_mensual') <span class="error">{{ $message }}</span> @enderror
             </div>
             <div class="mt-4">
-                <x-jet-label for="tasa_interes" value="{{ _('Tasa de Interés') }}" />
-                <x-jet-input type="number" step="any" id="tasa_interes" class="block mt-1 w-full" wire:model.debounce.800ms="tasa_interes" />
-                @error('tasa_interes') <span class="error">{{ $message }}</span> @enderror
+                <x-jet-label for="cant_cuotas" value="{{ _('Nro. Cuotas') }}" />
+                <x-jet-input type="number" step="any" id="cant_cuotas" class="block mt-1 w-full" wire:model.debounce.800ms="cant_cuotas" />
+                @error('cant_cuotas') <span class="error">{{ $message }}</span> @enderror
             </div>
             <div class="mt-4">
-                <x-jet-label for="nro_cuotas_pagas" value="{{ _('Cuotas pagadas') }}" />
-                <x-jet-input type="number" step="any" id="nro_cuotas_pagas" class="block mt-1 w-full" wire:model.debounce.800ms="nro_cuotas_pagas" />
-                @error('nro_cuotas_pagas') <span class="error">{{ $message }}</span> @enderror
+                <x-jet-label for="cant_cuotas_pagadas" value="{{ _('Cuotas pagadas') }}" />
+                <x-jet-input type="number" step="any" id="cant_cuotas_pagadas" class="block mt-1 w-full" wire:model.debounce.800ms="cant_cuotas_pagadas" />
+                @error('cant_cuotas_pagadas') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="dia_limite" value="{{ _('Día límite de pago') }}" />
+                <x-jet-input type="number" step="any" id="dia_limite" class="block mt-1 w-full" wire:model.debounce.800ms="dia_limite" />
+                @error('dia_limite') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="deudor" value="{{ _('Deudor') }}" />
+                <x-jet-input type="number" step="any" id="deudor" class="block mt-1 w-full" wire:model.debounce.800ms="deudor" />
+                @error('deudor') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="fecha_inicio" value="{{ _('Fecha inicio') }}" />
+                <x-jet-input type="number" step="any" id="fecha_inicio" class="block mt-1 w-full" wire:model.debounce.800ms="fecha_inicio" />
+                @error('fecha_inicio') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="id_sede" value="{{ _('Sede Empresa') }}" />
+                <x-jet-input type="number" step="any" id="id_sede" class="block mt-1 w-full" wire:model.debounce.800ms="id_sede" />
+                @error('id_sede') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="porcent_interes_anual" value="{{ _('Porcentaje de interés anual') }}" />
+                <x-jet-input type="number" step="any" id="porcent_interes_anual" class="block mt-1 w-full" wire:model.debounce.800ms="porcent_interes_anual" />
+                @error('porcent_interes_anual') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="porcent_interes_mensual" value="{{ _('Porcentaje de interés mensual') }}" />
+                <x-jet-input type="number" step="any" id="porcent_interes_mensual" class="block mt-1 w-full" wire:model.debounce.800ms="porcent_interes_mensual" />
+                @error('porcent_interes_mensual') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="usu_crea" value="{{ _('Asesor asignado') }}" />
+                <x-jet-input type="number" step="any" id="usu_crea" class="block mt-1 w-full" wire:model.debounce.800ms="usu_crea" />
+                @error('usu_crea') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="valor_abonado" value="{{ _('Saldo abonado') }}" />
+                <x-jet-input type="number" step="any" id="valor_abonado" class="block mt-1 w-full" wire:model.debounce.800ms="valor_abonado" />
+                @error('valor_abonado') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="valor_capital" value="{{ _('Abono Capital') }}" />
+                <x-jet-input type="number" step="any" id="valor_capital" class="block mt-1 w-full" wire:model.debounce.800ms="valor_capital" />
+                @error('valor_capital') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="valor_cuota" value="{{ _('Valor de cuota') }}" />
+                <x-jet-input type="number" step="any" id="valor_cuota" class="block mt-1 w-full" wire:model.debounce.800ms="valor_cuota" />
+                @error('valor_cuota') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="valor_interes" value="{{ _('Abono interés') }}" />
+                <x-jet-input type="number" step="any" id="valor_interes" class="block mt-1 w-full" wire:model.debounce.800ms="valor_interes" />
+                @error('valor_interes') <span class="error">{{ $message }}</span> @enderror
             </div>
 
         </x-slot>

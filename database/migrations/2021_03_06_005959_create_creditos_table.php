@@ -17,30 +17,27 @@ class CreateCreditosTable extends Migration
             $table->id();
             $table->integer('id_cliente');
             $table->integer('id_deudor');
-            $table->float('valor_credito');
-            $table->integer('nro_cuotas');
-            $table->integer('nro_cuotas_pagas');
-            $table->decimal('tasa_interes', $precision = 8, $scale = 2);
-            $table->timestamps();
-        });
-
-        Schema::table('creditos', function (Blueprint $table) {
-            $table->date('fecha_inicio');
+            $table->integer('id_sede');    
+            $table->integer('cant_cuotas');
+            $table->integer('cant_cuotas_pagadas');      
+            $table->integer('dia_limite');
             $table->boolean('deudor')->comment('Solo se confirma si tiene deudor');
+            $table->tinyInteger('estado');
+            $table->date('fecha_inicio');
+            $table->decimal('interes_mensual', $precision = 8, $scale = 2);                 
+            $table->double('porcent_interes_anual',12,4);
+            $table->double('porcent_interes_mensual',12,4);   
+            $table->integer('usu_crea');
             $table->double('valor_cuota',12,4);
+            $table->double('valor_credito',12,4);
             $table->double('valor_abonado',12,4);
             $table->double('valor_capital',12,4);
             $table->double('valor_interes',12,4);
-            $table->double('porcent_interes_anual',12,4);
-            $table->double('porcent_interes_mensual',12,4);
-            $table->tinyInteger('estado');
-            $table->integer('usu_crea');
-            $table->integer('id_sede');
-            $table->integer('dia_limite');
-            $table->renameColumn('nro_cuotas', 'cant_cuotas');
-            $table->renameColumn('nro_cuotas_pagas', 'cant_cuotas_pagadas');
-            $table->renameColumn('tasa_interes', 'interes_mensual');
+            $table->timestamps();
         });
+
+        // Schema::table('creditos', function (Blueprint $table) {         
+        // });
 
     }
 

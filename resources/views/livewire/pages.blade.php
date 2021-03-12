@@ -22,21 +22,21 @@
                                     {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>--}}
                                     {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>--}}
                                     {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>--}}
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Id</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Nombre</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Apellido</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Cedula</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Fecha_Nacimiento</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Genero</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular1</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular2</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Direccion</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Estado_civil</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Lugar_Trabajo</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Cargo</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Independiente</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Foto</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Id</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Nombre</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Apellido</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Cedula</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Fecha_Nacimiento</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Genero</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular1</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular2</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Direccion</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Estado_civil</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Lugar_Trabajo</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Cargo</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Independiente</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Foto</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
