@@ -1,5 +1,4 @@
 <div class="p-12 ">
-    
 
     {{-- The data table --}}
     <div class="flex flex-col">
@@ -10,7 +9,6 @@
                         <div class="row">
                             <div class="col-sm-11">
                                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                                <button class="btn btn-outline-success" type="button">Buscar</button>
                             </div>
                             <div class="col-sm-1">
                                 <x-jet-button wire:click="createShowModal" class="btn-primary" style="margin-left: 477px;">
@@ -18,14 +16,14 @@
                                 </x-jet-button>
                             </div>
                         </div>
-
+                        <br>
                         <table style=" width: 100%; " class="min-w-full divide-y table">
                             <thead>
                                 <tr>
                                     {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>--}}
                                     {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>--}}
                                     {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>--}}
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Id</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">#</th>
                                     <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Nombre</th>
                                     <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Apellido</th>
                                     <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Cedula</th>

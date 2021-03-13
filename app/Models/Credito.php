@@ -11,12 +11,13 @@ class Credito extends Model
     protected $table = 'creditos';
 
     protected $fillable = [
-        'id_cliente', 'id_deudor', 'valor_credito','nro_cuotas','nro_cuotas_pagas', 'tasa_interes'
+        'id_cliente', 'id_deudor','cant_cuotas','cant_cuotas_pagadas','dia_limite','deudor','estado','fecha_inicio','id_sede','interes_mensual','porcent_interes_anual','porcent_interes_mensual','tasa_interes','usu_crea','valor_abonado','valor_capital','valor_credito','valor_cuota','valor_interes'
     ];
 
     protected $attributes = [
         'nro_cuotas_pagas' => 0,
         'tasa_interes' => 0,
+        'estado' => 0,
     ];
 
 }
