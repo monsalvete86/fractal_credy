@@ -45,7 +45,7 @@
 
     <x-jet-dialog-modal wire:model="modalCrearCredito">
         <x-slot name="title">
-            {{ __('Logout Other Browser Sessions') }}
+            {{ __('Crear crédito') }}
         </x-slot>
 
         <x-slot name="content">
