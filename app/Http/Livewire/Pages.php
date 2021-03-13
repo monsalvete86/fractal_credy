@@ -28,7 +28,7 @@ class Pages extends Component
     public $cargo;
     public $independiente;
     public $foto;
-
+    public $search;
     /**
      * The validation rules
      * 
@@ -222,6 +222,8 @@ class Pages extends Component
         $process2 = strtolower($process1);
         $this->slug = $process2;
     }
+
+    //public $search = 'jorge';
 
     /**
      * the livewire render fuction.

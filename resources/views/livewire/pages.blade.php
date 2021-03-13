@@ -3,19 +3,22 @@
 
     {{-- The data table --}}
     <div class="flex flex-col">
-        <div class="-my-2 overflow-x-auto sm:-mx-6">
+        <div class="-my-2 overflow-x-auto">
             <div class="py-2 aling-middle inline-block min-w-full">
                 <div class=" overflow-hidden border-b">
                     <div class="table-responsive">
-                        <div class="">
-                            <x-jet-button wire:click="createShowModal" class="btn-primary">
-                                {{ __('Create') }}
-                            </x-jet-button>
-                        </div> 
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
-                            <button class="btn btn-outline-success" type="submit">Buscar</button>
-                        </form> 
+                        <div class="row">
+                            <div class="col-sm-11">
+                                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                                <button class="btn btn-outline-success" type="button">Buscar</button>
+                            </div>
+                            <div class="col-sm-1">
+                                <x-jet-button wire:click="createShowModal" class="btn-primary" style="margin-left: 477px;">
+                                    {{ __('Create') }}
+                                </x-jet-button>
+                            </div>
+                        </div>
+
                         <table style=" width: 100%; " class="min-w-full divide-y table">
                             <thead>
                                 <tr>
@@ -46,25 +49,25 @@
                                             {{--<td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->title }}</td>--}}
                                             {{--<td class="px-6 py-4 text-sm whitespace-no-wrap">dummy link</td>--}}
                                             {{--<td class="px-6 py-4 text-sm whitespace-no-wrap">{!! $item-> content !!}</td>--}}
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">1</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">andres</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">gutierres</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">1123314566</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">12/09/1965</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">hombre</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">3135446755</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">3146778844</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">cra/12-34 65</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">soltero</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">fractal</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">programador</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">si</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="..." class="img-fluid" alt="..."></td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->id }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->nombre }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->apellido }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->cedula }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->fecha_nacimiento }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->genero }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->celular1 }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->celular2 }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->direccion }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->estado_civil }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->lugar_trabajo }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->cargo }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->independiente }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="{{ $item->foto }}" class="img-fluid" alt="..."></td>
                                             <td class="px-6 py-4 text-right text-sm"> 
                                                 <x-jet-button class="btn btn-primary" wire:click="updateShowModal({{ $item->id }})">
                                                     {{ __('Update') }}
                                                 </x-jet-button>
-                                                <input type="button" onclick="test()" value="ss"> 
+                                                <input type="button" onclick="test()" value="borrar"> 
                                                 <x-jet-button class="btn btn-danger" click="test()">
                                                 Borrar
                                                 </x-jet-button>    
