@@ -26,13 +26,16 @@
                     <td>{{ $credito->id_cliente}}</td>
                     <td>{{ $credito->id_deudor}}</td>
                     <td>$ {{ $credito->valor_credito}}</td>
-                    <td>{{ $credito->tasa_interes}}</td>
-                    <td>{{ $credito->nro_cuotas}}</td>
-                    <td>{{ $credito->nro_cuotas_pagas}}</td>
+                    <td>{{ $credito->interes_mensual}}</td>
+                    <td>{{ $credito->cant_cuotas}}</td>
+                    <td>{{ $credito->cant_cuotas_pagadas}}</td>
                     <td>$5000</td>
                     <th>
+                        <x-jet-button wire:click="updateModalCredito({{ $credito->id }})">
+                            {{ __('Update') }}
+                        </x-jet-button>
                         <!-- Boton eliminar -->
-                        <x-jet-button class="btn btn-success" wire:click="borrarCredito">
+                        <x-jet-button class="btn btn-success" wire:click="createModalCredito">
                             <i class="fas fa-trash-alt"></i>{{ __('Delete') }}
                         </x-jet-button>
                     </th>
@@ -45,7 +48,7 @@
 
     <x-jet-dialog-modal wire:model="modalCrearCredito">
         <x-slot name="title">
-            {{ __('Crear crédito') }}
+            {{ __('Crear crédito') }} {{ $idCredito }}
         </x-slot>
 
         <x-slot name="content">
@@ -83,7 +86,7 @@
             </div>
             <div class="mt-4">
                 <x-jet-label for="dia_limite" value="{{ _('Día límite de pago') }}" />
-                <x-jet-input type="number" step="any" id="dia_limite" class="block mt-1 w-full" wire:model.debounce.800ms="dia_limite" />
+                <x-jet-input type="day" step="any" id="dia_limite" class="block mt-1 w-full" wire:model.debounce.800ms="dia_limite" />
                 @error('dia_limite') <span class="error">{{ $message }}</span> @enderror
             </div>
             <div class="mt-4">
@@ -93,7 +96,7 @@
             </div>
             <div class="mt-4">
                 <x-jet-label for="fecha_inicio" value="{{ _('Fecha inicio') }}" />
-                <x-jet-input type="number" step="any" id="fecha_inicio" class="block mt-1 w-full" wire:model.debounce.800ms="fecha_inicio" />
+                <x-jet-input type="date" step="any" id="fecha_inicio" class="block mt-1 w-full" wire:model.debounce.800ms="fecha_inicio" />
                 @error('fecha_inicio') <span class="error">{{ $message }}</span> @enderror
             </div>
             <div class="mt-4">
@@ -136,7 +139,11 @@
                 <x-jet-input type="number" step="any" id="valor_interes" class="block mt-1 w-full" wire:model.debounce.800ms="valor_interes" />
                 @error('valor_interes') <span class="error">{{ $message }}</span> @enderror
             </div>
-
+            <div class="mt-4">
+                <x-jet-label for="estado" value="{{ _('Estado crédito') }}" />
+                <x-jet-input type="number" step="any" id="estado" class="block mt-1 w-full" wire:model.debounce.800ms="estado" />
+                @error('estado') <span class="error">{{ $message }}</span> @enderror
+            </div>
         </x-slot>
 
         <x-slot name="footer">
