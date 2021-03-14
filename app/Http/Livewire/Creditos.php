@@ -11,9 +11,9 @@ class Creditos extends Component
 {
 
     public $modalCrearCredito=false;
-    // Revisar para eliminar
-    // public $title;    
-    // public $content;
+    // Datos adicionales para CRUD
+
+    public $idCredito;
 
     //Datos para el credito
     
@@ -65,9 +65,62 @@ class Creditos extends Component
             'valor_interes' => $this->valor_interes,
         ];
     }
+    public function datosActualizar(){
+        return [            
+            $this->id_cliente  = $data->id_cliente,
+            $this->id_deudor = $data->id_deudor,
+            $this->valor_credito = $data->valor_credito,
+            $this->interes_mensual = $data->interes_mensual,
+            $this->cant_cuotas = $data->cant_cuotas,
+            $this->cant_cuotas_pagadas = $data->cant_cuotas_pagadas,
+            $this->dia_limite = $data->dia_limite,
+            $this->deudor = $data->deudor,
+            $this->estado = $data->estado,
+            $this->fecha_inicio = $data->fecha_inicio,
+            $this->id_sede = $data->id_sede,
+            $this->porcent_interes_anual = $data->porcent_interes_anual,
+            $this->porcent_interes_mensual = $data->porcent_interes_mensual,
+            $this->usu_crea = $data->usu_crea,
+            $this->valor_abonado = $data->valor_abonado,
+            $this->valor_capital = $data->valor_capital,
+            $this->valor_cuota = $data->valor_cuota,
+            $this->valor_interes = $data->valor_interes,
+        ];
+    }
 
     public function createModalCredito(){
         $this->modalCrearCredito = true;
+    }
+    public function updateModalCredito($id)
+    {
+        $this->idCredito = $id;
+        $this->modalCrearCredito = true;
+        $this->cargarDatos();
+       
+    }
+    
+
+    public function cargarDatos(){
+        $credito = Credito::find($this->idCredito);
+        $this->id_cliente  = $credito->id_cliente;
+        $this->id_deudor = $credito->id_deudor;
+        $this->valor_credito = $credito->valor_credito;
+        $this->interes_mensual = $credito->interes_mensual;
+        $this->cant_cuotas = $credito->cant_cuotas;
+        $this->cant_cuotas_pagadas = $credito->cant_cuotas_pagadas;
+        $this->dia_limite = $credito->dia_limite;
+        $this->deudor = $credito->deudor;
+        $this->estado = $credito->estado;
+        $this->fecha_inicio = $credito->fecha_inicio;
+        $this->id_sede = $credito->id_sede;
+        $this->porcent_interes_anual = $credito->porcent_interes_anual;
+        $this->porcent_interes_mensual = $credito->porcent_interes_mensual;
+        $this->usu_crea = $credito->usu_crea;
+        $this->valor_abonado = $credito->valor_abonado;
+        $this->valor_capital = $credito->valor_capital;
+        $this->valor_cuota = $credito->valor_cuota;
+        $this->valor_interes = $credito->valor_interes;
+        
     }
 
     public function read(){
@@ -75,7 +128,7 @@ class Creditos extends Component
     }
     public function render()
     {
-        return view('livewire.creditos', [
+        return view('livewire.credito.creditos', [
             'creditos' => $this->read(),
         ]);
     }

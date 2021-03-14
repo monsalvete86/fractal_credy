@@ -122,7 +122,7 @@
 
             <div class="mt-4">
                 <x-jet-label for="fecha_nacimiento" value="{{ _('Fecha_Nacimiento') }}" />
-                <x-jet-input id="fecha_nacimiento" class="block mt-1 w-full" type="fecha_nacimiento" wire:model.debounce.800ms="fecha_nacimiento" />
+                <x-jet-input id="fecha_nacimiento" type="date" class="block mt-1 w-full"  wire:model.debounce.800ms="fecha_nacimiento" />
                 @error('fecha_nacimiento') <span class="error">{{ $message }}</span> @enderror
             </div>
 

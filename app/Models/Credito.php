@@ -15,8 +15,8 @@ class Credito extends Model
     ];
 
     protected $attributes = [
-        'nro_cuotas_pagas' => 0,
-        'tasa_interes' => 0,
+        'cant_cuotas_pagadas' => 0,
+        'interes_mensual' => 0,
         'estado' => 0,
     ];
 
