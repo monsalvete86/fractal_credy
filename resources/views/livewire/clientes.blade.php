@@ -1,6 +1,6 @@
 <div class="p-12 ">
 
-    {{-- The data table --}}
+    {{-- The cliente table --}}
     <div class="flex flex-col">
         <div class="-my-2 overflow-x-auto">
             <div class="py-2 aling-middle inline-block min-w-full">
@@ -41,28 +41,26 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
-                                @if ($data->count())
-                                    @foreach ($data as $item)
+                                @if ($clientes->count())
+                                    @foreach ($clientes as $cliente)
                                         <tr>
-                                            {{--<td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->title }}</td>--}}
-                                            {{--<td class="px-6 py-4 text-sm whitespace-no-wrap">dummy link</td>--}}
-                                            {{--<td class="px-6 py-4 text-sm whitespace-no-wrap">{!! $item-> content !!}</td>--}}
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->id }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->nombre }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->apellido }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->cedula }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->fecha_nacimiento }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->genero }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->celular1 }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->celular2 }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->direccion }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->estado_civil }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->lugar_trabajo }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->cargo }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->independiente }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="{{ $item->foto }}" class="img-fluid" alt="..."></td>
+                                            
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->id }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nombres }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->apellidos }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->cedula }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->fecha_nacimiento }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->genero }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->celular1 }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->celular2 }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->direccion }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->estado_civil }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->lugar_trabajo }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->cargo }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->independiente }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
                                             <td class="px-6 py-4 text-right text-sm"> 
-                                                <x-jet-button class="btn btn-primary" wire:click="updateShowModal({{ $item->id }})">
+                                                <x-jet-button class="btn btn-primary" wire:click="updateShowModal({{ $cliente->id }})">
                                                     {{ __('Update') }}
                                                 </x-jet-button>
                                                 <input type="button" onclick="test()" value="borrar"> 
@@ -87,7 +85,7 @@
     
 
     <br/>
-    {{ $data->links() }}
+    {{ $clientes->links() }}
 
     {{-- Modal Form --}}
     <x-jet-dialog-modal wire:model="modalFormVisible">
@@ -95,33 +93,42 @@
             {{ __('Crear_Cliente') }} {{ $modelId }}
         </x-slot>
 
-        <x-slot name="content">
-            {{--<div class="mt-4">
-                <x-jet-label for="title" value="{{ _('Title') }}" />
-                <x-jet-input id="title" class="block mt-1 w-full" type="title" wire:model.debounce.800ms="title" />
-                @error('title') <span class="error">{{ $message }}</span> @enderror
-            </div>--}}
+        <x-slot name="content">           
 
             <div class="mt-4">
-                <x-jet-label for="nombre" value="{{ _('Nombre') }}" />
-                <x-jet-input id="nombre" class="block mt-1 w-full" type="nombre" wire:model.debounce.800ms="nombre" />
-                @error('nombre') <span class="error">{{ $message }}</span> @enderror
+                <x-jet-label for="nombres" value="{{ _('Nombre') }}" />
+                <x-jet-input id="nombres" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="nombres" />
+                @error('nombres') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="apellido" value="{{ _('Apellido') }}" />
-                <x-jet-input id="apellido" class="block mt-1 w-full" type="apellido" wire:model.debounce.800ms="apellido" />
-                @error('apellido') <span class="error">{{ $message }}</span> @enderror
+                <x-jet-label for="apellidos" value="{{ _('Apellido') }}" />
+                <x-jet-input id="apellidos" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="apellidos" />
+                @error('apellidos') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="cedula" value="{{ _('Cedula') }}" />
-                <x-jet-input id="cedula" class="block mt-1 w-full" type="cedula" wire:model.debounce.800ms="cedula" />
-                @error('cedula') <span class="error">{{ $message }}</span> @enderror
+                <x-jet-label for="tipo_documento" value="{{ _('Tipo documento') }}" />
+                <select name="tipo_documento" id="tipo_documento" wire:model.debounce.800ms="tipo_documento">
+                    <option value="" disabled>--Seleccionar--</option>
+                    <option value="Cédula de ciudadania">Cédula de ciudadania</option>
+                    <option value="Cédula de extranjería">Cédula de extranjería</option>
+                    <option value="NIT">NIT</option>
+                    <option value="Pasaporte">Pasaporte</option>
+                    <option value=""></option>
+
+                    
+                </select>
+                @error('tipo_documento') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="nro_documento" value="{{ _('Nro Documento') }}" />
+                <x-jet-input id="nro_documento" class="block mt-1 w-full" type="number" wire:model.debounce.800ms="nro_documento" />
+                @error('nro_documento') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="fecha_nacimiento" value="{{ _('Fecha_Nacimiento') }}" />
+                <x-jet-label for="fecha_nacimiento" value="{{ _('Fecha nacimiento') }}" />
                 <x-jet-input id="fecha_nacimiento" type="date" class="block mt-1 w-full"  wire:model.debounce.800ms="fecha_nacimiento" />
                 @error('fecha_nacimiento') <span class="error">{{ $message }}</span> @enderror
             </div>
@@ -134,43 +141,52 @@
 
             <div class="mt-4">
                 <x-jet-label for="celular1" value="{{ _('Celular1') }}" />
-                <x-jet-input id="celular1" class="block mt-1 w-full" type="celular1" wire:model.debounce.800ms="celular1" />
+                <x-jet-input id="celular1" class="block mt-1 w-full" type="number" wire:model.debounce.800ms="celular1" />
                 @error('celular1') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="celular2" value="{{ _('Celular2') }}" />
-                <x-jet-input id="celular2" class="block mt-1 w-full" type="celular2" wire:model.debounce.800ms="celular2" />
+                <x-jet-input id="celular2" class="block mt-1 w-full" type="number" wire:model.debounce.800ms="celular2" />
                 @error('celular2') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="direccion" value="{{ _('Direccion') }}" />
-                <x-jet-input id="direccion" class="block mt-1 w-full" type="direccion" wire:model.debounce.800ms="direccion" />
+                <x-jet-input id="direccion" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="direccion" />
                 @error('direccion') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="estado_civil" value="{{ _('Estado_Civil') }}" />
-                <x-jet-input id="estado_civil" class="block mt-1 w-full" type="estado_civil" wire:model.debounce.800ms="estado_civil" />
+                <x-jet-label for="estado_civil" value="{{ _('Estado civil') }}" />
+                <x-jet-input id="estado_civil" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="estado_civil" />
                 @error('estado_civil') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="lugar_trabajo" value="{{ _('Lugar_Trabajo') }}" />
-                <x-jet-input id="lugar_trabajo" class="block mt-1 w-full" type="lugar_trabajo" wire:model.debounce.800ms="lugar_trabajo" />
+                <x-jet-input id="lugar_trabajo" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="lugar_trabajo" />
                 @error('lugar_trabajo') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
                 <x-jet-label for="cargo" value="{{ _('Cargo') }}" />
-                <x-jet-input id="cargo" class="block mt-1 w-full" type="cargo" wire:model.debounce.800ms="cargo" />
+                <x-jet-input id="cargo" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="cargo" />
                 @error('cargo') <span class="error">{{ $message }}</span> @enderror
             </div>
 
             <div class="mt-4">
-                <x-jet-label for="independiente" value="{{ _('Independiente') }}" />
-                <x-jet-input id="independiente" class="block mt-1 w-full" type="independiente" wire:model.debounce.800ms="independiente" />
+                <x-jet-label for="independiente" value="{{ _('¿Es usted un empleado independiente?') }}" />
+
+                <div class="form-group">
+                    <div class="custom-control custom-checkbox">
+                        <x-jet-checkbox id="independiente" name="idependiente" value="Si" />
+                        <label class="custom-control-label" for="independiente">
+                            {{ __('Si') }}
+                        </label>
+                    </div>
+                </div>
+
                 @error('independiente') <span class="error">{{ $message }}</span> @enderror
             </div>
 
@@ -179,34 +195,6 @@
                 <x-jet-input id="formFileSm" class="form-control"  type="file" wire:model.debounce.800ms="foto" />
                 @error('foto') <span class="error">{{ $message }}</span> @enderror
             </div>
-
-
-            {{--<div class="mt-4">
-                <x-jet-label for="title" value="{{ _('Slug') }}" />
-                <div class="mt-1 flex rounded-md shadow-sm">
-                    <span class="inline-flex items-center px-3 rounded-1-md border border-r-0 border-gray-300  text-sm">
-                        http://localhost:8000/
-                    </span>
-                    <input wire:model="slug" class="form-input flex-1 block w-full rounded-none rounded-r-md transition duration-150 ease-in-out sm:text-sm sm:leading-5" placeholder="url-slug">
-                </div> 
-                @error('slug') <span class="error">{{ $message }}</span> @enderror
-            </div>--}}
-            {{--<div class="mt-4">
-                <x-jet-label for="title" value="{{ _('Content') }}" />
-                <div class="rounded-md shadow-sm">
-                    <div class="mt-1">
-                        <div class="body-content" wire:ignore>
-                            <trix-editor
-                                class="trix-content"
-                                x-ref="trix"
-                                wire:model.debounce.100000ms="content"
-                                wire:key="trix-content-unique-key">
-                            </trix-editor>
-                        </div>
-                    </div>
-                </div>
-                @error('content') <span class="error">{{ $message }}</span> @enderror
-            </div>--}}       
         </x-slot>
 
         <x-slot name="footer">

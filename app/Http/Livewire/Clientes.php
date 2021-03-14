@@ -2,22 +2,20 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Page;
+use App\Models\Cliente;
 use Illuminate\Validation\Rule;
 use Livewire\Component;
 use Livewire\WithPagination;
 
-class Pages extends Component
+class Clientes extends Component
 {
     use WithPagination;
     public $modalFormVisible = false;
     public $modelId;
-    //public $slug;
-    //public $title;
-    //public $content;
-    public $nombre;
-    public $apellido;
-    public $cedula;
+    public $nombres;
+    public $apellidos;
+    public $tipo_documento;
+    public $nro_documento;
     public $fecha_nacimiento;
     public $genero;
     public $celular1;
@@ -36,23 +34,20 @@ class Pages extends Component
      */
     public function rules()
     {
-        return [
-            //'title' => 'required',
-            //'slug' => ['required', Rule::unique('pages', 'slug')],
-            //'content' => 'required',
-            'nombre' => 'required',
-            'apellido' => 'required',
-            'cedula' => 'required',
+        return [         
+            'nombres' => 'required',
+            'apellidos' => 'required',
+            'tipo_documento' => 'required',
+            'nro_documento' => 'required',
             'fecha_nacimiento' => 'required',
             'genero' => 'required',
             'celular1' => 'required',
-            'celular2' => 'required',
             'direccion' => 'required',
             'estado_civil' => 'required',
             'lugar_trabajo' => 'required',
             'cargo' => 'required',
-            'independiente' => 'required',
-            'foto' => 'required',
+            // 'independiente' => 'required',
+            // 'foto' => 'required',
         ];
     }
 
@@ -76,7 +71,7 @@ class Pages extends Component
     public function create()
     {
         $this->validate();
-        page::created($this->modelData());
+        Cliente::create($this->modelData());
         $this->modalFormVisible = false;
         $this->resetVars();
     }
@@ -88,13 +83,13 @@ class Pages extends Component
      */
     public function read()
     {
-        return Page::paginate(2);
+        return Cliente::paginate(2);
     }
 
     public function update()
     {
         $this->validate();
-        Page::find($this->modelId)->update($this->modelData());
+        Cliente::find($this->modelId)->update($this->modelData());
         $this->modalFormVisible = false;
     }
 
@@ -135,13 +130,11 @@ class Pages extends Component
      */
     public function loadModel()
     {
-        $data = Page::find($this->modelId);
-        //$this->title = $data->title;
-        //$this->slug = $data->slug;
-        //$this->content = $data->content;
-        $this->nombre = $data->nombre;
-        $this->apellido = $data->apellido;
-        $this->cedula = $data->cedula;
+        $data = Cliente::find($this->modelId);
+        $this->nombres = $data->nombres;
+        $this->apellidos = $data->apellidos;
+        $this->tipo_documento = $data->tipo_documento;
+        $this->nro_documento = $data->nro_documento;
         $this->fecha_nacimiento = $data->fecha_nacimiento;
         $this->genero = $data->genero;
         $this->celular1 = $data->celular1;
@@ -163,19 +156,18 @@ class Pages extends Component
     public function modelData()
     {
         return [
-            //'title' => $this->title,
-            //'slug' => $this->slug,
-            //'content' => $this->content,
-            'nombre' => $this->nombre,
-            'apellido' => $this->apellido,
-            'cedula' => $this->cedula,
-            'fecha_nacimiento' => $this->fecha_nacimiento,
+
+            'nombres' => $this->nombres,
+            'apellidos' => $this->apellidos,
+            'tipo_documento' => $this->tipo_documento,
+            'nro_documento' => $this->nro_documento,
             'genero' => $this->genero,
+            'fecha_nacimiento' => $this->fecha_nacimiento,
             'celular1' => $this->celular1,
             'celular2' => $this->celular2,
             'direccion' => $this->direccion,
             'estado_civil' => $this->estado_civil,
-            'lugar_trabajo' => $this->eslugar_trabajo,
+            'lugar_trabajo' => $this->lugar_trabajo,
             'cargo' => $this->cargo,
             'independiente' => $this->independiente,
             'foto' => $this->foto,
@@ -191,12 +183,10 @@ class Pages extends Component
     public function resetVars()
     {
         $this->modelId = null;
-        //$this->title = null;
-        //$this->slug = null;
-        //$this->content = null;
-        $this->nombre = null;
-        $this->apellido = null;
-        $this->cedula = null;
+        $this->nombres = null;
+        $this->apellidos = null;
+        $this->nro_documento = null;
+        $this->tipo_documento = null;
         $this->fecha_nacimiento = null;
         $this->genero = null;
         $this->celular1 = null;
@@ -216,12 +206,6 @@ class Pages extends Component
      * @param mixed $value
      * @return void
      */
-    private function generateSlug($value)
-    {
-        $process1 = str_replace('', '-', $value);
-        $process2 = strtolower($process1);
-        $this->slug = $process2;
-    }
 
     //public $search = 'jorge';
 
@@ -232,8 +216,8 @@ class Pages extends Component
      */
     public function render()
     {
-        return view('livewire.pages', [
-            'data' => $this->read(),
+        return view('livewire.clientes', [
+            'clientes' => $this->read(),
         ]);
     }
 }
