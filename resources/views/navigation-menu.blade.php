@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-primary border-bottom sticky-top">
     <div class="container">
         <!-- Logo -->
         <a class="navbar-brand mr-4" href="/">
@@ -14,7 +14,7 @@
                 <x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
                     {{ __('Dashboard') }}
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('pages') }}" :active="request()->routeIs('pages')">
+                <x-jet-nav-link href="{{ route('clientes') }}" :active="request()->routeIs('clientes')">
                     {{ __('Clientes') }}
                 </x-jet-nav-link>
 

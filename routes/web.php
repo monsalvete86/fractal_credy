@@ -26,9 +26,9 @@ Route::group(['middleware' => [
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/pages', function () {
-        return view('admin.pages');
-    })->name('pages');
+    Route::get('/clientes', function () {
+        return view('admin.clientes');
+    })->name('clientes');
 
     Route::get('/creditos', function () {
         return view('admin.creditos');

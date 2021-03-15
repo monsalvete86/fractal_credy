@@ -1,6 +1,6 @@
-/* @import 'tailwindcss/base';
+@import 'tailwindcss/base';
 @import 'tailwindcss/components';
-@import 'tailwindcss/tilities'; */
+@import 'tailwindcss/utilities';
 @import '@fortawesome/fontawesome-free/css/all.css';
 
 .body-content {

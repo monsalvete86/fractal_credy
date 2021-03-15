@@ -46,7 +46,7 @@
         </table>
     </div>
 
-    <x-jet-dialog-modal wire:model="modalCrearCredito">
+    <x-jet-dialog-modal wire:model="modalCrearCredito" maxWidth="lg">
         <x-slot name="title">
             {{ __('Crear crédito') }} {{ $idCredito }}
         </x-slot>
