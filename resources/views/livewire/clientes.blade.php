@@ -88,7 +88,7 @@
     {{ $clientes->links() }}
 
     {{-- Modal Form --}}
-    <x-jet-dialog-modal wire:model="modalFormVisible">
+    <x-jet-dialog-modal wire:model="modalFormVisible" maxWidth="lg">
         <x-slot name="title">
             {{ __('Crear_Cliente') }} {{ $modelId }}
         </x-slot>
@@ -109,7 +109,7 @@
 
             <div class="mt-4">
                 <x-jet-label for="tipo_documento" value="{{ _('Tipo documento') }}" />
-                <select name="tipo_documento" id="tipo_documento" wire:model.debounce.800ms="tipo_documento">
+                <select name="tipo_documento" id="tipo_documento" class="custom-select" wire:model.debounce.800ms="tipo_documento">
                     <option value="" disabled>--Seleccionar--</option>
                     <option value="Cédula de ciudadania">Cédula de ciudadania</option>
                     <option value="Cédula de extranjería">Cédula de extranjería</option>

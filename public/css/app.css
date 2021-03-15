@@ -10313,6 +10313,12 @@ h3 {
 .text-success {
   color: #169b6b !important;
 }
+@tailwind base;
+
+@tailwind components;
+
+@tailwind utilities;
+
 /*!
  * Font Awesome Free 5.15.2 by @fontawesome - https://fontawesome.com
  * License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License)
@@ -14921,10 +14927,6 @@ readers do not read off random characters that represent icons */
 .fas {
   font-family: 'Font Awesome 5 Free';
   font-weight: 900; }
-
-/* @import 'tailwindcss/base';
-@import 'tailwindcss/components';
-@import 'tailwindcss/tilities'; */
 
 .body-content {
     max-height: 300px !important;
