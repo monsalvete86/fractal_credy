@@ -29,6 +29,10 @@ class Pages extends Component
     public $independiente;
     public $foto;
     public $search;
+
+
+    
+
     /**
      * The validation rules
      * 
@@ -67,6 +71,14 @@ class Pages extends Component
     public function updatedTitle($value)
     {
         $this->generateSlug($value);
+    }
+
+    public function search()
+    {
+        $this->validate();
+        page::search($this->modelData());
+        $this->modalFormVisible = false;
+        $this->resetVars();  
     }
     /**
      * The create function.
@@ -136,7 +148,7 @@ class Pages extends Component
     public function loadModel()
     {
         $data = Page::find($this->modelId);
-        //$this->title = $data->title;
+        $this->search = $data->nombre;
         //$this->slug = $data->slug;
         //$this->content = $data->content;
         $this->nombre = $data->nombre;
@@ -191,7 +203,7 @@ class Pages extends Component
     public function resetVars()
     {
         $this->modelId = null;
-        //$this->title = null;
+        $this->search = null;
         //$this->slug = null;
         //$this->content = null;
         $this->nombre = null;
@@ -223,7 +235,6 @@ class Pages extends Component
         $this->slug = $process2;
     }
 
-    //public $search = 'jorge';
 
     /**
      * the livewire render fuction.

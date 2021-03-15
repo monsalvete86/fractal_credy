@@ -8,7 +8,7 @@
                     <div class="table-responsive">
                         <div class="row">
                             <div class="col-sm-11">
-                                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                                <input  wire:change ="searchShowModal" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             </div>
                             <div class="col-sm-1">
                                 <x-jet-button wire:click="createShowModal" class="btn-primary" style="margin-left: 477px;">
@@ -41,7 +41,8 @@
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
-                                @if ($data->count())
+                                @if ($data->count())   
+                                    
                                     @foreach ($data as $item)
                                         <tr>
                                             {{--<td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $item->title }}</td>--}}
@@ -67,7 +68,7 @@
                                                 </x-jet-button>
                                                 <input type="button" onclick="test()" value="borrar"> 
                                                 <x-jet-button class="btn btn-danger" click="test()">
-                                                Borrar
+                                                {{__('Delete') }}
                                                 </x-jet-button>    
                                             </td> 
                                         </tr>
