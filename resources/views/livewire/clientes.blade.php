@@ -5,50 +5,46 @@
         <div class="-my-2 overflow-x-auto">
             <div class="py-2 aling-middle inline-block min-w-full">
                 <div class=" overflow-hidden border-b">
-                    <div class="table-responsive">
+                    <div class="">
                         <div class="row">
-                            <div class="col-sm-11">
+                            <div class="col-sm-10">
                                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
                             </div>
-                            <div class="col-sm-1">
-                                <x-jet-button wire:click="createShowModal" class="btn-primary" style="margin-left: 477px;">
+                            <div class="col-sm-2">
+                                <x-jet-button wire:click="createShowModal" class="btn-primary" >
                                     {{ __('Create') }}
                                 </x-jet-button>
                             </div>
                         </div>
                         <br>
-                        <table style=" width: 100%; " class="min-w-full divide-y table">
+                        <table style=" width: 100%; " class="table table-responsive table-sm table-bordered">
                             <thead>
-                                <tr>
-                                    {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>--}}
-                                    {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>--}}
-                                    {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>--}}
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">#</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Nombre</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Apellido</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Cedula</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Fecha_Nacimiento</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Genero</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular1</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular2</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Direccion</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Estado_civil</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Lugar_Trabajo</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Cargo</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Independiente</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Foto</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
+                                <tr class="bg-primary text-white">                                   
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">#</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Nombre</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Apellido</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Cedula</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Fecha_Nacimiento</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Genero</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Celular1</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Celular2</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Direccion</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Estado_civil</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Lugar_Trabajo</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Cargo</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Independiente</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Foto</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase "></th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200">
                                 @if ($clientes->count())
                                     @foreach ($clientes as $cliente)
-                                        <tr>
-                                            
+                                        <tr>                                            
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->id }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nombres }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->apellidos }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->cedula }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nro_documento }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->fecha_nacimiento }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->genero }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->celular1 }}</td>
@@ -62,8 +58,7 @@
                                             <td class="px-6 py-4 text-right text-sm"> 
                                                 <x-jet-button class="btn btn-primary" wire:click="updateShowModal({{ $cliente->id }})">
                                                     {{ __('Update') }}
-                                                </x-jet-button>
-                                                <input type="button" onclick="test()" value="borrar"> 
+                                                </x-jet-button>                                                
                                                 <x-jet-button class="btn btn-danger" click="test()">
                                                 Borrar
                                                 </x-jet-button>    
