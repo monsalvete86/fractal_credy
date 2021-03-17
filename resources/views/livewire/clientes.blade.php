@@ -6,7 +6,7 @@
             <div class="py-2 aling-middle inline-block min-w-full">
                 <div class=" overflow-hidden border-b">
                     <div class="table-responsive">
-                        <div class="row">
+                        <div class="row mb-1">
                             <div class="col-sm-11">
                                 <input  wire:change ="searchShowModal" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             </div>
@@ -16,7 +16,7 @@
                                 </x-jet-button>
                             </div>
                         </div>
-                        <br>
+                        
                         <table style=" width: 100%; " class="min-w-full divide-y table">
                             <thead>
                                 <tr>
@@ -24,6 +24,7 @@
                                     {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>--}}
                                     {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>--}}
                                     <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">#</th>
+                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Foto</th>
                                     <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Nombres</th>
                                     <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Apellidos</th>
                                     <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">TipoDocumento</th>
@@ -37,7 +38,6 @@
                                     <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">LugarTrabajo</th>
                                     <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Cargo</th>
                                     <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Independiente</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Foto</th>
                                     <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
                                 </tr>
                             </thead>
@@ -47,6 +47,7 @@
                                         <tr>
                                             
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->id }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nombres }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->apellidos }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->tipo_documento }}</td>
@@ -60,13 +61,12 @@
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->lugar_trabajo }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->cargo }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->independiente }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
                                             <td class="px-6 py-4 text-right text-sm"> 
-                                                <x-jet-button class="btn btn-primary" wire:click="updateShowModal({{ $cliente->id }})">
+                                                <x-jet-button class="btn btn-primary mb-1" wire:click="updateShowModal({{ $cliente->id }})">
                                                     {{ __('Update') }}
                                                 </x-jet-button>
                                                 {{--<input type="button" onclick="test()" value="borrar">--}} 
-                                                <x-jet-button class="btn btn-danger" click="test()">
+                                                <x-jet-button class="btn btn-danger" wire:click="deleteShowModal({{ $cliente->id }})">
                                                 {{__('Delete') }}
                                                 </x-jet-button>    
                                             </td> 

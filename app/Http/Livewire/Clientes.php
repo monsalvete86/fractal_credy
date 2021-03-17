@@ -46,6 +46,7 @@ class Clientes extends Component
             'fecha_nacimiento' => 'required',
             'genero' => 'required',
             'celular1' => 'required',
+            'celular2' => 'required',
             'direccion' => 'required',
             'estado_civil' => 'required',
             'lugar_trabajo' => 'required',
@@ -63,9 +64,9 @@ class Clientes extends Component
      * @return void
      */
 
-    public function updatedTitle($value)
+    public function updatedNombre($value)
     {
-        $this->generateSlug($value);
+        $this->generateSearch($value);
     }
 
    
