@@ -27,6 +27,10 @@ class Clientes extends Component
     public $independiente;
     public $foto;
     public $search;
+
+
+    
+
     /**
      * The validation rules
      * 
@@ -42,6 +46,7 @@ class Clientes extends Component
             'fecha_nacimiento' => 'required',
             'genero' => 'required',
             'celular1' => 'required',
+            'celular2' => 'required',
             'direccion' => 'required',
             'estado_civil' => 'required',
             'lugar_trabajo' => 'required',
@@ -54,6 +59,12 @@ class Clientes extends Component
     
 
 
+    public function updatedNombre($value)
+    {
+        $this->generateSearch($value);
+    }
+
+   
     /**
      * The create function.
      * 
@@ -187,14 +198,8 @@ class Clientes extends Component
         $this->independiente = null;
         $this->foto = null;
     }
-    /**
-     * Listar los datos del listado de clientes
-     **/
+   
 
-    public function read()
-    {
-        return Cliente::paginate(20);
-    }
 
     /**
      * the livewire render fuction.

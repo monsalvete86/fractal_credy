@@ -42,8 +42,10 @@
                                     @foreach ($clientes as $cliente)
                                         <tr>                                            
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->id }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nombres }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->apellidos }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->tipo_documento }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nro_documento }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->fecha_nacimiento }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->genero }}</td>
@@ -54,13 +56,13 @@
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->lugar_trabajo }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->cargo }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->independiente }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
                                             <td class="px-6 py-4 text-right text-sm"> 
-                                                <x-jet-button class="btn btn-primary" wire:click="updateShowModal({{ $cliente->id }})">
+                                                <x-jet-button class="btn btn-primary mb-1" wire:click="updateShowModal({{ $cliente->id }})">
                                                     {{ __('Update') }}
-                                                </x-jet-button>                                                
-                                                <x-jet-button class="btn btn-danger" click="test()">
-                                                Borrar
+                                                </x-jet-button>
+                                                {{--<input type="button" onclick="test()" value="borrar">--}} 
+                                                <x-jet-button class="btn btn-danger" wire:click="deleteShowModal({{ $cliente->id }})">
+                                                {{__('Delete') }}
                                                 </x-jet-button>    
                                             </td> 
                                         </tr>
