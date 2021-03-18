@@ -198,8 +198,14 @@ class Clientes extends Component
         $this->independiente = null;
         $this->foto = null;
     }
-   
+    /**
+     * Listar los datos del listado de clientes
+     **/
 
+    public function read()
+    {
+        return Cliente::paginate(20);
+    }
 
     /**
      * the livewire render fuction.

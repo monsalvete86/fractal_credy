@@ -11,7 +11,7 @@
                                 <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
                             </div>
                             <div class="col-sm-2">
-                                <x-jet-button wire:click="createShowModal" class="btn-primary" >
+                                <x-jet-button wire:click="createShowModal" class="btn-primary btn-block" >
                                     {{ __('Create') }}
                                 </x-jet-button>
                             </div>
@@ -23,7 +23,8 @@
                                     <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">#</th>
                                     <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Nombre</th>
                                     <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Apellido</th>
-                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Cedula</th>
+                                    <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Tipo Documento</th>
+                                    <th>Nro. Documento</th>
                                     <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Fecha_Nacimiento</th>
                                     <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Genero</th>
                                     <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Celular1</th>
@@ -42,7 +43,7 @@
                                     @foreach ($clientes as $cliente)
                                         <tr>                                            
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->id }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
+                                            
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nombres }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->apellidos }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->tipo_documento }}</td>
@@ -56,6 +57,7 @@
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->lugar_trabajo }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->cargo }}</td>
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->independiente }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
                                             <td class="px-6 py-4 text-right text-sm"> 
                                                 <x-jet-button class="btn btn-primary mb-1" wire:click="updateShowModal({{ $cliente->id }})">
                                                     {{ __('Update') }}
