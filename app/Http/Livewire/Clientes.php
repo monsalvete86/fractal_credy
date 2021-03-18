@@ -26,7 +26,7 @@ class Clientes extends Component
     public $cargo;
     public $independiente;
     public $foto;
-    public $search;
+    //public $search;
 
 
     
@@ -56,8 +56,13 @@ class Clientes extends Component
         ];
     }
 
-    
-
+    /**
+     * Runs everytime the title
+     * variable is updated.
+     * 
+     * @param mixed $value
+     * @return void
+     */
 
     public function updatedNombre($value)
     {
@@ -77,39 +82,16 @@ class Clientes extends Component
         $this->modalFormVisible = false;
         $this->resetVars();
     }
-      /**
-     * The data for the model mapped
-     * in this component.
-     * 
-     * @return void
-     */
-    public function modelData()
-    {
-        return [
-
-            'nombres' => $this->nombres,
-            'apellidos' => $this->apellidos,
-            'tipo_documento' => $this->tipo_documento,
-            'nro_documento' => $this->nro_documento,
-            'genero' => $this->genero,
-            'fecha_nacimiento' => $this->fecha_nacimiento,
-            'celular1' => $this->celular1,
-            'celular2' => $this->celular2,
-            'direccion' => $this->direccion,
-            'estado_civil' => $this->estado_civil,
-            'lugar_trabajo' => $this->lugar_trabajo,
-            'cargo' => $this->cargo,
-            'independiente' => $this->independiente,
-            'foto' => $this->foto,
-        ];
-    }
 
     /**
      * The read funtion.
      * 
      * @return void
      */
-   
+    public function read()
+    {
+        return Cliente::paginate(2);
+    }
 
     public function update()
     {
@@ -147,6 +129,11 @@ class Clientes extends Component
         $this->loadModel();
     }
 
+    public function deleteShowModal($id)
+    {
+        
+    }
+
     /**
      * Loads the model data
      * of this component.
@@ -172,7 +159,32 @@ class Clientes extends Component
         $this->foto = $data->foto;
     }
 
-  
+    /**
+     * The data for the model mapped
+     * in this component.
+     * 
+     * @return void
+     */
+    public function modelData()
+    {
+        return [
+
+            'nombres' => $this->nombres,
+            'apellidos' => $this->apellidos,
+            'tipo_documento' => $this->tipo_documento,
+            'nro_documento' => $this->nro_documento,
+            'genero' => $this->genero,
+            'fecha_nacimiento' => $this->fecha_nacimiento,
+            'celular1' => $this->celular1,
+            'celular2' => $this->celular2,
+            'direccion' => $this->direccion,
+            'estado_civil' => $this->estado_civil,
+            'lugar_trabajo' => $this->lugar_trabajo,
+            'cargo' => $this->cargo,
+            'independiente' => $this->independiente,
+            'foto' => $this->foto,
+        ];
+    }
 
     /**
      * Resets all the variables
@@ -198,15 +210,7 @@ class Clientes extends Component
         $this->independiente = null;
         $this->foto = null;
     }
-    /**
-     * Listar los datos del listado de clientes
-     **/
-
-    public function read()
-    {
-        return Cliente::paginate(20);
-    }
-
+   
     /**
      * the livewire render fuction.
      * 

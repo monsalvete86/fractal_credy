@@ -5,10 +5,10 @@
         <div class="-my-2 overflow-x-auto">
             <div class="py-2 aling-middle inline-block min-w-full">
                 <div class=" overflow-hidden border-b">
-                    <div class="">
-                        <div class="row">
-                            <div class="col-sm-10">
-                                <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+                    <div class="table-responsive">
+                        <div class="row mb-1">
+                            <div class="col-sm-11">
+                                <input  wire:change ="searchShowModal" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             </div>
                             <div class="col-sm-2">
                                 <x-jet-button wire:click="createShowModal" class="btn-primary btn-block" >
@@ -16,8 +16,8 @@
                                 </x-jet-button>
                             </div>
                         </div>
-                        <br>
-                        <table style=" width: 100%; " class="table table-responsive table-sm table-bordered">
+                        
+                        <table style=" width: 100%; " class="min-w-full divide-y table">
                             <thead>
                                 <tr class="bg-primary text-white">                                   
                                     <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">#</th>
@@ -41,7 +41,8 @@
                             <tbody class="divide-y divide-gray-200">
                                 @if ($clientes->count())
                                     @foreach ($clientes as $cliente)
-                                        <tr>                                            
+                                        <tr>
+                                            
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->id }}</td>
                                             
                                             <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nombres }}</td>
@@ -63,7 +64,7 @@
                                                     {{ __('Update') }}
                                                 </x-jet-button>
                                                 {{--<input type="button" onclick="test()" value="borrar">--}} 
-                                                <x-jet-button class="btn btn-danger" wire:click="deleteShowModal({{ $cliente->id }})">
+                                                <x-jet-button class="btn btn-danger" wire:click="({{ $cliente->id }})">
                                                 {{__('Delete') }}
                                                 </x-jet-button>    
                                             </td> 
@@ -84,19 +85,21 @@
     
 
     <br/>
+    
     {{ $clientes->links() }}
+    
 
     {{-- Modal Form --}}
     <x-jet-dialog-modal wire:model="modalFormVisible" maxWidth="lg">
         <x-slot name="title">
-            {{ __('Crear_Cliente') }} {{ $modelId }}
+            {{ __('CrearCliente') }} {{ $modelId }}
         </x-slot>
 
         <x-slot name="content">           
 
             <div class="mt-4">
                 <x-jet-label for="nombres" value="{{ _('Nombre') }}" />
-                <x-jet-input id="nombres" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="nombres" />
+                <x-jet-input id="nombres" class="block mt-1 w-full" type="text" wire:model="nombres" />
                 @error('nombres') <span class="error">{{ $message }}</span> @enderror
             </div>
 
@@ -189,11 +192,11 @@
                 @error('independiente') <span class="error">{{ $message }}</span> @enderror
             </div>
 
-            <div class="mt-4">
+            {{--<div class="mt-4">
                 <x-jet-label for="formFileSm" class="form-label" value="{{ _('Foto') }}" />
                 <x-jet-input id="formFileSm" class="form-control"  type="file" wire:model.debounce.800ms="foto" />
                 @error('foto') <span class="error">{{ $message }}</span> @enderror
-            </div>
+            </div>--}}
         </x-slot>
 
         <x-slot name="footer">
