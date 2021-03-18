@@ -1,8 +1,6 @@
 <?php
 
 namespace App\Http\Livewire;
-
-
 use App\Models\Credito;
 use Livewire\Component;
 
