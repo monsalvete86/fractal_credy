@@ -26,7 +26,7 @@ class Clientes extends Component
     public $cargo;
     public $independiente;
     public $foto;
-    public $search;
+    //public $search;
 
 
     
@@ -127,6 +127,11 @@ class Clientes extends Component
         $this->modelId = $id;
         $this->modalFormVisible = true;
         $this->loadModel();
+    }
+
+    public function deleteShowModal($id)
+    {
+        
     }
 
     /**

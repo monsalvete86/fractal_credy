@@ -66,7 +66,7 @@
                                                     {{ __('Update') }}
                                                 </x-jet-button>
                                                 {{--<input type="button" onclick="test()" value="borrar">--}} 
-                                                <x-jet-button class="btn btn-danger" wire:click="deleteShowModal({{ $cliente->id }})">
+                                                <x-jet-button class="btn btn-danger" wire:click="({{ $cliente->id }})">
                                                 {{__('Delete') }}
                                                 </x-jet-button>    
                                             </td> 
@@ -87,19 +87,21 @@
     
 
     <br/>
+    
     {{ $clientes->links() }}
+    
 
     {{-- Modal Form --}}
     <x-jet-dialog-modal wire:model="modalFormVisible" maxWidth="lg">
         <x-slot name="title">
-            {{ __('Crear_Cliente') }} {{ $modelId }}
+            {{ __('CrearCliente') }} {{ $modelId }}
         </x-slot>
 
         <x-slot name="content">           
 
             <div class="mt-4">
                 <x-jet-label for="nombres" value="{{ _('Nombre') }}" />
-                <x-jet-input id="nombres" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="nombres" />
+                <x-jet-input id="nombres" class="block mt-1 w-full" type="text" wire:model="nombres" />
                 @error('nombres') <span class="error">{{ $message }}</span> @enderror
             </div>
 
@@ -192,11 +194,11 @@
                 @error('independiente') <span class="error">{{ $message }}</span> @enderror
             </div>
 
-            <div class="mt-4">
+            {{--<div class="mt-4">
                 <x-jet-label for="formFileSm" class="form-label" value="{{ _('Foto') }}" />
                 <x-jet-input id="formFileSm" class="form-control"  type="file" wire:model.debounce.800ms="foto" />
                 @error('foto') <span class="error">{{ $message }}</span> @enderror
-            </div>
+            </div>--}}
         </x-slot>
 
         <x-slot name="footer">
