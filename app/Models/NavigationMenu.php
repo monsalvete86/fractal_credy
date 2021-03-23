@@ -9,6 +9,8 @@ class NavigationMenu extends Model
 {
     use HasFactory;
 
+    protected $table = 'navigation_menus';
+
     protected $fillable = [
         'label',
         'slug',

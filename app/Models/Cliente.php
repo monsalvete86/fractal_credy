@@ -24,4 +24,9 @@ class Cliente extends Model
     ];
     protected $guarded = [];
     
+    public function creditos()
+    {
+        return $this->hasMany(Credito::class);
+    }
+    
 }

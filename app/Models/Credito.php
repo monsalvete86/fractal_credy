@@ -20,4 +20,9 @@ class Credito extends Model
         'estado' => 0,
     ];
 
+    public function clientes()
+    {
+        return $this->belongsTo(Cliente::class, 'id_cliente');
+    }
+
 }

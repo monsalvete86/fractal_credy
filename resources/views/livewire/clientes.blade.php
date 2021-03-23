@@ -5,63 +5,59 @@
         <div class="-my-2 overflow-x-auto">
             <div class="py-2 aling-middle inline-block min-w-full">
                 <div class=" overflow-hidden border-b">
-                    <div class="table-responsive">
+                    
                         <div class="row mb-1">
-                            <div class="col-sm-11">
+                            <div class="col-sm-10">
                                 <input  wire:change ="searchShowModal" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                             </div>
-                            <div class="col-sm-1">
-                                <x-jet-button wire:click="createShowModal" class="btn-primary" style="margin-left: 578px;">
+                            <div class="col-sm-2">
+                                <x-jet-button wire:click="createShowModal" class="btn-primary btn-block">
                                     {{ __('Create') }}
                                 </x-jet-button>
                             </div>
                         </div>
-                        
-                        <table style=" width: 100%; " class="min-w-full divide-y table">
+                    <div class="table-responsive">    
+                        <table  class="table">
                             <thead>
-                                <tr>
-                                    {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Title</th>--}}
-                                    {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Link</th>--}}
-                                    {{--<th style="background-color: rgb(41, 37, 37)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Content</th>--}}
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">#</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Foto</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Nombres</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Apellidos</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">TipoDocumento</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Nro.Documento</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">FechaNacimiento</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Genero</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular1</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Celular2</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Direccion</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">EstadoCivil</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">LugarTrabajo</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Cargo</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase ">Independiente</th>
-                                    <th style="background-color: rgb(10, 65, 97)" class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  uppercase "></th>
+                                <tr class="bg-primary text-white">                                   
+                                    <th>#</th>
+                                    <th>Nombre</th>
+                                    <th>Apellido</th>
+                                    <th>Tipo Documento</th>
+                                    <th>Nro. Documento</th>
+                                    <th>Fecha_Nacimiento</th>
+                                    <th>Genero</th>
+                                    <th>Celular1</th>
+                                    <th>Celular2</th>
+                                    <th>Direccion</th>
+                                    <th>Estado_civil</th>
+                                    <th>Lugar_Trabajo</th>
+                                    <th>Cargo</th>
+                                    <th>Independiente</th>
+                                    <th>Foto</th>
+                                    <th></th>
                                 </tr>
                             </thead>
-                            <tbody class="divide-y divide-gray-200">
+                            <tbody>
                                 @if ($clientes->count())
                                     @foreach ($clientes as $cliente)
                                         <tr>
-                                            
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->id }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nombres }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->apellidos }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->tipo_documento }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nro_documento }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->fecha_nacimiento }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->genero }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->celular1 }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->celular2 }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->direccion }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->estado_civil }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->lugar_trabajo }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->cargo }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->independiente }}</td>
-                                            <td class="px-6 py-4 text-right text-sm"> 
+                                            <td>{{ $cliente->id }}</td>
+                                            <td>{{ $cliente->nombres }}</td>
+                                            <td>{{ $cliente->apellidos }}</td>
+                                            <td>{{ $cliente->tipo_documento }}</td>
+                                            <td>{{ $cliente->nro_documento }}</td>
+                                            <td>{{ $cliente->fecha_nacimiento }}</td>
+                                            <td>{{ $cliente->genero }}</td>
+                                            <td>{{ $cliente->celular1 }}</td>
+                                            <td>{{ $cliente->celular2 }}</td>
+                                            <td>{{ $cliente->direccion }}</td>
+                                            <td>{{ $cliente->estado_civil }}</td>
+                                            <td>{{ $cliente->lugar_trabajo }}</td>
+                                            <td>{{ $cliente->cargo }}</td>
+                                            <td>{{ $cliente->independiente }}</td>
+                                            <td><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
+                                            <td> 
                                                 <x-jet-button class="btn btn-primary mb-1" wire:click="updateShowModal({{ $cliente->id }})">
                                                     {{ __('Update') }}
                                                 </x-jet-button>

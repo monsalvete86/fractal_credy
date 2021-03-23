@@ -14,13 +14,13 @@
             <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
 
-                    <table class="min-w-full divide-y divide-gray-200">
+                    <table style=" width: 100%; " class="min-w-full divide-y table">
                         <thead>
-                            <tr>
-                                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Title</th>
-                                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Link</th>
-                                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider">Content</th>
-                                <th class="px-6 py-3 bg-gray-50 text-left text-xs leading-4 font-medium text-gray-500 uppercase tracking-wider"></th>
+                            <tr class="bg-primary text-white">
+                                <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Title</th>
+                                <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Link</th>
+                                <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Content</th>
+                                <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase "></th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">

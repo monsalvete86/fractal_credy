@@ -45,6 +45,8 @@ class Frontpage extends Component
 
         $this->title = $data->title;
         $this->content = $data->content;
+        // $this->title ="title";
+        // $this->content ="content";
     }
 
     /**

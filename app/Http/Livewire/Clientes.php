@@ -210,16 +210,7 @@ class Clientes extends Component
         $this->independiente = null;
         $this->foto = null;
     }
-
-    /**
-     * generate a url slug 
-     * base on the title. 
-     * 
-     * @param mixed $value
-     * @return void
-     */
-
-
+   
     /**
      * the livewire render fuction.
      * 
