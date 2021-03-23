@@ -1,5 +1,5 @@
 <?php
-
+use App\Http\Livewire\Frontpage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,6 +32,13 @@ Route::group(['middleware' => [
 
     Route::get('/creditos', function () {
         return view('admin.creditos');
-    })->name('creditos');   
+    })->name('creditos');  
+    
+    Route::get('/pages', function () {
+        return view('admin.pages');
+    })->name('pages');
 
 });
+
+Route::get('/{urlslug}', Frontpage::class);
+Route::get('/', Frontpage::class);

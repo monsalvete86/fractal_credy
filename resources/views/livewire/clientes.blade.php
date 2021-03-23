@@ -85,12 +85,10 @@
         </div>
     </div>
     
-
     <br/>
     
-    {{ $clientes->links() }}
+    {{$clientes->links()}}
     
-
     {{-- Modal Form --}}
     <x-jet-dialog-modal wire:model="modalFormVisible" maxWidth="lg">
         <x-slot name="title">
@@ -194,11 +192,11 @@
                 @error('independiente') <span class="error">{{ $message }}</span> @enderror
             </div>
 
-            {{--<div class="mt-4">
+            <div class="mt-4">
                 <x-jet-label for="formFileSm" class="form-label" value="{{ _('Foto') }}" />
                 <x-jet-input id="formFileSm" class="form-control"  type="file" wire:model.debounce.800ms="foto" />
                 @error('foto') <span class="error">{{ $message }}</span> @enderror
-            </div>--}}
+            </div>
         </x-slot>
 
         <x-slot name="footer">
@@ -218,28 +216,10 @@
 
         </x-slot>
     </x-jet-dialog-modal>
-
-    {{-- The Delete Modal --}}
-    {{--
-    <x-jet-dialog-modal wire:model="modalComfirmDeleteVisible">
-        <x-slot name="title">
-            {{ __('Delete Page') }}
-        </x-slot>
-
-        
-
-        <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('modalConfirmDeleteVisible')" wire:loading.attr="disabled">
-                {{ __('Navermind') }}
-            </x-jet-secondary-button>
-
-            
-        </x-slot>
-    </x-jet-dialog-modal>--}}
 </div>
 
 <script>
-  //const Swal = require('sweetalert2')
+
 function test(){
     Swal.fire({
         title: 'Estas seguro?',
