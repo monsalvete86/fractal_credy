@@ -23,7 +23,7 @@
                     {{ __('Credito') }} 
                 </x-jet-nav-link>
                 <x-jet-nav-link href="{{ route('pages') }}" :active="request()->routeIs('pages')">
-                    {{ __('Pages') }}
+                    {{ __('Pagos') }}
                 </x-jet-nav-link>
             </ul>
 

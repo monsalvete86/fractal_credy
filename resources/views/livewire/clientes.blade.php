@@ -1,63 +1,64 @@
-<div class="p-12 ">
+<div class="p-6">
+
+    <div class="row mb-1">
+        <div class="col-sm-10">
+            <input  wire:change ="searchShowModal" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        </div>
+        <div class="col-sm-2">
+            <x-jet-button wire:click="createShowModal" class="btn-primary btn-block">
+                {{ __('Create') }}
+            </x-jet-button>
+        </div>
+    </div>
 
     {{-- The cliente table --}}
     <div class="flex flex-col">
-        <div class="-my-2 overflow-x-auto">
-            <div class="py-2 aling-middle inline-block min-w-full">
-                <div class=" overflow-hidden border-b">
-                    
-                        <div class="row mb-1">
-                            <div class="col-sm-10">
-                                <input  wire:change ="searchShowModal" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                            </div>
-                            <div class="col-sm-2">
-                                <x-jet-button wire:click="createShowModal" class="btn-primary btn-block">
-                                    {{ __('Create') }}
-                                </x-jet-button>
-                            </div>
-                        </div>
-                    <div class="table-responsive">    
-                        <table  class="table">
+        <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
+            <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
+                <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">    
+                    <div class="table-responsive"> 
+                           
+                        <table  style=" width: 100%; " class="min-w-full divide-y table">
                             <thead>
                                 <tr class="bg-primary text-white">                                   
                                     <th>#</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
                                     <th>Tipo Documento</th>
-                                    <th>Nro. Documento</th>
-                                    <th>Fecha_Nacimiento</th>
+                                    <th>Nro Documento</th>
+                                    <th>Fecha Nacimiento</th>
                                     <th>Genero</th>
                                     <th>Celular1</th>
                                     <th>Celular2</th>
                                     <th>Direccion</th>
-                                    <th>Estado_civil</th>
-                                    <th>Lugar_Trabajo</th>
+                                    <th>Estado civil</th>
+                                    <th>Lugar Trabajo</th>
                                     <th>Cargo</th>
                                     <th>Independiente</th>
                                     <th>Foto</th>
                                     <th></th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="bg-white divide-y divide-gray-200">
                                 @if ($clientes->count())
                                     @foreach ($clientes as $cliente)
                                         <tr>
-                                            <td>{{ $cliente->id }}</td>
-                                            <td>{{ $cliente->nombres }}</td>
-                                            <td>{{ $cliente->apellidos }}</td>
-                                            <td>{{ $cliente->tipo_documento }}</td>
-                                            <td>{{ $cliente->nro_documento }}</td>
-                                            <td>{{ $cliente->fecha_nacimiento }}</td>
-                                            <td>{{ $cliente->genero }}</td>
-                                            <td>{{ $cliente->celular1 }}</td>
-                                            <td>{{ $cliente->celular2 }}</td>
-                                            <td>{{ $cliente->direccion }}</td>
-                                            <td>{{ $cliente->estado_civil }}</td>
-                                            <td>{{ $cliente->lugar_trabajo }}</td>
-                                            <td>{{ $cliente->cargo }}</td>
-                                            <td>{{ $cliente->independiente }}</td>
-                                            <td><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
-                                            <td> 
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->id }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nombres }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->apellidos }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->tipo_documento }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nro_documento }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->fecha_nacimiento }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->genero }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->celular1 }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->celular2 }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->direccion }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->estado_civil }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->lugar_trabajo }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->cargo }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->independiente }}</td>
+                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
+                                            <td class="px-6 py-4 text-right text-sm"> 
                                                 <x-jet-button class="btn btn-primary mb-1" wire:click="updateShowModal({{ $cliente->id }})">
                                                     {{ __('Update') }}
                                                 </x-jet-button>

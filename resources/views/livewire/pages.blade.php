@@ -1,12 +1,13 @@
 <div class="p-6">
-    <div class="flex items-center justify-end px-4 py-3 text-right sm:px-6">
-        <x-jet-button class="mr-5" wire:click="dispatchEvent">
-            {{ __('Dispatch Event') }}
-        </x-jet-button>
-        <x-jet-button wire:click="createShowModal">
-            {{ __('Create') }}
-        </x-jet-button>
-    </div>
+    
+    <x-jet-button class="dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false" wire:click="dispatchEvent">
+        {{ __('Filtrar') }}
+    </x-jet-button>
+    
+    <x-jet-button wire:click="createShowModal">
+        {{ __('Agregar') }}
+    </x-jet-button>
+    
 
     {{-- The data table --}}
     <div class="flex flex-col">
@@ -17,17 +18,26 @@
                     <table style=" width: 100%; " class="min-w-full divide-y table">
                         <thead>
                             <tr class="bg-primary text-white">
-                                <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Title</th>
+                                {{-- <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Title</th>
                                 <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Link</th>
-                                <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Content</th>
-                                <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase "></th>
+                                <th class="px-6 py-3 text-white text-left text-xs leading-4 font-medium  text-uppercase ">Content</th> --}}
+                                <th>Id</th>
+                                <th>Tipo Deuda</th>
+                                <th>Id Deuda</th>
+                                <th>Valor Pago</th>
+                                <th>Nro Cuota</th>
+                                <th>Valor Interes</th>
+                                <th>Valor Capital</th>
+                                <th>Id Tercero</th>
+                                <th>Fecha Pago</th>
+                                <th></th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">
                             @if ($data->count())
                                 @foreach ($data as $item)
                                     <tr>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">
+                                        {{-- <td class="px-6 py-4 text-sm whitespace-no-wrap">
                                             {{ $item->title }}
                                             {!! $item->is_default_home ? '<span class="text-green-400 text-xs font-bold">[Default Home Page]</span>':''!!}
                                             {!! $item->is_default_not_found ? '<span class="text-red-400 text-xs font-bold">[Default 404 Page]</span>':''!!}
@@ -40,16 +50,25 @@
                                             >
                                                 {{ $item->slug }}
                                             </a>
-                                        </td>
-                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">{!! \Illuminate\Support\Str::limit($item->content, 50, '...') !!}</td>
-                                        <td class="px-6 py-4 text-right text-sm">
+                                        </td> 
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">{!! \Illuminate\Support\Str::limit($item->content, 50, '...') !!}</td>--}}
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">1</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">50000</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">3</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">60000000</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">3</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">45.60</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">450000</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">34566</td>
+                                        <td class="px-6 py-4 text-sm whitespace-no-wrap">2020/12/06</td>
+                                        {{-- <td class="px-6 py-4 text-right text-sm">
                                             <x-jet-button wire:click="updateShowModal({{ $item->id }})">
                                                 {{ __('Update') }}
                                             </x-jet-button>
                                             <x-jet-danger-button wire:click="deleteShowModal({{ $item->id }})">
                                                 {{ __('Delete') }}
                                             </x-jet-button>
-                                        </td>
+                                        </td> --}}
                                     </tr>
                                 @endforeach
                             @else
@@ -73,7 +92,7 @@
     {{-- Modal Form --}}
     <x-jet-dialog-modal wire:model="modalFormVisible">
         <x-slot name="title">
-            {{ __('Save Page') }}
+            {{ __('Nuevo Pago') }}
         </x-slot>
 
         <x-slot name="content">
@@ -83,6 +102,41 @@
                 @error('title') <span class="error">{{ $message }}</span> @enderror
             </div>
             <div class="mt-4">
+                <x-jet-label for="title" value="example" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="title" value="example" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="title" value="example" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="title" value="example" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="title" value="example" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="title" value="example" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            <div class="mt-4">
+                <x-jet-label for="title" value="example" />
+                <x-jet-input id="title" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="title" />
+                @error('title') <span class="error">{{ $message }}</span> @enderror
+            </div>
+            {{--<div class="mt-4">
                 <x-jet-label for="title" value="{{ __('Slug') }}" />
                 <div class="mt-1 flex rounded-md shadow-sm">
                     <span class="inline-flex items-center px-3 rounded-l-md border border-r-0 border-gray-300 bg-gray-50 text-gray-500 text-sm">
@@ -119,7 +173,7 @@
                     </div>
                 </div>
                 @error('content') <span class="error">{{ $message }}</span> @enderror
-            </div>
+            </div> --}}
         </x-slot>
 
         <x-slot name="footer">
