@@ -8,4 +8,26 @@ use Illuminate\Database\Eloquent\Model;
 class Pago extends Model
 {
     use HasFactory;
+
+
+
+    protected $table = 'pagos';
+
+    protected $fillable = [
+        'tipo_deuda',
+        'id_deuda',
+        'valor_pago',
+        'nro_cuota',
+        'valor_interes',
+        'valor_capital',
+        'id_tercero',
+        'fecha_pago'
+    ];
+
+    // Valor por defecto en los campos
+    protected $attributes = [
+       
+    ];
+    protected $guarded = [];
+
 }

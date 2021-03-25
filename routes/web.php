@@ -34,14 +34,10 @@ Route::group(['middleware' => [
         return view('admin.creditos');
     })->name('creditos');  
     
-    Route::get('/pages', function () {
-        return view('admin.pages');
-    })->name('pages');
+    Route::get('/pagos', function () {
+        return view('admin.pagos');
+    })->name('pagos');
 
-    Route::get('/navigation-menus', function () {
-        return view('layouts.navigation-menus');
-    })->name('navigation-menus');
+    
 });
 
-Route::get('/{urlslug}', Frontpage::class);
-Route::get('/', Frontpage::class);

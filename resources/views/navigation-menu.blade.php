@@ -22,7 +22,7 @@
                     <i class="fas fa-money-check-alt"></i>
                     {{ __('Credito') }} 
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('pages') }}" :active="request()->routeIs('pages')">
+                <x-jet-nav-link href="{{ route('pagos') }}" :active="request()->routeIs('pagos')">
                     {{ __('Pagos') }}
                 </x-jet-nav-link>
             </ul>

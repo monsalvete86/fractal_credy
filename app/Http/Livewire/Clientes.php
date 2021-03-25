@@ -101,6 +101,23 @@ class Clientes extends Component
     }
 
     /**
+     * The delete function.
+     *
+     * @return void
+     */
+    public function delete()
+    {
+        Cliente::destroy($this->modelId);
+        $this->modalConfirmDeleteVisible = false;
+        $this->resetCliente();
+
+        $this->dispatchBrowserEvent('event-notification', [
+            'eventName' => 'Deleted Cliente',
+            'eventMessage' => 'The cliente (' . $this->modelId . ') has been deleted!',
+        ]);
+    }
+
+    /**
      * shows the form modal
      * of the create fuction.
      * 
@@ -131,7 +148,8 @@ class Clientes extends Component
 
     public function deleteShowModal($id)
     {
-        
+        $this->modelId = $id;
+        $this->modalConfirmDeleteVisible = true; 
     }
 
     /**
