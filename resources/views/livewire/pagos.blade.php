@@ -64,7 +64,7 @@
     {{-- Modal Form --}}
     <x-jet-dialog-modal wire:model="modalFormVisible">
         <x-slot name="title">
-            {{ __('Nuevo Pago') }}
+            {{ __('Nuevo Pago') }} 
         </x-slot>
 
         <x-slot name="content">
@@ -125,16 +125,6 @@
                 </x-jet-danger-button>
             @endif
             
-        </x-slot>
-    </x-jet-dialog-modal>
-
-    {{-- The Delete Modal --}}
-
-    <x-jet-dialog-modal wire:model="modalConfirmDeleteVisible">
-        <x-slot name="footer">
-            <x-jet-secondary-button wire:click="$toggle('modalConfirmDeleteVisible')" wire:loading.attr="disabled">
-                {{ __('Nevermind') }}
-            </x-jet-secondary-button>
         </x-slot>
     </x-jet-dialog-modal>
 </div>
