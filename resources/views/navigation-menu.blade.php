@@ -20,10 +20,13 @@
 
                 <x-jet-nav-link href="{{ route('creditos') }}" :active="request()->routeIs('creditos')">
                     <i class="fas fa-money-check-alt"></i>
-                    {{ __('Credito') }} 
+                    {{ __('Creditos') }} 
                 </x-jet-nav-link>
-                <x-jet-nav-link href="{{ route('pages') }}" :active="request()->routeIs('pages')">
+                <x-jet-nav-link href="{{ route('pagos') }}" :active="request()->routeIs('pagos')">
                     {{ __('Pagos') }}
+                </x-jet-nav-link>
+                <x-jet-nav-link href="{{ route('proveedores') }}" :active="request()->routeIs('proveedores')">
+                    {{ __('Proveedores') }}
                 </x-jet-nav-link>
             </ul>
 

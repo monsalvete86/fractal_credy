@@ -1,13 +1,13 @@
-<div class="p-6">
+<div>
 
     <div class="row mb-1">
-        <div class="col-sm-10">
-            <input  wire:change ="searchShowModal" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-        </div>
         <div class="col-sm-2">
             <x-jet-button wire:click="createShowModal" class="btn-primary btn-block">
                 {{ __('Create') }}
             </x-jet-button>
+        </div>
+        <div class="col-sm-10">
+            <input  wire:change ="searchShowModal" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         </div>
     </div>
 
@@ -18,7 +18,7 @@
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">    
                     <div class="table-responsive"> 
                            
-                        <table  style=" width: 100%; " class="min-w-full divide-y table">
+                        <table class="table">
                             <thead>
                                 <tr class="bg-primary text-white">                                   
                                     <th>#</th>
