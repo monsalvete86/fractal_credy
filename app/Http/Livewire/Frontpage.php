@@ -7,8 +7,7 @@ use Livewire\Component;
 
 class Frontpage extends Component
 {
-    public $title;
-    public $content;
+   
 
     /**
      * The livewire mount function.

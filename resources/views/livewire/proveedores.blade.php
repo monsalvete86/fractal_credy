@@ -29,12 +29,12 @@
                             <td>{{ $proveedor->direccion }}</td>
                             <td>{{ $proveedor->correo }}</td>
                             <th>
-                                <x-jet-button>
-                                    Update
+                                <x-jet-button wire:click="updateModalProveedor({{ $proveedor->id }})">
+                                    {{ __('Update') }}
                                 </x-jet-button>
                                 <!-- Boton eliminar -->
-                                <x-jet-button class="btn btn-success">
-                                    Delete
+                                <x-jet-button class="btn btn-success" wire:click="deleteProveedor({{ $proveedor->id }})">
+                                    {{ __('Delete') }}
                                 </x-jet-button>
                             </th>
                         </tr>
