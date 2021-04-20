@@ -1,5 +1,4 @@
 <?php
-use App\Http\Livewire\Frontpage;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -47,5 +46,3 @@ Route::group(['middleware' => [
     })->name('navigation-menus');
 });
 
-Route::get('/{urlslug}', Frontpage::class);
-Route::get('/', Frontpage::class);
