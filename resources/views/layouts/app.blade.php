@@ -13,13 +13,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet"> 
         <script src="//cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <!-- Styles -->
-        <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
         @trixassets
         <!-- <link rel="stylesheet" href="https://unpkg.com/@coreui/coreui/dist/css/coreui.min.css"> -->
         @livewireStyles
 
         <!-- Scripts -->
-        <script src="{{ asset('js/app.js') }}" defer></script>
+        <script src="{{ mix('js/app.js') }}" defer></script>
         <!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
         <!-- <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script> -->
     </head>
