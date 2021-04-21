@@ -15,7 +15,20 @@ class Cliente extends Model
     protected $table = 'clientes';
 
     protected $fillable = [
-       'nombres', 'apellidos', 'tipo_documento', 'nro_documento', 'fecha_nacimiento', 'genero', 'celular1', 'celular2', 'direccion', 'estado_civil', 'lugar_trabajo', 'cargo', 'independiente', 'foto'
+       'nombres', 
+       'apellidos', 
+       'tipo_documento', 
+       'nro_documento', 
+       'fecha_nacimiento', 
+       'genero', 
+       'celular1', 
+       'celular2', 
+       'direccion', 
+       'estado_civil', 
+       'lugar_trabajo', 
+       'cargo', 
+       'independiente', 
+       'foto'
     ];
 
     // Valor por defecto en los campos

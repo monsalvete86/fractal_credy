@@ -25,7 +25,7 @@
                     <td>{{ $credito->id}}</td>
                     <td>{{ $credito->id_cliente}}</td>
                     <td>{{ $credito->id_deudor}}</td>
-                    <td>$ {{ $credito->valor_credito}}</td>
+                    <td>{{ $credito->valor_credito}}</td>
                     <td>{{ $credito->interes_mensual}}</td>
                     <td>{{ $credito->cant_cuotas}}</td>
                     <td>{{ $credito->cant_cuotas_pagadas}}</td>
