@@ -62,8 +62,8 @@
                                                 <x-jet-button class="btn btn-primary mb-1" wire:click="updateShowModal({{ $cliente->id }})">
                                                     {{ __('Update') }}
                                                 </x-jet-button>
-                                                {{--<input type="button" onclick="test()" value="borrar">--}} 
-                                                <x-jet-button class="btn btn-danger" wire:click="({{ $cliente->id }})">
+                                                <input type="button" onclick="test()" value="borrar">
+                                                <x-jet-button class="btn btn-danger" wire:click="({{ $cliente->id }})" type="button"  value="borrar">
                                                 {{__('Delete') }}
                                                 </x-jet-button>    
                                             </td> 
@@ -89,6 +89,7 @@
     {{-- Modal Form --}}
     <x-jet-dialog-modal wire:model="modalFormVisible" maxWidth="lg">
         <x-slot name="title">
+           
             {{ __('CrearCliente') }} {{ $modelId }}
         </x-slot>
 
@@ -211,6 +212,16 @@
                 </x-jet-danger-button>
             @endif
 
+        </x-slot>
+    </x-jet-dialog-modal>
+
+    {{-- The Delete Modal --}}
+
+    <x-jet-dialog-modal wire:model="modalConfirmDeleteVisible">
+        <x-slot name="footer">
+            <x-jet-secondary-button wire:click="$toggle('modalConfirmDeleteVisible')" wire:loading.attr="disabled">
+                {{ __('Nevermind') }}
+            </x-jet-secondary-button>
         </x-slot>
     </x-jet-dialog-modal>
 </div>
