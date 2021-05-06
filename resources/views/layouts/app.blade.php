@@ -28,14 +28,14 @@
         @livewire('navigation-menu')
 
         <!-- Page Heading -->
-        <header class="d-flex py-3 bg-white shadow-sm border-bottom">
+        <header class="d-flex py-1 bg-white shadow-sm border-bottom">
             <div class="container">
                 {{ $header }}
             </div>
         </header>
           
         <!-- Page Content -->
-        <main class="container my-5 card-body bg-white px-5 py-3 border-bottom rounded-top">
+        <main class="container my-5 card-body bg-white border-bottom rounded-top">
             {{ $slot }}
         </main>
 

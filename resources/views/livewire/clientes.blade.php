@@ -18,9 +18,9 @@
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">    
                     <div class="table-responsive"> 
                            
-                        <table class="table">
+                        <table class="table table-sm">
                             <thead>
-                                <tr class="bg-primary text-white">                                   
+                                <tr class="">                                   
                                     <th>#</th>
                                     <th>Nombre</th>
                                     <th>Apellido</th>
@@ -43,27 +43,26 @@
                                 @if ($clientes->count())
                                     @foreach ($clientes as $cliente)
                                         <tr>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->id }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nombres }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->apellidos }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->tipo_documento }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->nro_documento }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->fecha_nacimiento }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->genero }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->celular1 }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->celular2 }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->direccion }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->estado_civil }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->lugar_trabajo }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->cargo }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap">{{ $cliente->independiente }}</td>
-                                            <td class="px-6 py-4 text-sm whitespace-no-wrap"><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
-                                            <td class="px-6 py-4 text-right text-sm"> 
-                                                <x-jet-button class="btn btn-primary mb-1" wire:click="updateShowModal({{ $cliente->id }})">
+                                            <td>{{ $cliente->id }}</td>
+                                            <td>{{ $cliente->nombres }}</td>
+                                            <td>{{ $cliente->apellidos }}</td>
+                                            <td>{{ $cliente->tipo_documento }}</td>
+                                            <td>{{ $cliente->nro_documento }}</td>
+                                            <td>{{ $cliente->fecha_nacimiento }}</td>
+                                            <td>{{ $cliente->genero }}</td>
+                                            <td>{{ $cliente->celular1 }}</td>
+                                            <td>{{ $cliente->celular2 }}</td>
+                                            <td>{{ $cliente->direccion }}</td>
+                                            <td>{{ $cliente->estado_civil }}</td>
+                                            <td>{{ $cliente->lugar_trabajo }}</td>
+                                            <td>{{ $cliente->cargo }}</td>
+                                            <td>{{ $cliente->independiente }}</td>
+                                            <td><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
+                                            <td class=""> 
+                                                <x-jet-button class="btn btn-block btn-sm btn-primary mb-1" wire:click="updateShowModal({{ $cliente->id }})">
                                                     {{ __('Update') }}
                                                 </x-jet-button>
-                                                <input type="button" onclick="test()" value="borrar">
-                                                <x-jet-button class="btn btn-danger" wire:click="({{ $cliente->id }})" type="button"  value="borrar">
+                                                <x-jet-button class="btn btn-block btn-sm btn-danger" wire:click="({{ $cliente->id }})" type="button"  value="borrar">
                                                 {{__('Delete') }}
                                                 </x-jet-button>    
                                             </td> 
@@ -218,6 +217,9 @@
     {{-- The Delete Modal --}}
 
     <x-jet-dialog-modal wire:model="modalConfirmDeleteVisible">
+     <x-slot name="title">
+            {{ __('Crear crédito') }}
+        </x-slot>
         <x-slot name="footer">
             <x-jet-secondary-button wire:click="$toggle('modalConfirmDeleteVisible')" wire:loading.attr="disabled">
                 {{ __('Nevermind') }}
