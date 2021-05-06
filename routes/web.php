@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['middleware' => 'auth:sanctum', 'verified'], function() {
+    Route::get('usuarios', [UserController::class, 'list'])->name('usuarios');
 });
 
 Route::group(['middleware' => [
