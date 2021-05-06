@@ -1,6 +1,6 @@
 <?php
-use App\Http\Livewire\Frontpage;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+
+Route::group(['middleware' => 'auth:sanctum', 'verified'], function() {
+    Route::get('usuarios', [UserController::class, 'list'])->name('usuarios');
 });
 
 Route::group(['middleware' => [
@@ -38,6 +42,12 @@ Route::group(['middleware' => [
         return view('admin.pagos');
     })->name('pagos');
 
-    
+    Route::get('/proveedores', function () {
+        return view('admin.proveedores');
+    })->name('proveedores');
+
+    Route::get('/navigation-menus', function () {
+        return view('layouts.navigation-menus');
+    })->name('navigation-menus');
 });
 
