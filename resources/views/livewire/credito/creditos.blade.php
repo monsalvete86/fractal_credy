@@ -57,7 +57,6 @@
             <div class="mt-4">
                 <x-jet-label for="id_cliente" value="{{ _('Cliente') }}" />
                 <x-jet-input type="number" step="any" id="id_cliente" class="block mt-1 w-full" wire:model="id_cliente" />
-                
                 @error('id_cliente') <span class="error">{{ $message }}</span> @enderror
 
             </div>

@@ -2,8 +2,8 @@
 
     <div class="row mb-1">
         <div class="col-sm-2">
-            <x-jet-button wire:click="createShowModal" class="btn-primary btn-block">
-                {{ __('Create') }}
+            <x-jet-button wire:click="createShowModal" class="btn-success btn-block">
+                {{ __('Crear') }}
             </x-jet-button>
         </div>
         <div class="col-sm-10">

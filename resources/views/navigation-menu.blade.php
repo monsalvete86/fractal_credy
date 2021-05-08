@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md bg-light border-bottom sticky-topx">
+<nav class="navbar navbar-expand-md bg-secondary border-bottom navbar-dark sticky-topx">
 	<div class="container">
 		<!-- Logo -->
 		<a class="navbar-brand mr-4" href="/">
@@ -8,9 +8,9 @@
 				<span class="navbar-toggler-icon"></span>
 		</button>
 
-		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+		<div class="collapse navbar-collapse main-menu-navigation" id="navbarSupportedContent">
 				<!-- Left Side Of Navbar -->
-				<ul class="navbar-nav mr-auto">
+				<ul class="navbar-nav">
 						<x-jet-nav-link href="{{ route('dashboard') }}" :active="request()->routeIs('dashboard')">
 								{{ __('Dashboard') }}
 						</x-jet-nav-link>
@@ -31,10 +31,10 @@
 						<x-jet-nav-link href="{{ route('proveedores') }}" :active="request()->routeIs('proveedores')">
 								{{ __('Proveedores') }}
 						</x-jet-nav-link>
-				</ul>
+				{{-- </ul>
 
 				<!-- Right Side Of Navbar -->
-				<ul class="navbar-nav ml-auto align-items-baseline">
+				<ul class="navbar-nav ml-auto align-items-baseline"> --}}
 						<!-- Teams Dropdown -->
 						@if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
 								<x-jet-dropdown id="teamManagementDropdown">
