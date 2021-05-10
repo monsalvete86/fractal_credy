@@ -13,6 +13,11 @@
       </select>
     </div>    
   </div>
+  <div class="form-group row">
+    <div class="col-12">
+        <button class="btn btn-primary" wire:click="newUser()" data-toggle="modal" data-target="#exampleModal">Nuevo</button>
+    </div>
+  </div>
   <table class="table table-striped table-sm">
     <thead>
       <tr>
@@ -32,7 +37,7 @@
       @foreach($users as $user)
         <tr>
           <td>{{$cont++}}</td>
-          <td>{{$user->name}}</td>
+          <td>{{$user->name}} {{$user->id}}</td>
           <td>{{$user->nombre}}</td>
           <td>{{$user->email}}</td>
           <td>{{$user->documento}}</td>
@@ -41,7 +46,9 @@
           <td>{{$user->rol}}</td>
           <td>{{$user->estado? 'Activo' : 'Inactivo'}}</td>
           <td>
-            <button class="btn btn-success">
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+              wire:click="showModal({{$user}})"
+            >
               Editar
             </button>
             @if($user->estado == 1)

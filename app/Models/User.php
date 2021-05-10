@@ -26,7 +26,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'nombre', 'celular', 'direccino', 'tipo_documento', 'documento', 'foto', 'sede', 'rol', 'estado'
+        'id','name', 'email', 'password', 'nombre', 'celular', 'direccino', 'tipo_documento', 'documento', 'foto', 'id_sede', 'id_rol', 'estado'
     ];
 
     /**
@@ -35,7 +35,6 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password',
         'remember_token',
         'two_factor_recovery_codes',
         'two_factor_secret',
@@ -63,4 +62,5 @@ class User extends Authenticatable
     {
         return $this->hasMany(\App\Models\Item::class);
     }
+
 }

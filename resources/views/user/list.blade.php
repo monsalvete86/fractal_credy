@@ -9,4 +9,7 @@
       @livewire('user-table')
     </div>
   </div>
+  @push('modals')
+    <livewire:livewire-modal>
+  @endpush
 </x-app-layout>
