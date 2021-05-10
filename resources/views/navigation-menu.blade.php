@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md bg-secondary border-bottom navbar-dark sticky-topx">
+<nav class="navbar navbar-expand-md bg-primary border-bottom navbar-dark sticky-topx">
 	<div class="container">
 		<!-- Logo -->
 		<a class="navbar-brand mr-4" href="/">

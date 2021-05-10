@@ -107,4 +107,34 @@
 
   .navbar-dark .navbar-nav .nav-link {
     color: $white;
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &::before {
+      content: '';
+      display: inline-block;
+      background-color: $decoration;
+      width: 7px;
+      height: 7px;
+      border: 1px solid #cc99cc;
+    }
+  }
+
+  footer#footer {
+    position: relative;
+    bottom: 0;
+    background-color: $primary;
+    border-top: 10px solid $secondary;
+    color: $white;
+    height: 100px;
+    display: grid;
+
+    small {
+      align-self: center;
+    }
+
+    a {
+      color: $white;
+    }
   }
