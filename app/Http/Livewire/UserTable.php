@@ -34,7 +34,7 @@ class UserTable extends Component
       $users = $users->where('id_rol', "=", "$this->rolSearch");
     }
 
-    $users = $users->orderBy('nombre')->paginate(3);
+    $users = $users->orderBy('nombre')->paginate(10);
     return view('livewire.user-table', [
       'users' => $users
     ]);
