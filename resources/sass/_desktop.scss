@@ -1,5 +1,9 @@
 @media (min-width:1024px) {
 
+  .container {
+    max-width: 95%;
+  }
+
   .main-menu-navigation {
     justify-content: flex-end;
   }

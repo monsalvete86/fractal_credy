@@ -121,12 +121,16 @@
     }
   }
 
+  .table {
+    border: 1px solid solid;
+  }
+
   footer#footer {
     position: relative;
     bottom: 0;
-    background-color: $primary;
+    // background-color: $primary;
     border-top: 10px solid $secondary;
-    color: $white;
+    // color: $white;
     height: 100px;
     display: grid;
 
@@ -135,6 +139,6 @@
     }
 
     a {
-      color: $white;
+      // color: $white;
     }
   }

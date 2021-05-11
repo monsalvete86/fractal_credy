@@ -18,7 +18,7 @@
                 <div class="shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">    
                     <div class="table-responsive"> 
                            
-                        <table class="table table-sm">
+                        <table class="table table-sm table-bordered">
                             <thead>
                                 <tr class="">                                   
                                     <th>#</th>
@@ -59,10 +59,10 @@
                                             <td>{{ $cliente->independiente }}</td>
                                             <td><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
                                             <td class=""> 
-                                                <x-jet-button class="btn btn-block btn-sm btn-primary mb-1" wire:click="updateShowModal({{ $cliente->id }})">
+                                                <x-jet-button class="btn btn-sm btn-success mb-1" wire:click="updateShowModal({{ $cliente->id }})">
                                                     {{ __('Update') }}
                                                 </x-jet-button>
-                                                <x-jet-button class="btn btn-block btn-sm btn-danger" wire:click="({{ $cliente->id }})" type="button"  value="borrar">
+                                                <x-jet-button class="btn btn-sm btn-danger" wire:click="({{ $cliente->id }})" type="button"  value="borrar">
                                                 {{__('Delete') }}
                                                 </x-jet-button>    
                                             </td> 

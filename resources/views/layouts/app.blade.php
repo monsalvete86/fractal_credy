@@ -35,7 +35,7 @@
         </header>
           
         <!-- Page Content -->
-        <main class="container my-5 card-body bg-white border-bottom rounded-top">
+        <main class="container my-2 card-body bg-white border-bottom rounded-top">
             {{ $slot }}
         </main>
 

@@ -14932,23 +14932,25 @@ h3 {
   border: 1px solid #cc99cc;
 }
 
+.table {
+  border: 1px solid solid;
+}
+
 footer#footer {
   position: relative;
   bottom: 0;
-  background-color: #08537c;
   border-top: 10px solid #009999;
-  color: #ffffff;
   height: 100px;
   display: grid;
 }
 footer#footer small {
   align-self: center;
 }
-footer#footer a {
-  color: #ffffff;
-}
-
 @media (min-width: 1024px) {
+  .container {
+    max-width: 95%;
+  }
+
   .main-menu-navigation {
     justify-content: flex-end;
   }

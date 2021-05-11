@@ -41,15 +41,15 @@
           <td>{{$user->rol}}</td>
           <td>{{$user->estado? 'Activo' : 'Inactivo'}}</td>
           <td>
-            <button class="btn btn-success">
+            <button class="btn btn-success btn-sm">
               Editar
             </button>
             @if($user->estado == 1)
-              <button class="btn btn-danger">
+              <button class="btn btn-sm btn-danger">
                 Inactivar
               </button>
             @else
-              <button class="btn btn-alert">
+              <button class="btn btn-sm btn-alert">
                 Inactivar
               </button>
             @endif
