@@ -44,20 +44,20 @@
           <td>{{$user->celular}}</td>
           <td>{{$user->sede}}</td>
           <td>{{$user->rol}}</td>
-          <td>{{$user->estado? 'Activo' : 'Inactivo'}}</td>
-          <td>
-            <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
-              wire:click="showModal({{$user}})"
-            >
-              Editar
-            </button>
+          <td>{{$user->estado == 0 ? 'Inactivo' : 'Activo'}}</td>
+          <td>            
             @if($user->estado == 1)
-              <button class="btn btn-danger">
+              <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+                wire:click="showModal({{$user}})"
+              >
+                Editar
+              </button>
+              <button class="btn btn-danger" onclick="inactivar({{$user->id}})">
                 Inactivar
               </button>
             @else
-              <button class="btn btn-alert">
-                Inactivar
+              <button class="btn btn-warning" onclick="activar({{$user->id}})">
+                Activar
               </button>
             @endif
           </td>
@@ -67,3 +67,17 @@
   </table>
   {{$users->links()}}  
 </div>
+@push('scripts')
+  <script>
+    function inactivar(user) {
+      if(confirm('Esta segurno de inactivar este usuario?')) {
+        Livewire.emit('borrarUsuario', user);
+      }
+    }
+    function activar(user) {
+      if(confirm('Esta segurno de activar este usuario?')) {
+        Livewire.emit('activarUsuario', user);
+      }
+    }
+  </script>
+@endpush

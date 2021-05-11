@@ -17,7 +17,7 @@ class LivewireModal extends Component
   public $fullUser = null;
   public $editando = null;
   public $idUsuario = '';
-  public $nombreCorto = 'xxxx';
+  public $nombreCorto = '';
   public $nombreUsuario = '';
   public $email = '';
   public $password = '';
@@ -82,12 +82,12 @@ class LivewireModal extends Component
   }
 
   public function getRoles() {
-    $auxRoles = Rol::where('estado','=','1')->orderBy('rol')->get();
+    $auxRoles = Rol::where('estado_rol','=','1')->orderBy('rol')->get();
     $this->roles = $auxRoles;
   }
 
   public function getSedes() {
-    $auxSedes = Sede::where('estado','=','1')->orderBy('sede')->get();
+    $auxSedes = Sede::where('estado_sede','=','1')->orderBy('sede')->get();
     $this->sedes = $auxSedes;
 
   }
@@ -124,6 +124,7 @@ class LivewireModal extends Component
     $user->documento = $this->documento;
     $user->id_sede = $this->idSede;
     $user->foto = '';
+    $user->estado = 1;
     $user->id_rol = $this->idRol;
 
     if(($this->editando != '' && $this->password != '' && $this->antPass != $this->password) || $this->editando == '') {

@@ -16,20 +16,22 @@ class UserTable extends Component
   public $rolSearch = 0;
 
   protected $listeners = [
-    'userTableUpdate' => 'render'
+    'userTableUpdate' => 'render',
+    'borrarUsuario',
+    'activarUsuario'
   ];
   
   public function render() {
     
     $users = User::where(function($query) {
-      $query->where('nombre', 'like', "$this->textSearch%")
+      $query->select('*','users.estado as users_estado')->where('nombre', 'like', "$this->textSearch%")
       ->orWhere('name', 'like', "$this->textSearch%")
       ->orWhere('email', 'like', "$this->textSearch%");
     })->join('sedes','sedes.id','id_sede')
       ->join('roles','roles.id','id_rol');
       
     if($this->rolSearch != 0) {
-      $users = $users->where('rol', "=", "$this->rolSearch");
+      $users = $users->where('id_rol', "=", "$this->rolSearch");
     }
 
     $users = $users->orderBy('nombre')->paginate(3);
@@ -52,5 +54,17 @@ class UserTable extends Component
 
   public function newUser() {
     $this->emit('showClean');
+  }
+
+  public function borrarUsuario(User $user) {
+    $user->estado = 0;
+    $user->save();
+    $this->render();
+  }
+
+  public function activarUsuario(User $user) {
+    $user->estado = 1;
+    $user->save();
+    $this->render();
   }
 }
