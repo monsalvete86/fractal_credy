@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\User;
 
 use App\Models\Rol;
 use App\Models\Sede;
 use App\Models\User;
 use Livewire\Component;
 
-class LivewireModal extends Component
-{
+class UserModal extends Component
+{  
   public $modalStyle = 'display:hide';
   protected $listeners = [
     'showData',
@@ -46,7 +46,7 @@ class LivewireModal extends Component
 
   public function render()
   {
-    return view('livewire.livewire-modal');
+    return view('user.user-modal');
   }
 
   public function showClean() {

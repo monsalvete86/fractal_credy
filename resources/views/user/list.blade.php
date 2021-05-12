@@ -6,10 +6,11 @@
   </x-slot>
   <div class="py-2">
     <div class="bg-white">
-      @livewire('user-table')
+      
+      <livewire:user.user-list>
     </div>
   </div>
-  @push('modals')
-    <livewire:livewire-modal>
+  @push('modals')    
+    <livewire:user.user-modal>
   @endpush
 </x-app-layout>
