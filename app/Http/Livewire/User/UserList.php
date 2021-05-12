@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Http\Livewire\User;
 
 use App\Models\User;
 use Livewire\{Component, WithPagination};
 
-class UserTable extends Component
+class UserList extends Component
 {
   use WithPagination;
 
@@ -35,7 +35,7 @@ class UserTable extends Component
     }
 
     $users = $users->orderBy('nombre')->paginate(10);
-    return view('livewire.user-table', [
+    return view('user.user-list', [
       'users' => $users
     ]);
   }
