@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 07-05-2021 a las 00:23:16
+-- Tiempo de generación: 11-05-2021 a las 04:36:35
 -- Versión del servidor: 10.4.11-MariaDB
 -- Versión de PHP: 7.4.6
 
@@ -297,14 +297,14 @@ CREATE TABLE `posts` (
 CREATE TABLE `roles` (
   `id` int(11) NOT NULL,
   `rol` varchar(250) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `estado` tinyint(1) NOT NULL DEFAULT 1
+  `estado_rol` tinyint(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_spanish2_ci;
 
 --
 -- Volcado de datos para la tabla `roles`
 --
 
-INSERT INTO `roles` (`id`, `rol`, `estado`) VALUES
+INSERT INTO `roles` (`id`, `rol`, `estado_rol`) VALUES
 (1, 'Administrador', 1),
 (2, 'Operario', 1);
 
@@ -317,7 +317,7 @@ INSERT INTO `roles` (`id`, `rol`, `estado`) VALUES
 CREATE TABLE `sedes` (
   `id` int(11) NOT NULL,
   `sede` varchar(250) COLLATE utf8mb4_spanish2_ci NOT NULL,
-  `estado` int(11) NOT NULL DEFAULT 1,
+  `estado_sede` int(11) NOT NULL DEFAULT 1,
   `direccion` varchar(450) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `nit` varchar(250) COLLATE utf8mb4_spanish2_ci NOT NULL,
   `correo_contacto` varchar(250) COLLATE utf8mb4_spanish2_ci NOT NULL,
@@ -329,7 +329,7 @@ CREATE TABLE `sedes` (
 -- Volcado de datos para la tabla `sedes`
 --
 
-INSERT INTO `sedes` (`id`, `sede`, `estado`, `direccion`, `nit`, `correo_contacto`, `representante`, `telefono_contacto`) VALUES
+INSERT INTO `sedes` (`id`, `sede`, `estado_sede`, `direccion`, `nit`, `correo_contacto`, `representante`, `telefono_contacto`) VALUES
 (1, 'Sede 1', 1, 'Calle 10 # 10 - 10', '909090909', 'sede1@fractal_credy.com', 'Nombre Rep Sede1', '24324234');
 
 -- --------------------------------------------------------
@@ -352,9 +352,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('jqb6cEqfHvqCHMzm2MobtApHfDM1lkW8bxG1CEnS', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiUXRydER6eGplVXJxcUJ5enVyYzFPTVRNSGZaQTdiVzZUeW9EUUR1TSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMwOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvdXN1YXJpb3MiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkZjBvNU8yNG5jeWtMVjdjNHNaUFU5TzlYb3dmZmpGRGNzaVFHWGhNdzBORENWbnhOVXgzMksiO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJGYwbzVPMjRuY3lrTFY3YzRzWlBVOU85WG93ZmZqRkRjc2lRR1hoTXcwTkRDVm54TlV4MzJLIjt9', 1620291960),
-('QXLvjdCYVEwZ5aKUWWhn2SGPGUss2OFkzzSwXVXC', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YToyOntzOjY6Il90b2tlbiI7czo0MDoibVF2cWw0cTFQWW01OXBVdFEwb0h4NUFOazlzZFR0RjNxcmdZSzhPTCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319fQ==', 1620331081),
-('s5Suytz4i5cetNU4YXK7fsenzuGugvvzvcPT69F7', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiWkp1c3ZKbjY1bWlUclFQNDA3WmhYT2hSN1hJMFZyUWZHUTJmWm1kQyI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMwOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvdXN1YXJpb3MiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkZjBvNU8yNG5jeWtMVjdjNHNaUFU5TzlYb3dmZmpGRGNzaVFHWGhNdzBORENWbnhOVXgzMksiO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJGYwbzVPMjRuY3lrTFY3YzRzWlBVOU85WG93ZmZqRkRjc2lRR1hoTXcwTkRDVm54TlV4MzJLIjt9', 1620339724);
+('x31gqy4M9eRaLygtosCMXwhHoCYoA6C6TKMrrTgL', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiRTVXNnpZVVJBZWFqWExGc3lndnFrTm1odExLZjZiWXdwMDhPUXpqcCI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJGYwbzVPMjRuY3lrTFY3YzRzWlBVOU85WG93ZmZqRkRjc2lRR1hoTXcwTkRDVm54TlV4MzJLIjtzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRmMG81TzI0bmN5a0xWN2M0c1pQVTlPOVhvd2ZmakZEY3NpUUdYaE13ME5EQ1ZueE5VeDMySyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC91c3VhcmlvcyI7fX0=', 1620696434);
 
 -- --------------------------------------------------------
 
@@ -468,19 +466,20 @@ CREATE TABLE `users` (
   `tipo_documento` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
   `documento` varchar(25) COLLATE utf8mb4_unicode_ci NOT NULL,
   `foto` varchar(450) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `rol` int(11) NOT NULL,
-  `estado` int(11) NOT NULL DEFAULT 1,
-  `sede` int(11) NOT NULL
+  `id_rol` int(11) NOT NULL,
+  `estado` int(11) NOT NULL,
+  `id_sede` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Volcado de datos para la tabla `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`, `nombre`, `celular`, `direccion`, `tipo_documento`, `documento`, `foto`, `rol`, `estado`, `sede`) VALUES
-(1, 'Isabella', 'issalazar00@outlook.com', NULL, '$2y$10$f0o5O24ncykLV7c4sZPU9O9XowffjFDcsiQGXhMw0NDCVnxNUx32K', NULL, NULL, NULL, 1, NULL, '2021-03-13 10:57:32', '2021-03-13 10:57:34', '', '', '', '', '', '', 1, 1, 1),
-(2, 'Alberto', 'mail@mail.com', NULL, '$2y$10$xjBe9VR4/TxFzym.8P4loe7.yWAEHGK4/CtiUV7XVqLYd.Hwwrime', NULL, NULL, NULL, 2, NULL, '2021-03-14 13:21:35', '2021-03-14 13:21:35', '', '', '', '', '', '', 2, 1, 1),
-(3, 'cristhiam', 'ccmonpan@hotmail.com', NULL, '790e984707f07c7183b81f39bc6ca4a9', NULL, NULL, NULL, NULL, NULL, NULL, NULL, 'Cristhiam Monsalve', '333 4546 4545', 'Calle 20 # 20 - 20', 'CC', '1231232123', '', 1, 1, 1);
+INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`, `nombre`, `celular`, `direccion`, `tipo_documento`, `documento`, `foto`, `id_rol`, `estado`, `id_sede`) VALUES
+(1, 'Isabella', 'issalazar00@outlook.com', NULL, '$2y$10$f0o5O24ncykLV7c4sZPU9O9XowffjFDcsiQGXhMw0NDCVnxNUx32K', NULL, NULL, 'rrtt6CzmWzbiX8PRMkhxBp4Ew1acUle1yfFz8P4c6N5SDa8sW6oePrggsq1J', 1, NULL, '2021-03-13 10:57:32', '2021-05-11 03:24:09', 'Isabela Salazar', '333 4546 4545', 'Calle 10 # 10 - 10', '', '969999999', '', 1, 1, 1),
+(2, 'Alberto', 'mail@mail.com', NULL, '$2y$10$xjBe9VR4/TxFzym.8P4loe7.yWAEHGK4/CtiUV7XVqLYd.Hwwrime', NULL, NULL, NULL, 2, NULL, '2021-03-14 13:21:35', '2021-05-11 05:45:26', '', '', '', '', '', '', 2, 1, 1),
+(3, 'cristhiam', 'ccmonpan@hotmail.com', NULL, '790e984707f07c7183b81f39bc6ca4a9', NULL, NULL, NULL, NULL, NULL, NULL, '2021-05-11 03:23:26', 'Cristhiam Monsalve P', '333 4546 4545', 'Calle 10 # 10 - 10', 'CC', '1231232123', '', 1, 1, 1),
+(5, 'martin', 'martin@hotmail.com', NULL, '790e984707f07c7183b81f39bc6ca4a9', NULL, NULL, NULL, NULL, NULL, '2021-05-11 03:49:38', '2021-05-11 03:49:38', 'Martin E', '333 4546 4545', 'fadsad', 'CC', '11232201', '', 1, 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -738,7 +737,7 @@ ALTER TABLE `trix_rich_texts`
 -- AUTO_INCREMENT de la tabla `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- Restricciones para tablas volcadas
