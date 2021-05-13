@@ -1,6 +1,7 @@
 <?php
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CreditoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ Route::get('/', function () {
 
 Route::group(['middleware' => 'auth:sanctum', 'verified'], function() {
     Route::get('usuarios', [UserController::class, 'list'])->name('usuarios');
+    Route::get('creditos', [CreditoController::class, 'list'])->name('creditos');
 });
 
 Route::group(['middleware' => [
@@ -34,9 +36,11 @@ Route::group(['middleware' => [
         return view('admin.clientes');
     })->name('clientes');
 
-    Route::get('/creditos', function () {
-        return view('admin.creditos');
-    })->name('creditos');  
+    
+
+    // Route::get('/creditos', function () {
+    //     return view('admin.creditos');
+    // })->name('creditos');   
     
     Route::get('/pagos', function () {
         return view('admin.pagos');

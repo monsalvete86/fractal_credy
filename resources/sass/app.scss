@@ -3,7 +3,8 @@
 @import 'tailwindcss/base';
 @import 'tailwindcss/components';
 @import 'tailwindcss/utilities';
-@import '@fortawesome/fontawesome-free/css/all.css';
+@import '~material-design-icons/iconfont/material-icons.css';
+@import '~sweetalert2/src/sweetalert2.scss';
 
 // Variables
 @import 'variables';

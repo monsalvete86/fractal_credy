@@ -1,10 +1,10 @@
-<nav class="navbar navbar-expand-md bg-primary border-bottom navbar-dark sticky-topx">
+<nav class="navbar navbar-expand-md border-bottom navbar-main-menu navbar-dark sticky-topx">
 	<div class="container">
 		<!-- Logo -->
 		<a class="navbar-brand mr-4" href="/">
 				<x-jet-application-mark width="36" />
 		</a>
-		<button class="navbar-toggler bg-primary" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
 				<span class="navbar-toggler-icon"></span>
 		</button>
 
@@ -21,10 +21,10 @@
 								{{ __('Clientes') }}
 						</x-jet-nav-link>
 
-						<x-jet-nav-link href="{{ route('creditos') }}" :active="request()->routeIs('creditos')">
-								<i class="fas fa-money-check-alt"></i>
+						<x-jet-nav-link href="{{ route('creditos') }}" :active="request()->routeIs('creditos')">	
 								{{ __('Creditos') }} 
 						</x-jet-nav-link>
+
 						<x-jet-nav-link href="{{ route('pagos') }}" :active="request()->routeIs('pagos')">
 								{{ __('Pagos') }}
 						</x-jet-nav-link>

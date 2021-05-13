@@ -1,10 +1,19 @@
 @media (min-width:1024px) {
 
+  html {
+    font-size: 14px;
+  }
+
   .container {
     max-width: 95%;
   }
 
-  .main-menu-navigation {
-    justify-content: flex-end;
+  .navbar-main-menu {
+    background-color: $primary;
+    background-image: linear-gradient(to left top, #163967, #1e487a, #25578e, #2c67a2, #3277b7);
+
+    .main-menu-navigation {
+      justify-content: flex-end;
+    }
   }
 }

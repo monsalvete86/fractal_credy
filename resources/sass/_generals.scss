@@ -105,6 +105,12 @@
     color: $success !important;
   }
 
+  .material-icons {
+    line-height: 0;
+    position: relative;
+    top: 7px;
+  }
+
   .navbar-dark .navbar-nav .nav-link {
     color: $white;
     &:hover {
