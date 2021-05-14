@@ -41,8 +41,9 @@
                     <td>{{ $cliente->independiente }}</td>
                     <td><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
                     <td class=""> 
-                        <button class="btn btn-sm btn-success mb-1" data-target="#clienteModal" 
-                        wire:click="actualizarCliente({{ $cliente->id }})">
+                        <button type="button" class="btn btn-sm btn-success mb-1" 
+                        data-toggle="modal" data-target="#clienteModal" 
+                        wire:click="actualizarCliente({{ $cliente }})">
                             {{ __('Update') }}
                         </button>
                         <button class="btn btn-sm btn-danger" wire:click="({{ $cliente->id }})" type="button"  value="borrar">

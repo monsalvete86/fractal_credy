@@ -55,8 +55,6 @@
               </button>
               <button class="btn btn-danger" onclick="inactivar({{$user->id}})">
                 <span class="material-icons">cancel</span>
-                
-                
               </button>
             @else
               <button class="btn btn-warning" onclick="activar({{$user->id}})">

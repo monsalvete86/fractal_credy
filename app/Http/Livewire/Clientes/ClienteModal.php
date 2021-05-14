@@ -118,14 +118,23 @@ class ClienteModal extends Component
      * @param mixed $id
      * @return void
      */
-    public function updateShowModal($id)
+    public function updateShowModal($cliente)
     {
-        
-        $this->resetValidation();
-        $this->resetVars();
-        $this->modelId = $id;
+        $this->nombres = $cliente['nombres'];
+        $this->apellidos = $cliente['apellidos'];
+        $this->tipo_documento = $cliente['tipo_documento'];
+        $this->nro_documento = $cliente['nro_documento'];
+        $this->fecha_nacimiento = $cliente['fecha_nacimiento'];
+        $this->genero = $cliente['genero'];
+        $this->celular1 = $cliente['celular1'];
+        $this->celular2 = $cliente['celular2'];
+        $this->direccion = $cliente['direccion'];
+        $this->estado_civil = $cliente['estado_civil'];
+        $this->lugar_trabajo = $cliente['lugar_trabajo'];
+        $this->cargo = $cliente['cargo'];
+        $this->independiente = $cliente['independiente'];
+        $this->foto = $cliente['foto'];
         $this->modalStyle = 'display:block';
-        $this->loadModel();
         
     }
 

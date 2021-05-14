@@ -9,6 +9,7 @@ use Livewire\WithPagination;
 class ClienteLista extends Component
 {
   use WithPagination;
+  protected $paginationTheme = 'bootstrap';
 
   public function actualizarCliente($id)
   {

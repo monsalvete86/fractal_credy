@@ -93,7 +93,7 @@ class UserModal extends Component
   }
 
   public function closeModal() {
-    $this->modalStyle = 'display:hide';    
+    $this->modalStyle = 'display:none';    
     $this->reset();
     $this->emit('userTableUpdate');
     $this->dispatchBrowserEvent('cerrarModal'); 
