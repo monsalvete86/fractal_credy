@@ -11,6 +11,11 @@ class ClienteLista extends Component
   use WithPagination;
   protected $paginationTheme = 'bootstrap';
 
+  public function crearCliente()
+  {
+    $this->emit('createShowModal');
+  }
+
   public function actualizarCliente($id)
   {
     $this->emit('updateShowModal', $id);

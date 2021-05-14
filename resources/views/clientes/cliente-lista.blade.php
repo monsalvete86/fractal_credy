@@ -1,4 +1,21 @@
 <div>
+  <div class="form-row">
+    <div class="form-group">
+      <label for="buscar_cliente">Buscar</label>
+      <input type="text" class="form-control" id="buscar_cliente" placeholder="Buscar...">
+    </div>
+  </div>
+
+  <div class="form-row">
+
+    <div class="form-group">
+      <button class="btn btn-success" wire:click="crearCliente" data-toggle="modal" data-target="#clienteModal" >
+        {{ __('Crear') }}
+      </button>
+
+    </div>
+
+  </div>
   <div class="table-responsive"> 
     <table class="table table-sm table-bordered">
         <thead>

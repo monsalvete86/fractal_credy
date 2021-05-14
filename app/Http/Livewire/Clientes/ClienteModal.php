@@ -120,6 +120,30 @@ class ClienteModal extends Component
      */
     public function updateShowModal($cliente)
     {
+
+        $this->resetValidation();
+        $this->resetVars();
+        $this->modelId = $cliente['id'];
+        $this->modalFormVisible = true;
+        $this->loadModel($cliente);
+       
+        
+    }
+
+    public function deleteShowModal($id)
+    {
+        
+    }
+
+    /**
+     * Loads the model data
+     * of this component.
+     * 
+     * @return void
+     */
+    public function loadModel($cliente)
+    {
+        // $cliente = Cliente::find($this->modelId);
         $this->nombres = $cliente['nombres'];
         $this->apellidos = $cliente['apellidos'];
         $this->tipo_documento = $cliente['tipo_documento'];
@@ -135,37 +159,6 @@ class ClienteModal extends Component
         $this->independiente = $cliente['independiente'];
         $this->foto = $cliente['foto'];
         $this->modalStyle = 'display:block';
-        
-    }
-
-    public function deleteShowModal($id)
-    {
-        
-    }
-
-    /**
-     * Loads the model data
-     * of this component.
-     * 
-     * @return void
-     */
-    public function loadModel()
-    {
-        $data = Cliente::find($this->modelId);
-        $this->nombres = $data->nombres;
-        $this->apellidos = $data->apellidos;
-        $this->tipo_documento = $data->tipo_documento;
-        $this->nro_documento = $data->nro_documento;
-        $this->fecha_nacimiento = $data->fecha_nacimiento;
-        $this->genero = $data->genero;
-        $this->celular1 = $data->celular1;
-        $this->celular2 = $data->celular2;
-        $this->direccion = $data->direccion;
-        $this->estado_civil = $data->estado_civil;
-        $this->lugar_trabajo = $data->lugar_trabajo;
-        $this->cargo = $data->cargo;
-        $this->independiente = $data->independiente;
-        $this->foto = $data->foto;
     }
 
     /**
