@@ -10,6 +10,11 @@ class ClienteLista extends Component
 {
   use WithPagination;
 
+  public function actualizarCliente($id)
+  {
+    $this->emit('updateShowModal', $id);
+  }
+
 
   public function read()
   {

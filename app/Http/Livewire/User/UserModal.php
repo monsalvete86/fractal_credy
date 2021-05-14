@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class UserModal extends Component
 {  
-  public $modalStyle = 'display:hide';
+  public $modalStyle = 'display:none';
   protected $listeners = [
     'showData',
     'showClean'

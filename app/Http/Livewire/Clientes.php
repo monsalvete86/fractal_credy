@@ -26,6 +26,7 @@ class Clientes extends Component
     public $cargo;
     public $independiente;
     public $foto;
+    
     //public $search;
 
 

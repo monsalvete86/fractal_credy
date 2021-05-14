@@ -41,12 +41,13 @@
                     <td>{{ $cliente->independiente }}</td>
                     <td><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
                     <td class=""> 
-                        <x-jet-button class="btn btn-sm btn-success mb-1" wire:click="updateShowModal({{ $cliente->id }})">
+                        <button class="btn btn-sm btn-success mb-1" data-target="#clienteModal" 
+                        wire:click="actualizarCliente({{ $cliente->id }})">
                             {{ __('Update') }}
-                        </x-jet-button>
-                        <x-jet-button class="btn btn-sm btn-danger" wire:click="({{ $cliente->id }})" type="button"  value="borrar">
+                        </button>
+                        <button class="btn btn-sm btn-danger" wire:click="({{ $cliente->id }})" type="button"  value="borrar">
                         {{__('Delete') }}
-                        </x-jet-button>    
+                        </button>    
                     </td> 
                 </tr>
               @endforeach

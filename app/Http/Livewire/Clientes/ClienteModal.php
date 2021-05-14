@@ -8,8 +8,12 @@ use Livewire\WithPagination;
 use App\Models\Cliente;
 class ClienteModal extends Component
 {
-
-    use WithPagination;
+    public $modalStyle = 'display:none';
+    protected $listeners = [
+        'updateShowModal',
+        'createShowModal'
+      ];
+    public $editando = null;
     public $modalFormVisible = false;
     public $modelId;
     public $nombres;
@@ -26,6 +30,7 @@ class ClienteModal extends Component
     public $cargo;
     public $independiente;
     public $foto;
+    public $idCliente = '';
     //public $search;
 
 
@@ -81,17 +86,9 @@ class ClienteModal extends Component
         Cliente::create($this->modelData());
         $this->modalFormVisible = false;
         $this->resetVars();
+        
     }
 
-    /**
-     * The read funtion.
-     * 
-     * @return void
-     */
-    public function read()
-    {
-        return Cliente::paginate(2);
-    }
 
     public function update()
     {
@@ -111,6 +108,7 @@ class ClienteModal extends Component
         $this->resetValidation();
         $this->resetVars();
         $this->modalFormVisible = true;
+        $this->modalStyle = 'display:block';
     }
 
     /**
@@ -122,11 +120,13 @@ class ClienteModal extends Component
      */
     public function updateShowModal($id)
     {
+        
         $this->resetValidation();
         $this->resetVars();
         $this->modelId = $id;
-        $this->modalFormVisible = true;
+        $this->modalStyle = 'display:block';
         $this->loadModel();
+        
     }
 
     public function deleteShowModal($id)
