@@ -169,20 +169,20 @@ class Clientes extends Component
     {
         return [
 
-            'nombres' => $this->nombres,
-            'apellidos' => $this->apellidos,
-            'tipo_documento' => $this->tipo_documento,
-            'nro_documento' => $this->nro_documento,
-            'genero' => $this->genero,
-            'fecha_nacimiento' => $this->fecha_nacimiento,
-            'celular1' => $this->celular1,
-            'celular2' => $this->celular2,
-            'direccion' => $this->direccion,
-            'estado_civil' => $this->estado_civil,
-            'lugar_trabajo' => $this->lugar_trabajo,
-            'cargo' => $this->cargo,
-            'independiente' => $this->independiente,
-            'foto' => $this->foto,
+          'nombres' => $this->nombres,
+          'apellidos' => $this->apellidos,
+          'tipo_documento' => $this->tipo_documento,
+          'nro_documento' => $this->nro_documento,
+          'genero' => $this->genero,
+          'fecha_nacimiento' => $this->fecha_nacimiento,
+          'celular1' => $this->celular1,
+          'celular2' => $this->celular2,
+          'direccion' => $this->direccion,
+          'estado_civil' => $this->estado_civil,
+          'lugar_trabajo' => $this->lugar_trabajo,
+          'cargo' => $this->cargo,
+          'independiente' => $this->independiente,
+          'foto' => $this->foto,
         ];
     }
 
