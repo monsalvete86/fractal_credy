@@ -9,7 +9,21 @@ use Livewire\WithPagination;
 class CreditList extends Component
 {
   use WithPagination;
+  public $modalCrearCredito=false;
+  // Datos adicionales para CRUD
+
   protected $paginationTheme = 'bootstrap';
+
+  public function createModalCredito(){
+      $this->modalCrearCredito = true;
+  }
+  public function updateModalCredito($id)
+  {
+      $this->idCredito = $id;
+      $this->modalCrearCredito = true;
+      $this->cargarDatos();
+    
+  }
 
     public function read(){
         return Credito::paginate(10);

@@ -37,8 +37,8 @@ Route::group(['middleware' => [
     //     return view('admin.clientes');
     // })->name('clientes');
 
-    Route::get('clientes', [CreditoController::class, 'list'])->name('clientes');
-    Route::get('creditos', [ClienteController::class, 'lista'])->name('creditos');
+    Route::get('clientes', [ClienteController::class, 'lista'])->name('clientes');
+    Route::get('creditos', [CreditoController::class, 'list'])->name('creditos');
 
     // Route::get('/creditos', function () {
     //     return view('admin.creditos');
