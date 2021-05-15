@@ -26,10 +26,12 @@ class ClienteLista extends Component
   {
     return Cliente::paginate(10);
   }
-    public function render()
-    {
-      return view('clientes.cliente-lista', [
-        'clientes' => $this->read(),
-      ]);
-    }
+  public function render()
+  {
+
+    $clientes = Cliente::paginate(10);
+    return view('clientes.cliente-lista', [
+      'clientes' => $clientes,
+    ]);
+  }
 }

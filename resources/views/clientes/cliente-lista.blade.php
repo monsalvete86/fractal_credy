@@ -61,10 +61,10 @@
                         <button type="button" class="btn btn-sm btn-success mb-1" 
                         data-toggle="modal" data-target="#clienteModal" 
                         wire:click="actualizarCliente({{ $cliente }})">
-                            {{ __('Update') }}
+                            {{ __('Actualizar') }}
                         </button>
                         <button class="btn btn-sm btn-danger" wire:click="({{ $cliente->id }})" type="button"  value="borrar">
-                        {{__('Delete') }}
+                        {{__('Eliminar') }}
                         </button>    
                     </td> 
                 </tr>

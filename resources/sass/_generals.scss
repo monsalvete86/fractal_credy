@@ -115,15 +115,7 @@
     color: $white;
     &:hover {
       transform: scale(1.1);
-    }
-
-    &::before {
-      content: '';
-      display: inline-block;
-      background-color: $decoration;
-      width: 7px;
-      height: 7px;
-      border: 1px solid #cc99cc;
+      border-bottom: 2px solid $decoration
     }
   }
 

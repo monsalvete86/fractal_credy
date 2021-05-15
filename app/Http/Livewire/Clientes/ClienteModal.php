@@ -4,7 +4,6 @@ namespace App\Http\Livewire\Clientes;
 
 
 use Livewire\Component;
-use Livewire\WithPagination;
 use App\Models\Cliente;
 class ClienteModal extends Component
 {
@@ -14,7 +13,6 @@ class ClienteModal extends Component
         'createShowModal'
       ];
     public $editando = null;
-    public $modalFormVisible = false;
     public $modelId;
     public $nombres;
     public $apellidos;
@@ -31,10 +29,11 @@ class ClienteModal extends Component
     public $independiente;
     public $foto;
     public $idCliente = '';
-    //public $search;
 
-
-    
+    public function render()
+    {
+        return view('clientes.cliente-modal');
+    }
 
     /**
      * The validation rules
@@ -84,7 +83,6 @@ class ClienteModal extends Component
     {
         $this->validate();
         Cliente::create($this->modelData());
-        $this->modalFormVisible = false;
         $this->resetVars();
         
     }
@@ -94,7 +92,6 @@ class ClienteModal extends Component
     {
         $this->validate();
         Cliente::find($this->modelId)->update($this->modelData());
-        $this->modalFormVisible = false;
     }
 
     /**
@@ -105,9 +102,8 @@ class ClienteModal extends Component
      */
     public function createShowModal()
     {
-        $this->resetValidation();
-        $this->resetVars();
-        $this->modalFormVisible = true;
+        // $this->resetValidation();
+        // $this->resetVars();
         $this->modalStyle = 'display:block';
     }
 
@@ -124,7 +120,6 @@ class ClienteModal extends Component
         $this->resetValidation();
         $this->resetVars();
         $this->modelId = $cliente['id'];
-        $this->modalFormVisible = true;
         $this->loadModel($cliente);
        
         
@@ -212,9 +207,12 @@ class ClienteModal extends Component
         $this->independiente = null;
         $this->foto = null;
     }
-   
-    public function render()
-    {
-        return view('clientes.cliente-modal');
+
+    public function closeModal() {
+        $this->modalStyle = 'display:none';
+        $this->reset();
+        $this->dispatchBrowserEvent('cerrarModal'); 
     }
+   
+   
 }

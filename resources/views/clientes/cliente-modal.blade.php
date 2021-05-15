@@ -123,11 +123,11 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" wire:click="closeModal()" data-dismiss="modal">Cancelar</button>
           @if ($modelId)
-            <button  class="btn btn-success" wire:click="update" wire:loading.attr="disabled">
+            <button type="button"  class="btn btn-success" wire:click="update" wire:loading.attr="disabled">
                 {{ __('Actualizar') }}
             </danger-button>
           @else
-              <button  class="btn btn-success" wire:click="create" wire:loading.attr="disabled">
+              <button type="button"  class="btn btn-success" wire:click="create" wire:loading.attr="disabled">
                   {{ __('Crear') }}
               </danger-button>
           @endif

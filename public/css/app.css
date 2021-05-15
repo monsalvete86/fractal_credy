@@ -11726,14 +11726,7 @@ h3 {
 }
 .navbar-dark .navbar-nav .nav-link:hover {
   transform: scale(1.1);
-}
-.navbar-dark .navbar-nav .nav-link::before {
-  content: "";
-  display: inline-block;
-  background-color: #cf0854;
-  width: 7px;
-  height: 7px;
-  border: 1px solid #cc99cc;
+  border-bottom: 2px solid #99DDFF;
 }
 
 .table {
@@ -11761,7 +11754,7 @@ footer#footer small {
 
   .navbar-main-menu {
     background-color: #08537c;
-    background-image: linear-gradient(to left top, #163967, #1e487a, #25578e, #2c67a2, #3277b7);
+    background-image: linear-gradient(to left top, #08537c, #015684, #00588d, #005b95, #005d9d, #0660a2, #0d63a7, #1366ac, #1d6aaf, #246eb2, #2b73b4, #3277b7);
   }
   .navbar-main-menu .main-menu-navigation {
     justify-content: flex-end;
