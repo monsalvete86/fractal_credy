@@ -23,19 +23,19 @@
         <!-- <script src="https://unpkg.com/@popperjs/core@2"></script> -->
         <!-- <script src="https://unpkg.com/@coreui/coreui/dist/js/coreui.min.js"></script> -->
     </head>
-    <body class="font-sans antialiased bg-light">
+    <body class="font-sans antialiased bg-white">
         <x-jet-banner />
         @livewire('navigation-menu')
 
         <!-- Page Heading -->
-        <header class="d-flex py-1 bg-white shadow-sm border-bottom">
+        <header class="d-flex py-1 bg-white shadow-sm border-bottom border-secondary">
             <div class="container">
                 {{ $header }}
             </div>
         </header>
           
         <!-- Page Content -->
-        <main class="container my-2 card-body bg-white border-bottom rounded-top">
+        <main class="container my-2 bg-light border-bottom rounded-top">
             {{ $slot }}
         </main>
 
