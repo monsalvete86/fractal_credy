@@ -9,7 +9,7 @@ use Livewire\Component;
 
 class UserModal extends Component
 {  
-  public $modalStyle = 'display:hide';
+  public $modalStyle = 'display:none';
   protected $listeners = [
     'showData',
     'showClean'
@@ -93,7 +93,7 @@ class UserModal extends Component
   }
 
   public function closeModal() {
-    $this->modalStyle = 'display:hide';    
+    $this->modalStyle = 'display:none';    
     $this->reset();
     $this->emit('userTableUpdate');
     $this->dispatchBrowserEvent('cerrarModal'); 

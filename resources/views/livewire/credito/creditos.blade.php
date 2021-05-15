@@ -31,11 +31,11 @@
                     <td>{{ $credito->cant_cuotas_pagadas}}</td>
                     <td>$5000</td>
                     <th>
-                        <x-jet-button wire:click="updateModalCredito({{ $credito->id }})">
+                        <x-jet-button class="btn-sm btn-success" wire:click="updateModalCredito({{ $credito->id }})">
                             {{ __('Update') }}
                         </x-jet-button>
                         <!-- Boton eliminar -->
-                        <x-jet-button class="btn btn-success" wire:click="createModalCredito">
+                        <x-jet-button class="btn-danger btn-sm" wire:click="createModalCredito">
                             <i class="fas fa-trash-alt"></i>{{ __('Delete') }}
                         </x-jet-button>
                     </th>
@@ -57,7 +57,6 @@
             <div class="mt-4">
                 <x-jet-label for="id_cliente" value="{{ _('Cliente') }}" />
                 <x-jet-input type="number" step="any" id="id_cliente" class="block mt-1 w-full" wire:model="id_cliente" />
-                
                 @error('id_cliente') <span class="error">{{ $message }}</span> @enderror
 
             </div>
