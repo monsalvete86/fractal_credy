@@ -15,7 +15,7 @@
   </div>
   <div class="form-group row">
     <div class="col-12">
-        <button class="btn btn-primary" wire:click="newUser()" data-toggle="modal" data-target="#exampleModal">Nuevo</button>
+        <button class="btn btn-outline-primary" wire:click="newUser()" data-toggle="modal" data-target="#exampleModal">Nuevo</button>
     </div>
   </div>
   <table class="table table-striped table-sm table-bordered">

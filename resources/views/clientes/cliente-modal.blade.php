@@ -10,7 +10,7 @@
           </button>
         </div>
 
-        <form>
+        <form wire:submit.prevent="@if($modelId) update() @else create() @endif">
           <div class="modal-body">
             <div class="form-row">
               <div class="form-group col-md-4">
@@ -122,7 +122,8 @@
         </form>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" wire:click="closeModal()" data-dismiss="modal">Cancelar</button>
-          @if ($modelId)
+          <button type="submit" class="btn btn-success" >{{$modelId? 'Actualizar' : 'Crear'}}</button>
+          {{-- @if ($modelId)
             <button type="button"  class="btn btn-success" wire:click="update" wire:loading.attr="disabled">
                 {{ __('Actualizar') }}
             </danger-button>
@@ -130,7 +131,7 @@
               <button type="button"  class="btn btn-success" wire:click="create" wire:loading.attr="disabled">
                   {{ __('Crear') }}
               </danger-button>
-          @endif
+          @endif --}}
         </div>
       </div>
   </div>
