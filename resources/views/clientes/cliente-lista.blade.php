@@ -9,7 +9,7 @@
   <div class="form-row">
 
     <div class="form-group">
-      <button class="btn btn-success" wire:click="crearCliente" data-toggle="modal" data-target="#clienteModal" >
+      <button class="btn btn-outline-primary" wire:click="crearCliente" data-toggle="modal" data-target="#clienteModal" >
         {{ __('Crear') }}
       </button>
 
