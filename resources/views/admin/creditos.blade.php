@@ -2,9 +2,9 @@
 
 <x-app-layout>
     <x-slot name="header">
-        <h2 class="h4 font-weight-bold">
+        <h5 class="h5 font-weight-bold title-page">
             {{ __('Credito') }}            
-        </h2>
+        </h5>
     </x-slot>
     
     <div class="py-12">

@@ -50,14 +50,16 @@
               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
                 wire:click="showModal({{$user}})"
               >
-                Editar
+              <span class="material-icons">create</span>
+                
               </button>
               <button class="btn btn-danger" onclick="inactivar({{$user->id}})">
-                Inactivar
+                <span class="material-icons">cancel</span>
               </button>
             @else
               <button class="btn btn-warning" onclick="activar({{$user->id}})">
-                Activar
+                <span class="material-icons">check_circle</span>
+                
               </button>
             @endif
           </td>
@@ -68,11 +70,20 @@
   {{$users->links()}}  
 </div>
 @push('scripts')
+
   <script>
     function inactivar(user) {
-      if(confirm('Esta segurno de inactivar este usuario?')) {
-        Livewire.emit('borrarUsuario', user);
-      }
+      Swal.fire({
+        icon: 'warning',
+        text: 'Esta seguro de desactivar este usuario?',
+        showCancelButton: true,
+        confirmButtonText: 'Delete',
+        confirmButtonColor: '#cf0854',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Livewire.emit('borrarUsuario', user);
+        }
+      });
     }
     function activar(user) {
       if(confirm('Esta segurno de activar este usuario?')) {

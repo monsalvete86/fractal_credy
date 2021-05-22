@@ -1,18 +1,7 @@
-<div class="d-flex justify-content-between">
+<div>
     @if ($paginator->hasPages())
-    <div>
-          
-        <span>{!! __('Mostrando') !!}</span>
-        <span class="font-medium">{{ $paginator->firstItem() }}</span>
-        <span>{!! __('a') !!}</span>
-        <span class="font-medium">{{ $paginator->lastItem() }}</span>
-        <span>{!! __('de') !!}</span>
-        <span class="font-medium">{{ $paginator->total() }}</span>
-        <span>{!! __('resultados') !!}</span>
-        
-      </div>
-        <nav class="">
-            <ul class="pagination  justify-content-center">
+        <nav>
+            <ul class="pagination">
                 {{-- Previous Page Link --}}
                 @if ($paginator->onFirstPage())
                     <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
