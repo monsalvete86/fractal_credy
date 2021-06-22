@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Proveedor;
 
 
 class Cliente extends Model
@@ -32,14 +33,17 @@ class Cliente extends Model
     ];
 
     // Valor por defecto en los campos
-    protected $attributes = [
-       
-    ];
+    protected $attributes = [];
     protected $guarded = [];
     
     public function creditos()
     {
         return $this->hasMany(Credito::class);
+    }
+
+    public function proveedores()
+    {
+        return $this->hasMany(Proveedor::class);
     }
     
 }
