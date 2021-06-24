@@ -56,13 +56,16 @@ class UserList extends Component
     $this->emit('showClean');
   }
 
-  public function borrarUsuario(User $user) {
+  public function borrarUsuario($email, $name) {
+    $user = User::where("email", "like", $email)->where("name", "like", $name)->first();
+
     $user->estado = 0;
     $user->save();
     $this->render();
   }
 
-  public function activarUsuario(User $user) {
+  public function activarUsuario($email, $name) {
+    $user = User::where("email", "like", $email)->where("name", "like", $name)->first();
     $user->estado = 1;
     $user->save();
     $this->render();

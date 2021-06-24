@@ -15,10 +15,10 @@
   </div>
   <div class="form-group row">
     <div class="col-12">
-        <button class="btn btn-primary" wire:click="newUser()" data-toggle="modal" data-target="#exampleModal">Nuevo</button>
+        <button class="btn btn-outline-primary" wire:click="newUser()" data-toggle="modal" data-target="#exampleModal">Nuevo</button>
     </div>
   </div>
-  <table class="table table-striped table-sm">
+  <table class="table table-striped table-sm table-bordered">
     <thead>
       <tr>
         <th>#</th>
@@ -36,7 +36,7 @@
     <tbody>
       @foreach($users as $user)
         <tr>
-          <td>{{$cont++}}</td>
+          <td>{{$cont++}} </td>
           <td>{{$user->name}} {{$user->id}}</td>
           <td>{{$user->nombre}}</td>
           <td>{{$user->email}}</td>
@@ -53,11 +53,11 @@
               <span class="material-icons">create</span>
                 
               </button>
-              <button class="btn btn-danger" onclick="inactivar({{$user->id}})">
+              <button class="btn btn-danger" onclick="inactivar('{{$user->email}}','{{$user->name}}')">
                 <span class="material-icons">cancel</span>
               </button>
             @else
-              <button class="btn btn-warning" onclick="activar({{$user->id}})">
+              <button class="btn btn-warning" onclick="activar('{{$user->email}}','{{$user->name}}')">
                 <span class="material-icons">check_circle</span>
                 
               </button>
@@ -72,23 +72,31 @@
 @push('scripts')
 
   <script>
-    function inactivar(user) {
+    function inactivar(email, name) {
       Swal.fire({
         icon: 'warning',
-        text: 'Esta seguro de desactivar este usuario?',
+        text: 'Esta seguro de desactivar este usuario? ',
         showCancelButton: true,
-        confirmButtonText: 'Delete',
+        confirmButtonText: 'Inacitvar',
         confirmButtonColor: '#cf0854',
       }).then((result) => {
         if (result.isConfirmed) {
-          Livewire.emit('borrarUsuario', user);
+          Livewire.emit('borrarUsuario', email, name);
         }
       });
     }
-    function activar(user) {
-      if(confirm('Esta segurno de activar este usuario?')) {
-        Livewire.emit('activarUsuario', user);
-      }
+    function activar(email, name) {
+      Swal.fire({
+        incon: 'warning',
+        text: 'Esta seguro de reactivar este usuario ',
+        showCancelButton: true,
+        confirmButtonText: 'Activar',
+        confirmButtonColor: 'green',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Livewire.emit('activarUsuario', email, name);
+        }
+      });
     }
   </script>
 @endpush

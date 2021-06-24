@@ -6,9 +6,11 @@
   </x-slot>
   <div class="py-2">
     <div class="bg-white">
-      
-      <livewire:creditos.credit-list>
+      dfadsf
+      <livewire:creditos.creditos-list>
     </div>
   </div>
-
+  @push('modals')    
+    <livewire:creditos.creditos-modal>
+  @endpush
 </x-app-layout>

@@ -5,10 +5,7 @@
       </h2>
   </x-slot>
   <div class="py-2">
-    <div class="bg-white">
-      
-      <livewire:clientes.cliente-lista>
-    </div>
+    <livewire:clientes.cliente-lista>
   </div>
   @push('modals')    
     <livewire:clientes.cliente-modal>

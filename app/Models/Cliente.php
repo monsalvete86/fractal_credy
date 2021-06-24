@@ -20,6 +20,7 @@ class Cliente extends Model
        'tipo_documento', 
        'nro_documento', 
        'fecha_nacimiento', 
+       'email',
        'genero', 
        'celular1', 
        'celular2', 
