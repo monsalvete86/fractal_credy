@@ -10,6 +10,7 @@ class ClienteLista extends Component
 {
   use WithPagination;
   protected $paginationTheme = 'bootstrap';
+  public $textSearch = '';
 
   public function crearCliente()
   {
@@ -26,12 +27,23 @@ class ClienteLista extends Component
   {
     return Cliente::paginate(10);
   }
+
   public function render()
   {
 
-    $clientes = Cliente::paginate(10);
+   
+    
+
+    $clientes = Cliente::where(function($query) {
+      $query->select('*')->where('nombres', 'like', "$this->textSearch%")
+      ->orWhere('apellidos', 'like', "$this->textSearch%")
+      ->orWhere('email', 'like', "$this->textSearch%");
+    });
+
+    $clientes = $clientes->orderBy('nombres')->orderBy('apellidos')->paginate(10);
+  
     return view('clientes.cliente-lista', [
       'clientes' => $clientes,
     ]);
-  }
+  }  
 }

@@ -2,7 +2,7 @@
   <div class="form-row">
     <div class="form-group">
       <label for="buscar_cliente">Buscar</label>
-      <input type="text" class="form-control" id="buscar_cliente" placeholder="Buscar...">
+      <input type="text" class="form-control" id="buscar_cliente" placeholder="Buscar..." wire:model="textSearch">
     </div>
   </div>
 
@@ -21,6 +21,7 @@
         <thead>
             <tr class="">                                   
                 <th>#</th>
+                <th>Foto</th>
                 <th>Nombre</th>
                 <th>Apellido</th>
                 <th>Tipo Documento</th>
@@ -33,8 +34,7 @@
                 <th>Estado civil</th>
                 <th>Lugar Trabajo</th>
                 <th>Cargo</th>
-                <th>Independiente</th>
-                <th>Foto</th>
+                <th>Independiente</th>                
                 <th></th>
             </tr>
         </thead>
@@ -43,6 +43,7 @@
               @foreach ($clientes as $cliente)
                 <tr>
                     <td>{{ $cliente->id }}</td>
+                    <td>@if($cliente->foto)  <img src="{{ $cliente->foto }}" class="img-fluid" alt="..."> @endif</td>
                     <td>{{ $cliente->nombres }}</td>
                     <td>{{ $cliente->apellidos }}</td>
                     <td>{{ $cliente->tipo_documento }}</td>
@@ -56,7 +57,7 @@
                     <td>{{ $cliente->lugar_trabajo }}</td>
                     <td>{{ $cliente->cargo }}</td>
                     <td>{{ $cliente->independiente }}</td>
-                    <td><img src="{{ $cliente->foto }}" class="img-fluid" alt="..."></td>
+                    
                     <td class=""> 
                         <button type="button" class="btn btn-sm btn-success mb-1" 
                         data-toggle="modal" data-target="#clienteModal" 

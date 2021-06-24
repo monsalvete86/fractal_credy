@@ -18,6 +18,7 @@ class ClienteModal extends Component
     public $apellidos;
     public $tipo_documento;
     public $nro_documento;
+    public $email;
     public $fecha_nacimiento;
     public $genero;
     public $celular1;
@@ -47,6 +48,7 @@ class ClienteModal extends Component
             'apellidos' => 'required',
             'tipo_documento' => 'required',
             'nro_documento' => 'required',
+            'email' => 'required',            
             'fecha_nacimiento' => 'required',
             'genero' => 'required',
             'celular1' => 'required',
@@ -143,6 +145,7 @@ class ClienteModal extends Component
         $this->apellidos = $cliente['apellidos'];
         $this->tipo_documento = $cliente['tipo_documento'];
         $this->nro_documento = $cliente['nro_documento'];
+        $this->email = $cliente['email'];
         $this->fecha_nacimiento = $cliente['fecha_nacimiento'];
         $this->genero = $cliente['genero'];
         $this->celular1 = $cliente['celular1'];
@@ -171,6 +174,7 @@ class ClienteModal extends Component
           'tipo_documento' => $this->tipo_documento,
           'nro_documento' => $this->nro_documento,
           'genero' => $this->genero,
+          'email' => $this->email,
           'fecha_nacimiento' => $this->fecha_nacimiento,
           'celular1' => $this->celular1,
           'celular2' => $this->celular2,
@@ -198,6 +202,7 @@ class ClienteModal extends Component
         $this->tipo_documento = null;
         $this->fecha_nacimiento = null;
         $this->genero = null;
+        $this->email = null;
         $this->celular1 = null;
         $this->celular2 = null;
         $this->direccion = null;
