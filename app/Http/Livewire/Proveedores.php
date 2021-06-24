@@ -3,17 +3,14 @@
 namespace App\Http\Livewire;
 
 use App\Models\Proveedor;
+use Illuminate\Validation\Rule;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class Proveedores extends Component
 {
-    public $modalCrearProveedor=false;
-    // Datos adicionales para CRUD
-
-    public $idProveedor;
-
-    //Datos para el credito
-   
+    use WithPagination;
+    public $modalFormVisible = false;
     public $modelId;
     public $nombres;
     public $apellidos;
@@ -23,36 +20,115 @@ class Proveedores extends Component
     public $celular2;
     public $direccion;
     public $correo;
+    
+    //public $search;
 
+    public function rules()
+    {
+        return [         
+            'nombres' => 'required',
+            'apellidos' => 'required',
+            'tipo_documento' => 'required',
+            'nro_documento' => 'required',
+            'celular1' => 'required',
+            'celular2' => 'required',
+            'direccion' => 'required',
+            'correo' => 'required',
+        ];
+    }
+
+    public function updatedNombre($value)
+    {
+        $this->generateSearch($value);
+    }
+
+   
+    public function create()
+    {
+        $this->validate();
+        Proveedor::create($this->modelData());
+        $this->modalFormVisible = false;
+        $this->resetVars();
+    }
 
     public function read()
     {
-        return Proveedor::paginate(5);
+        return Proveedor::paginate(2);
     }
 
+    public function update()
+    {
+        $this->validate();
+        Proveedor::find($this->modelId)->update($this->modelData());
+        $this->modalFormVisible = false;
+    }
+
+    public function createShowModal()
+    {
+        $this->resetValidation();
+        $this->resetVars();
+        $this->modalFormVisible = true;
+    }
+
+    public function updateShowModal($id)
+    {
+        $this->resetValidation();
+        $this->resetVars();
+        $this->modelId = $id;
+        $this->modalFormVisible = true;
+        $this->loadModel();
+    }
+
+    public function deleteShowModal($id)
+    {
+        
+    }
+
+    public function loadModel()
+    {
+        $data = Proveedor::find($this->modelId);
+        $this->nombres = $data->nombres;
+        $this->apellidos = $data->apellidos;
+        $this->tipo_documento = $data->tipo_documento;
+        $this->nro_documento = $data->nro_documento;
+        $this->celular1 = $data->celular1;
+        $this->celular2 = $data->celular2;
+        $this->direccion = $data->direccion;
+        $this->correo = $data->correo;
+    }
+
+    public function modelData()
+    {
+        return [
+
+          'nombres' => $this->nombres,
+          'apellidos' => $this->apellidos,
+          'tipo_documento' => $this->tipo_documento,
+          'nro_documento' => $this->nro_documento,
+          'celular1' => $this->celular1,
+          'celular2' => $this->celular2,
+          'direccion' => $this->direccion,
+          'correo' => $this->correo,
+        ];
+    }
+
+    public function resetVars()
+    {
+        $this->modelId = null;
+        $this->nombres = null;
+        $this->apellidos = null;
+        $this->nro_documento = null;
+        $this->tipo_documento = null;
+        $this->celular1 = null;
+        $this->celular2 = null;
+        $this->direccion = null;
+        $this->correo = null;
+    }
+   
     public function render()
     {
-        return view('livewire.proveedores', [
-            'proveedores' => $this->read()
+        return view('livewire.Proveedores', [
+            'Proveedores' => $this->read(),
         ]);
-    }
-
-    public function updateModalProveedor($id)
-    {
-        $this->idProveedor = $id;
-        $this->modalCrearProveedor = true;
-        $this->cargarDatos();
-       
-    }
-    public function cargarDatos(){
-        $proveedor = Proveedor::find($this->idProveedor);
-        $this->nombres  = $proveedor->nombres;
-        $this->apellidos  = $proveedor->apellidos;
-        $this->tipo_documento  = $proveedor->tipo_documento;
-        $this->nro_documento  = $proveedor->nro_documento;
-        $this->celular1  = $proveedor->celular1;
-        $this->celular2  = $proveedor->celular2;
-        $this->direccion  = $proveedor->direccion;
-        $this->correo  = $proveedor->correo;
     }
 }

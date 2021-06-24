@@ -31,10 +31,10 @@
 						<x-jet-nav-link href="{{ route('proveedores') }}" :active="request()->routeIs('proveedores')">
 								{{ __('Proveedores') }}
 						</x-jet-nav-link>
-				{{-- </ul>
+				</ul>
 
 				<!-- Right Side Of Navbar -->
-				<ul class="navbar-nav ml-auto align-items-baseline"> --}}
+				<ul class="navbar-nav ml-auto align-items-baseline"> 
 						<!-- Teams Dropdown -->
 						@if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
 								<x-jet-dropdown id="teamManagementDropdown">

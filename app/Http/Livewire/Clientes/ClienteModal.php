@@ -2,9 +2,9 @@
 
 namespace App\Http\Livewire\Clientes;
 
-
-use Livewire\Component;
 use App\Models\Cliente;
+use Livewire\Component;
+
 class ClienteModal extends Component
 {
     public $modalStyle = 'display:none';

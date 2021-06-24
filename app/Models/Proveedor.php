@@ -4,13 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Cliente;
+use App\Models\Proveedor;
+
 
 
 class Proveedor extends Model
 {
     use HasFactory;
-
 
 
     protected $table = 'proveedores';
@@ -30,9 +30,9 @@ class Proveedor extends Model
     protected $attributes = [];
     protected $guarded = [];
     
-    public function cliente()
+    public function proveedor()
     {
-        return $this->hasMany(Cliente::class);
+        return $this->hasMany(Proveedor::class);
     }
 
 }

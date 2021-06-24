@@ -7,7 +7,7 @@
             </x-jet-button>
         </div>
         <div class="col-sm-10">
-            <input  wire:change ="searchShowModal" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+            <input  wire:change ="searchShowModal" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> asdfasdfsad
         </div>
     </div>
 
