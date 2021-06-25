@@ -1,9 +1,8 @@
 <div>
-  
   <div wire:ignore.self style="{{$modalStyle}}" class="modal " id="clienteModal" tabindex="-1" role="dialog" aria-labelledby="clienteModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header"> 
           <h5 class="modal-title" id="clienteModalLabel">Datos Cliente</h5>
           <button type="button" wire:click="closeModal()" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>

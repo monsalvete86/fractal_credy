@@ -22,7 +22,6 @@ class ClienteLista extends Component
     $this->emit('updateShowModal', $id);
   }
 
-
   public function read()
   {
     return Cliente::paginate(10);
@@ -30,10 +29,6 @@ class ClienteLista extends Component
 
   public function render()
   {
-
-   
-    
-
     $clientes = Cliente::where(function($query) {
       $query->select('*')->where('nombres', 'like', "$this->textSearch%")
       ->orWhere('apellidos', 'like', "$this->textSearch%")

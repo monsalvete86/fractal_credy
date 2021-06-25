@@ -1,16 +1,15 @@
 <div>
-  
   <div wire:ignore.self style="{{$modalStyle}}" class="modal " id="proveedorModal" tabindex="-1" role="dialog" aria-labelledby="proveedorModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="proveedorModalLabel">Datos proveedor</h5>
+        <div class="modal-header"> 
+          <h5 class="modal-title" id="proveedorModalLabel">Datos Proveedor</h5>
           <button type="button" wire:click="closeModal()" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
 
-        <form>
+        <form wire:submit.prevent="@if($modelId) update() @else create() @endif">
           <div class="modal-body">
             <div class="form-row">
               <div class="form-group col-md-4">
@@ -60,20 +59,32 @@
                 <input id="direccion" class="form-control" type="text" wire:model.debounce.800ms="direccion">  
                 @error('direccion') <span class="error">{{ $message }}</span> @enderror
               </div>
-              
-            </div>
-            <hr>
+
               <div class="form-group col-md-4">
                 <label for="cargo">Cargo</label>
                 <input id="cargo" class="form-control" type="text" wire:model.debounce.800ms="cargo">  
                 @error('cargo') <span class="error">{{ $message }}</span> @enderror
               </div>
+
+              <div class="form-group col-md-4">
+                <label for="independiente">Independiente</label>
+                <input id="independiente" class="form-control" type="text" wire:model.debounce.800ms="independiente">  
+                @error('independiente') <span class="error">{{ $message }}</span> @enderror
+              </div>
+
+              <div class="form-group col-md-4">
+                <label for="email">Email</label>
+                <input id="email" class="form-control" type="text" wire:model.debounce.800ms="email">
+                @error('email')<span class="error">{{ $message }}</span> @enderror
+              </div>
+              
             </div>
           </div>
         </form>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" wire:click="closeModal()" data-dismiss="modal">Cancelar</button>
-          @if ($modelId)
+          <button type="submit" class="btn btn-success" >{{$modelId? 'Actualizar' : 'Crear'}}</button>
+          {{-- @if ($modelId)
             <button type="button"  class="btn btn-success" wire:click="update" wire:loading.attr="disabled">
                 {{ __('Actualizar') }}
             </danger-button>
@@ -81,7 +92,7 @@
               <button type="button"  class="btn btn-success" wire:click="create" wire:loading.attr="disabled">
                   {{ __('Crear') }}
               </danger-button>
-          @endif
+          @endif --}}
         </div>
       </div>
   </div>

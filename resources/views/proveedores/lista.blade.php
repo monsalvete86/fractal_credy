@@ -5,10 +5,7 @@
       </h2>
   </x-slot>
   <div class="py-2">
-    <div class="bg-white">
-      
       <livewire:proveedores.proveedor-lista>
-    </div>
   </div>
   @push('modals')    
     <livewire:proveedores.proveedor-modal>

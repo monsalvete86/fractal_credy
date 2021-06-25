@@ -3,6 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CreditoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ProveedorController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,6 +44,7 @@ Route::group(['middleware' => [
 
     Route::get('clientes', [ClienteController::class, 'lista'])->name('clientes');
     Route::get('creditos', [CreditoController::class, 'list'])->name('creditos');
+    Route::get('proveedores', [ProveedorController::class, 'lista'])->name('proveedores');
 
     // Route::get('/creditos', function () {
     //     return view('admin.creditos');
@@ -52,9 +54,9 @@ Route::group(['middleware' => [
         return view('admin.pagos');
     })->name('pagos');
 
-    Route::get('/proveedores', function () {
-        return view('admin.proveedores');
-    })->name('proveedores');
+    //Route::get('/proveedores', function () {
+    //    return view('admin.proveedores');
+    //})->name('proveedores');
 
     Route::get('/navigation-menus', function () {
         return view('layouts.navigation-menus');

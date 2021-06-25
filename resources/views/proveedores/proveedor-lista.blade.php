@@ -2,14 +2,14 @@
   <div class="form-row">
     <div class="form-group">
       <label for="buscar_proveedor">Buscar</label>
-      <input type="text" class="form-control" id="buscar_proveedor" placeholder="Buscar...">
+      <input type="text" class="form-control" id="buscar_proveedor" placeholder="Buscar..." wire:model="textSearch">
     </div>
   </div>
 
   <div class="form-row">
 
     <div class="form-group">
-      <button class="btn btn-success" wire:click="crearProveedor" data-toggle="modal" data-target="#proveedorModal" >
+      <button class="btn btn-outline-primary" wire:click="crearProveedor" data-toggle="modal" data-target="#proveedorModal" >
         {{ __('Crear') }}
       </button>
 
@@ -28,7 +28,7 @@
                 <th>Celular1</th>
                 <th>Celular2</th>
                 <th>Direccion</th>
-                <th>Correo</th>
+                <th>Correo</th>                
                 <th></th>
             </tr>
         </thead>
@@ -44,11 +44,12 @@
                     <td>{{ $proveedor->celular1 }}</td>
                     <td>{{ $proveedor->celular2 }}</td>
                     <td>{{ $proveedor->direccion }}</td>
-                    <td>{{ $proveedor->Correo }}</td>
+                    <td>{{ $proveedor->email }}</td>
+                    
                     <td class=""> 
                         <button type="button" class="btn btn-sm btn-success mb-1" 
                         data-toggle="modal" data-target="#proveedorModal" 
-                        wire:click="actualizarproveedor({{ $proveedor }})">
+                        wire:click="actualizarProveedor({{ $proveedor }})">
                             {{ __('Actualizar') }}
                         </button>
                         <button class="btn btn-sm btn-danger" wire:click="({{ $proveedor->id }})" type="button"  value="borrar">

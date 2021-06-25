@@ -7,7 +7,7 @@
             </x-jet-button>
         </div>
         <div class="col-sm-10">
-            <input  wire:change ="searchShowModal" class="form-control me-2" type="search" placeholder="Search" aria-label="Search"> asdfasdfsad
+            <input  wire:change ="searchShowModal" class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         </div>
     </div>
 
@@ -31,6 +31,7 @@
                                     <th>Celular1</th>
                                     <th>Celular2</th>
                                     <th>Direccion</th>
+                                    <th>Correo</th>
                                     <th>Estado civil</th>
                                     <th>Lugar Trabajo</th>
                                     <th>Cargo</th>
@@ -53,6 +54,7 @@
                                             <td>{{ $cliente->celular1 }}</td>
                                             <td>{{ $cliente->celular2 }}</td>
                                             <td>{{ $cliente->direccion }}</td>
+                                            <td>{{ $cliente->emeil }}</td>
                                             <td>{{ $cliente->estado_civil }}</td>
                                             <td>{{ $cliente->lugar_trabajo }}</td>
                                             <td>{{ $cliente->cargo }}</td>

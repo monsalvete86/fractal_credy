@@ -6,6 +6,7 @@ use App\Models\Cliente;
 use Livewire\Component;
 
 class ClienteModal extends Component
+
 {
     public $modalStyle = 'display:none';
     protected $listeners = [

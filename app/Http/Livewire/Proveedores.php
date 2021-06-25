@@ -19,10 +19,9 @@ class Proveedores extends Component
     public $celular1;
     public $celular2;
     public $direccion;
-    public $correo;
+    public $email;
     
-    //public $search;
-
+    
     public function rules()
     {
         return [         
@@ -33,7 +32,7 @@ class Proveedores extends Component
             'celular1' => 'required',
             'celular2' => 'required',
             'direccion' => 'required',
-            'correo' => 'required',
+            'email' => 'required',
         ];
     }
 
@@ -42,7 +41,6 @@ class Proveedores extends Component
         $this->generateSearch($value);
     }
 
-   
     public function create()
     {
         $this->validate();
@@ -94,13 +92,12 @@ class Proveedores extends Component
         $this->celular1 = $data->celular1;
         $this->celular2 = $data->celular2;
         $this->direccion = $data->direccion;
-        $this->correo = $data->correo;
+        $this->email = $data->email;
     }
 
     public function modelData()
     {
         return [
-
           'nombres' => $this->nombres,
           'apellidos' => $this->apellidos,
           'tipo_documento' => $this->tipo_documento,
@@ -108,7 +105,7 @@ class Proveedores extends Component
           'celular1' => $this->celular1,
           'celular2' => $this->celular2,
           'direccion' => $this->direccion,
-          'correo' => $this->correo,
+          'email' => $this->email,
         ];
     }
 
@@ -122,13 +119,13 @@ class Proveedores extends Component
         $this->celular1 = null;
         $this->celular2 = null;
         $this->direccion = null;
-        $this->correo = null;
+        $this->email = null;
     }
    
     public function render()
     {
-        return view('livewire.Proveedores', [
-            'Proveedores' => $this->read(),
+        return view('livewire.proveedores', [
+            'proveedores' => $this->read(),
         ]);
     }
 }

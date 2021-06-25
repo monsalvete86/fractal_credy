@@ -8,6 +8,6 @@ class Lista extends Component
 {
     public function render()
     {
-        return view('/proveedores.lista');
+        return view('livewire.proveedores.lista');
     }
 }
