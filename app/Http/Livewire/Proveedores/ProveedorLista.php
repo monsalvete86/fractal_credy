@@ -12,8 +12,7 @@ class ProveedorLista extends Component
   protected $paginationTheme = 'bootstrap';
   public $textSearch = '';
   
-  public function crearProveedor()
-  {
+  public function crearProveedor() {
     $this->emit('createShowModal');
   }
 
@@ -26,8 +25,8 @@ class ProveedorLista extends Component
   {
     return Proveedor::paginate(10);
   }
-  public function render()
-  {
+
+  public function render() {
     $proveedores = Proveedor::where(function($query) {
       $query->select('*')->where('nombres', 'like', "$this->textSearch%")
       ->orWhere('apellidos', 'like', "$this->textSearch%")

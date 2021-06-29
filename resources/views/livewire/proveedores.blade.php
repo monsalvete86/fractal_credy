@@ -129,6 +129,12 @@
                 @error('direccion') <span class="error">{{ $message }}</span> @enderror
             </div>
 
+            <div class="mt-4">
+                <x-jet-label for="email" value="{{ _('Email') }}" />
+                <x-jet-input id="email" class="block mt-1 w-full" type="text" wire:model.debounce.800ms="email" />
+                @error('email') <span class="error">{{ $message }}</span> @enderror
+            </div>
+
         </x-slot>
   
         <x-slot name="footer">
@@ -150,7 +156,6 @@
       </x-jet-dialog-modal>
 </div>
 <script>
-
     function test(){
         Swal.fire({
             title: 'Estas seguro?',
@@ -169,10 +174,8 @@
                 'Inactivado correctamente.',
                 ''
                 )
-            }
-            
-        })
-      
+            }  
+        }) 
     }
     
     </script>

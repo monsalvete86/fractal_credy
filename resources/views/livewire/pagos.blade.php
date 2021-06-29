@@ -127,7 +127,6 @@
         </x-slot>
     </x-jet-dialog-modal>
 
-    {{-- The Delete Modal --}}
-
+   
    
 </div>

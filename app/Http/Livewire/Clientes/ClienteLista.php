@@ -41,4 +41,11 @@ class ClienteLista extends Component
       'clientes' => $clientes,
     ]);
   }  
+
+  public function delete($id)
+  {
+    Cliente::find($id)->delete();
+    session()->flash('message', 'Post Deleted Successfully.');
+    $this->render();
+  }
 }

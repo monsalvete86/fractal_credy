@@ -59,19 +59,7 @@
                 <input id="direccion" class="form-control" type="text" wire:model.debounce.800ms="direccion">  
                 @error('direccion') <span class="error">{{ $message }}</span> @enderror
               </div>
-
-              <div class="form-group col-md-4">
-                <label for="cargo">Cargo</label>
-                <input id="cargo" class="form-control" type="text" wire:model.debounce.800ms="cargo">  
-                @error('cargo') <span class="error">{{ $message }}</span> @enderror
-              </div>
-
-              <div class="form-group col-md-4">
-                <label for="independiente">Independiente</label>
-                <input id="independiente" class="form-control" type="text" wire:model.debounce.800ms="independiente">  
-                @error('independiente') <span class="error">{{ $message }}</span> @enderror
-              </div>
-
+              
               <div class="form-group col-md-4">
                 <label for="email">Email</label>
                 <input id="email" class="form-control" type="text" wire:model.debounce.800ms="email">
@@ -84,15 +72,6 @@
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" wire:click="closeModal()" data-dismiss="modal">Cancelar</button>
           <button type="submit" class="btn btn-success" >{{$modelId? 'Actualizar' : 'Crear'}}</button>
-          {{-- @if ($modelId)
-            <button type="button"  class="btn btn-success" wire:click="update" wire:loading.attr="disabled">
-                {{ __('Actualizar') }}
-            </danger-button>
-          @else
-              <button type="button"  class="btn btn-success" wire:click="create" wire:loading.attr="disabled">
-                  {{ __('Crear') }}
-              </danger-button>
-          @endif --}}
         </div>
       </div>
   </div>

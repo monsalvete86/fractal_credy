@@ -64,7 +64,7 @@
                         wire:click="actualizarCliente({{ $cliente }})">
                             {{ __('Actualizar') }}
                         </button>
-                        <button class="btn btn-sm btn-danger" wire:click="({{ $cliente->id }})" type="button"  value="borrar">
+                        <button class="btn btn-sm btn-danger" wire:click="delete('{{ $cliente->id }}')" type="button"  value="borrar">
                         {{__('Eliminar') }}
                         </button>    
                     </td> 

@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.1.0
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-05-2021 a las 04:36:35
--- Versión del servidor: 10.4.11-MariaDB
--- Versión de PHP: 7.4.6
+-- Tiempo de generación: 26-06-2021 a las 00:33:09
+-- Versión del servidor: 10.4.18-MariaDB
+-- Versión de PHP: 7.3.27
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,7 +18,7 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `fractal_j`
+-- Base de datos: `fractal_credy`
 --
 
 -- --------------------------------------------------------
@@ -38,6 +38,7 @@ CREATE TABLE `clientes` (
   `celular1` char(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `celular2` char(20) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `direccion` char(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(250) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `estado_civil` char(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   `lugar_trabajo` char(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `cargo` char(200) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -52,9 +53,9 @@ CREATE TABLE `clientes` (
 -- Volcado de datos para la tabla `clientes`
 --
 
-INSERT INTO `clientes` (`id`, `nombres`, `apellidos`, `tipo_documento`, `nro_documento`, `fecha_nacimiento`, `genero`, `celular1`, `celular2`, `direccion`, `estado_civil`, `lugar_trabajo`, `cargo`, `independiente`, `foto`, `deleted_at`, `created_at`, `updated_at`) VALUES
-(1, 'Isabella', 'Salazar', 'Pasaporte', 1010039200, '2021-03-15', 'Femenino', '3212121', NULL, 'B/ Buenos Aires', 'Casado', 'FRACTA', 'Desarrolladora', NULL, NULL, NULL, '2021-03-15 10:36:59', '2021-03-16 01:35:11'),
-(2, 'Pepito', 'Perez', 'Cédula de ciudadania', 121212121, '1944-06-13', 'Masc', '121212', '2', 'a', 'b', 'c', 'd', NULL, NULL, NULL, '2021-03-19 03:41:23', '2021-03-19 03:41:23');
+INSERT INTO `clientes` (`id`, `nombres`, `apellidos`, `tipo_documento`, `nro_documento`, `fecha_nacimiento`, `genero`, `celular1`, `celular2`, `direccion`, `email`, `estado_civil`, `lugar_trabajo`, `cargo`, `independiente`, `foto`, `deleted_at`, `created_at`, `updated_at`) VALUES
+(1, 'Isabella', 'Salazar', 'Pasaporte', 1010039200, '2021-03-15', 'Femenino', '3212121', NULL, 'B/ Buenos Aires', NULL, 'Casado', 'FRACTA', 'Desarrolladora', NULL, NULL, NULL, '2021-03-15 10:36:59', '2021-03-16 01:35:11'),
+(2, 'Pepito', 'Perez', 'Cédula de ciudadania', 121212121, '1944-06-13', 'Masc', '121212', '2', 'a', NULL, 'b', 'c', 'd', NULL, NULL, NULL, '2021-03-19 03:41:23', '2021-03-19 03:41:23');
 
 -- --------------------------------------------------------
 
@@ -91,7 +92,8 @@ CREATE TABLE `creditos` (
 --
 
 INSERT INTO `creditos` (`id`, `id_cliente`, `id_deudor`, `id_sede`, `cant_cuotas`, `cant_cuotas_pagadas`, `dia_limite`, `deudor`, `estado`, `fecha_inicio`, `interes_mensual`, `porcent_interes_anual`, `porcent_interes_mensual`, `usu_crea`, `valor_cuota`, `valor_credito`, `valor_abonado`, `valor_capital`, `valor_interes`, `created_at`, `updated_at`) VALUES
-(1, 1, 2, 1, 12, 0, 30, 0, 5, '2021-03-18', '3.00', 3.0000, 5.0000, 1, 150000.0000, 4500000.0000, 0.0000, 0.0000, 4.0000, '2021-03-19 01:31:45', '2021-03-19 01:31:45');
+(1, 1, 2, 1, 12, 0, 30, 0, 5, '2021-03-18', '3.00', 3.0000, 5.0000, 1, 150000.0000, 4500000.0000, 0.0000, 0.0000, 4.0000, '2021-03-19 01:31:45', '2021-03-19 01:31:45'),
+(2, 1, 2, 1, 2000, 3, 22, 1, 1, '2021-06-16', '1200.00', 1000.0000, 100.0000, 0, 0.0000, 0.0000, NULL, NULL, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -246,6 +248,13 @@ CREATE TABLE `pagos` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+--
+-- Volcado de datos para la tabla `pagos`
+--
+
+INSERT INTO `pagos` (`id`, `tipo_deuda`, `id_deuda`, `valor_pago`, `nro_cuota`, `valor_interes`, `valor_capital`, `id_tercero`, `fecha_pago`, `created_at`, `updated_at`) VALUES
+(1, 8000, 20000, 5000.00, 2000, 2.60, 1000.00, 2, '2021-06-15', NULL, NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -287,6 +296,41 @@ CREATE TABLE `posts` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `proveedores`
+--
+
+CREATE TABLE `proveedores` (
+  `id` bigint(20) UNSIGNED NOT NULL,
+  `nombres` char(100) NOT NULL,
+  `apellidos` char(100) NOT NULL,
+  `tipo_documento` char(40) NOT NULL,
+  `nro_documento` double NOT NULL,
+  `genero` char(20) NOT NULL,
+  `celular1` char(20) NOT NULL,
+  `celular2` char(20) DEFAULT NULL,
+  `direccion` char(200) DEFAULT NULL,
+  `email` text DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `update_at` timestamp NULL DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `proveedores`
+--
+
+INSERT INTO `proveedores` (`id`, `nombres`, `apellidos`, `tipo_documento`, `nro_documento`, `genero`, `celular1`, `celular2`, `direccion`, `email`, `deleted_at`, `created_at`, `update_at`) VALUES
+(0, 'andres', 'figueroa', 'cedula de ciudadania', 1123325422, 'hombre', '3138734533', '3126773456', '20 cra 25-23', 'example@gmail.com', NULL, NULL, NULL),
+(2, 'alberto', 'galacio', 'cedula', 11232344, 'hombre', '31344545664', '31234325455', '09 12-30', 'example@gmail.com', NULL, NULL, NULL),
+(0, 'rogelio', 'grajales', 'cedula', 123243243, 'hombre', '3204343353', '3124543546', '12 30-23', 'example@gmail.com', NULL, NULL, NULL),
+(3, 'ilario', 'mojomboy', 'cedula', 11232344, 'hombre', '31344545664', '31234325455', '32 24-17', 'example@gmail.com', NULL, NULL, NULL),
+(0, 'roberto', 'gonzales', 'cedula', 12434545645, 'hombre', '3204343353', '3124543546', '23 32-23', 'example@gmail.com', NULL, NULL, NULL),
+(0, 'naruto', 'huzumaki', 'cedula', 0, 'hombre', '31344545664', '31234325455', '12 23-12', 'example@gmail.com', NULL, NULL, NULL),
+(7, 'boruto', 'huchija', 'cedula', 12434545645, 'hombre', '3204343353', '3124543546', '23 34-12', 'example@gmail.com', NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -352,7 +396,8 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('x31gqy4M9eRaLygtosCMXwhHoCYoA6C6TKMrrTgL', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/90.0.4430.93 Safari/537.36', 'YTo2OntzOjY6Il90b2tlbiI7czo0MDoiRTVXNnpZVVJBZWFqWExGc3lndnFrTm1odExLZjZiWXdwMDhPUXpqcCI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6MTtzOjE3OiJwYXNzd29yZF9oYXNoX3dlYiI7czo2MDoiJDJ5JDEwJGYwbzVPMjRuY3lrTFY3YzRzWlBVOU85WG93ZmZqRkRjc2lRR1hoTXcwTkRDVm54TlV4MzJLIjtzOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjIxOiJwYXNzd29yZF9oYXNoX3NhbmN0dW0iO3M6NjA6IiQyeSQxMCRmMG81TzI0bmN5a0xWN2M0c1pQVTlPOVhvd2ZmakZEY3NpUUdYaE13ME5EQ1ZueE5VeDMySyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzA6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC91c3VhcmlvcyI7fX0=', 1620696434);
+('A1IctjplO7NwsqmebeoVDEkidGQi1RINIvmter4E', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiVnA5d0w0NE9mRFFhMG4zTWIxNjhWRFJDQjNWQlh5T2FwZ2QyQ3dYSCI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMzOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvcHJvdmVlZG9yZXMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkZjBvNU8yNG5jeWtMVjdjNHNaUFU5TzlYb3dmZmpGRGNzaVFHWGhNdzBORENWbnhOVXgzMksiO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJGYwbzVPMjRuY3lrTFY3YzRzWlBVOU85WG93ZmZqRkRjc2lRR1hoTXcwTkRDVm54TlV4MzJLIjt9', 1624591832),
+('ttYnW2VYJEDTVOgpnc33RBQk1AggpbGViwBtRiDG', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36', 'YTo3OntzOjY6Il90b2tlbiI7czo0MDoiTXpjaEZkT1M2eUJ1a3BkNTBoTkJoWFZjamFoeUN6YnFXZ1hUZkFOVSI7czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMzOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvcHJvdmVlZG9yZXMiO31zOjY6Il9mbGFzaCI7YToyOntzOjM6Im9sZCI7YTowOnt9czozOiJuZXciO2E6MDp7fX1zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO3M6MTc6InBhc3N3b3JkX2hhc2hfd2ViIjtzOjYwOiIkMnkkMTAkZjBvNU8yNG5jeWtMVjdjNHNaUFU5TzlYb3dmZmpGRGNzaVFHWGhNdzBORENWbnhOVXgzMksiO3M6MjE6InBhc3N3b3JkX2hhc2hfc2FuY3R1bSI7czo2MDoiJDJ5JDEwJGYwbzVPMjRuY3lrTFY3YzRzWlBVOU85WG93ZmZqRkRjc2lRR1hoTXcwTkRDVm54TlV4MzJLIjt9', 1624660274);
 
 -- --------------------------------------------------------
 
@@ -476,10 +521,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `remember_token`, `current_team_id`, `profile_photo_path`, `created_at`, `updated_at`, `nombre`, `celular`, `direccion`, `tipo_documento`, `documento`, `foto`, `id_rol`, `estado`, `id_sede`) VALUES
-(1, 'Isabella', 'issalazar00@outlook.com', NULL, '$2y$10$f0o5O24ncykLV7c4sZPU9O9XowffjFDcsiQGXhMw0NDCVnxNUx32K', NULL, NULL, 'rrtt6CzmWzbiX8PRMkhxBp4Ew1acUle1yfFz8P4c6N5SDa8sW6oePrggsq1J', 1, NULL, '2021-03-13 10:57:32', '2021-05-11 03:24:09', 'Isabela Salazar', '333 4546 4545', 'Calle 10 # 10 - 10', '', '969999999', '', 1, 1, 1),
-(2, 'Alberto', 'mail@mail.com', NULL, '$2y$10$xjBe9VR4/TxFzym.8P4loe7.yWAEHGK4/CtiUV7XVqLYd.Hwwrime', NULL, NULL, NULL, 2, NULL, '2021-03-14 13:21:35', '2021-05-11 05:45:26', '', '', '', '', '', '', 2, 1, 1),
-(3, 'cristhiam', 'ccmonpan@hotmail.com', NULL, '790e984707f07c7183b81f39bc6ca4a9', NULL, NULL, NULL, NULL, NULL, NULL, '2021-05-11 03:23:26', 'Cristhiam Monsalve P', '333 4546 4545', 'Calle 10 # 10 - 10', 'CC', '1231232123', '', 1, 1, 1),
-(5, 'martin', 'martin@hotmail.com', NULL, '790e984707f07c7183b81f39bc6ca4a9', NULL, NULL, NULL, NULL, NULL, '2021-05-11 03:49:38', '2021-05-11 03:49:38', 'Martin E', '333 4546 4545', 'fadsad', 'CC', '11232201', '', 1, 1, 1);
+(1, 'Isabella', 'issalazar00@outlook.com', NULL, '$2y$10$f0o5O24ncykLV7c4sZPU9O9XowffjFDcsiQGXhMw0NDCVnxNUx32K', NULL, NULL, '3e1KDGwrxCwrWhEvjlxd74YzLFVOlUTzWsV6IjUjCcMDIwKXhiMfFYmeP5lf', 1, NULL, '2021-03-13 10:57:32', '2021-05-11 03:24:09', 'Isabela Salazar', '333 4546 4545', 'Calle 10 # 10 - 10', '', '969999999', '', 1, 1, 1),
+(2, 'Alberto', 'mail@mail.com', NULL, '$2y$10$xjBe9VR4/TxFzym.8P4loe7.yWAEHGK4/CtiUV7XVqLYd.Hwwrime', NULL, NULL, NULL, 2, NULL, '2021-03-14 13:21:35', '2021-05-11 05:45:26', '', '', '', '', '', '', 2, 1, 1);
 
 --
 -- Índices para tablas volcadas
@@ -635,7 +678,7 @@ ALTER TABLE `clientes`
 -- AUTO_INCREMENT de la tabla `creditos`
 --
 ALTER TABLE `creditos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `cuota_creditos`
@@ -677,7 +720,7 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT de la tabla `pagos`
 --
 ALTER TABLE `pagos`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `personal_access_tokens`
