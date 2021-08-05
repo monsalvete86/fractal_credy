@@ -28,7 +28,7 @@ class Cliente extends Model
         'lugar_trabajo',
         'cargo',
         'independiente',
-        'foto'
+        'image'
     ];
 
     // // Valor por defecto en los campos

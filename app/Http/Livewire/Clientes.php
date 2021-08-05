@@ -16,10 +16,11 @@ class Clientes extends Component
 
     public $nombres, $apellidos, $tipo_documento, $nro_documento, $fecha_nacimiento, $genero, $celular1, $celular2, $direccion, $email, $estado_civil, $lugar_trabajo, $cargo, $independiente, $image;
 
+    public $modalFormVisible = false;
     public  $selected_id, $search;   //para búsquedas y fila seleccionada
     public  $action = 1;             //manejo de ventanas - movernos entre formularios editar o crear
     protected $paginationTheme = 'bootstrap';
-    private $pagination = 1;         //paginación de tabla      
+    private $pagination = 1;         //paginación de tabla  
 
     // public $create = 2;
     // public $edit = 2;
@@ -39,7 +40,7 @@ class Clientes extends Component
     {
         //si la propiedad buscar tiene al menos un caracter, devolvemos el componente y le inyectamos los registros de una búsqueda con like y paginado a  5 
         if (strlen($this->search) > 0) {
-            $info = Clientes::where('nro_documento', 'like', '%' .  $this->search . '%')
+            $info = Cliente::where('description', 'like', '%' .  $this->search . '%')
                 ->paginate($this->pagination);
             return view('livewire.tipos.component', [
                 'info' => $info,
@@ -47,7 +48,7 @@ class Clientes extends Component
         } else {
             // caso contrario solo retornamos el componente inyectado con 5 registros
             return view('livewire.tipos.component', [
-                'info' => Clientes::paginate($this->pagination),
+                'info' => Cliente::paginate($this->pagination),
             ]);
         }
     }
@@ -72,7 +73,7 @@ class Clientes extends Component
     //método para reiniciar variables
     private function resetInput()
     {
-        $this->nro_documento = '';
+        $this->description = '';
         $this->selected_id = null;
         $this->action = 1;
         $this->search = '';
@@ -83,7 +84,7 @@ class Clientes extends Component
     public function edit($id)
     {
         $record = Cliente::findOrFail($id);
-        $this->nro_documento = $record->nro_documento;
+        $this->description = $record->description;
         $this->selected_id = $record->id;
         $this->action = 2;
     }
@@ -94,14 +95,14 @@ class Clientes extends Component
     {
         //validación campos requeridos
         $this->validate([
-            'nro_documento' => 'required|min:4' //validamos que descripción no sea vacío o nullo y que tenga al menos 4 caracteres
+            'description' => 'required|min:4' //validamos que descripción no sea vacío o nullo y que tenga al menos 4 caracteres
         ]);
 
         //valida si existe otro cajón con el mismo nombre (edicion de tipos)
         if ($this->selected_id > 0) {
-            $existe = Cliente::where('nro_documento', $this->nro_documento)
+            $existe = Cliente::where('description', $this->description)
                 ->where('id', '<>', $this->selected_id)
-                ->select('nro_documento')
+                ->select('description')
                 ->get();
 
             if ($existe->count() > 0) {
@@ -111,8 +112,8 @@ class Clientes extends Component
             }
         } else {
             //valida si existe otro cajón con el mismo nombre (nuevos registros)
-            $existe = Cliente::where('nro_documento', $this->nro_documento)
-                ->select('nro_documento')
+            $existe = Cliente::where('description', $this->description)
+                ->select('description')
                 ->get();
 
             if ($existe->count() > 0) {
@@ -134,7 +135,7 @@ class Clientes extends Component
         if ($this->selected_id <= 0) {
             //creamos el registro
             $tipo =  Cliente::create([
-                'nro_documento' => $this->nro_documento
+                'description' => $this->description
             ]);
             if ($this->image) {
                 $image = $this->image;
@@ -151,7 +152,7 @@ class Clientes extends Component
             $record = Cliente::find($this->selected_id);
             //actualizamos el registro
             $record->update([
-                'nro_documento' => $this->nro_documento
+                'description' => $this->description
             ]);
             if ($this->image) {
                 $image = $this->image;
