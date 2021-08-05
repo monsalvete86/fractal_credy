@@ -2,225 +2,200 @@
 
 namespace App\Http\Livewire;
 
-use App\Models\Cliente;
-use Illuminate\Validation\Rule;
-use Livewire\Component;
 use Livewire\WithPagination;
+use Livewire\Component;
+use App\Models\Cliente;
+
 
 class Clientes extends Component
 {
     use WithPagination;
-    public $modalFormVisible = false;
-    public $modelId;
-    public $nombres;
-    public $apellidos;
-    public $tipo_documento;
-    public $nro_documento;
-    public $fecha_nacimiento;
-    public $genero;
-    public $celular1;
-    public $celular2;
-    public $direccion;
-    public $estado_civil;
-    public $lugar_trabajo;
-    public $cargo;
-    public $independiente;
-    public $foto;
-    
-    //public $search;
+
+    //public properties
+    // Variables o propiedades públicas. Campos de table - filas-search-acciones y pagination
+
+    public $nombres, $apellidos, $tipo_documento, $nro_documento, $fecha_nacimiento, $genero, $celular1, $celular2, $direccion, $email, $estado_civil, $lugar_trabajo, $cargo, $independiente, $image;
+
+    public  $selected_id, $search;   //para búsquedas y fila seleccionada
+    public  $action = 1;             //manejo de ventanas - movernos entre formularios editar o crear
+    protected $paginationTheme = 'bootstrap';
+    private $pagination = 1;         //paginación de tabla      
+
+    // public $create = 2;
+    // public $edit = 2;
+    // public $destroy = '';
 
 
-    
-
-    /**
-     * The validation rules
-     * 
-     * @return void
-     */
-    public function rules()
+    //primer método que se ejecuta al inicializar el componente
+    // El primero en ejecutarse al renderizar el componente o iniciarse, sirve por ejemplo para cuando se crea la instancia de este controller nosotros en el mount poder definir variables ocn su información 
+    public function mount()
     {
-        return [         
-            'nombres' => 'required',
-            'apellidos' => 'required',
-            'tipo_documento' => 'required',
-            'nro_documento' => 'required',
-            'fecha_nacimiento' => 'required',
-            'genero' => 'required',
-            'celular1' => 'required',
-            'celular2' => 'required',
-            'direccion' => 'required',
-            'estado_civil' => 'required',
-            'lugar_trabajo' => 'required',
-            'cargo' => 'required',
-            // 'independiente' => 'required',
-            // 'foto' => 'required',
-        ];
     }
 
-    /**
-     * Runs everytime the title
-     * variable is updated.
-     * 
-     * @param mixed $value
-     * @return void
-     */
 
-    public function updatedNombre($value)
-    {
-        $this->generateSearch($value);
-    }
-
-   
-    /**
-     * The create function.
-     * 
-     * @return void
-     */
-    public function create()
-    {
-        $this->validate();
-        Cliente::create($this->modelData());
-        $this->modalFormVisible = false;
-        $this->resetVars();
-    }
-
-    /**
-     * The read funtion.
-     * 
-     * @return void
-     */
-    public function read()
-    {
-        return Cliente::paginate(2);
-    }
-
-    public function update()
-    {
-        $this->validate();
-        Cliente::find($this->modelId)->update($this->modelData());
-        $this->modalFormVisible = false;
-    }
-
-    /**
-     * shows the form modal
-     * of the create fuction.
-     * 
-     * @return void
-     */
-    public function createShowModal()
-    {
-        $this->resetValidation();
-        $this->resetVars();
-        $this->modalFormVisible = true;
-    }
-
-    /**
-     * Shows the form model
-     * in update mode.
-     * 
-     * @param mixed $id
-     * @return void
-     */
-    public function updateShowModal($id)
-    {
-        $this->resetValidation();
-        $this->resetVars();
-        $this->modelId = $id;
-        $this->modalFormVisible = true;
-        $this->loadModel();
-    }
-
-    public function deleteShowModal($id)
-    {
-        
-    }
-
-    /**
-     * Loads the model data
-     * of this component.
-     * 
-     * @return void
-     */
-    public function loadModel()
-    {
-        $data = Cliente::find($this->modelId);
-        $this->nombres = $data->nombres;
-        $this->apellidos = $data->apellidos;
-        $this->tipo_documento = $data->tipo_documento;
-        $this->nro_documento = $data->nro_documento;
-        $this->fecha_nacimiento = $data->fecha_nacimiento;
-        $this->genero = $data->genero;
-        $this->celular1 = $data->celular1;
-        $this->celular2 = $data->celular2;
-        $this->direccion = $data->direccion;
-        $this->estado_civil = $data->estado_civil;
-        $this->lugar_trabajo = $data->lugar_trabajo;
-        $this->cargo = $data->cargo;
-        $this->independiente = $data->independiente;
-        $this->foto = $data->foto;
-    }
-
-    /**
-     * The data for the model mapped
-     * in this component.
-     * 
-     * @return void
-     */
-    public function modelData()
-    {
-        return [
-
-          'nombres' => $this->nombres,
-          'apellidos' => $this->apellidos,
-          'tipo_documento' => $this->tipo_documento,
-          'nro_documento' => $this->nro_documento,
-          'genero' => $this->genero,
-          'fecha_nacimiento' => $this->fecha_nacimiento,
-          'celular1' => $this->celular1,
-          'celular2' => $this->celular2,
-          'direccion' => $this->direccion,
-          'estado_civil' => $this->estado_civil,
-          'lugar_trabajo' => $this->lugar_trabajo,
-          'cargo' => $this->cargo,
-          'independiente' => $this->independiente,
-          'foto' => $this->foto,
-        ];
-    }
-
-    /**
-     * Resets all the variables
-     * to null.
-     * 
-     * @return void
-     */
-    public function resetVars()
-    {
-        $this->modelId = null;
-        $this->nombres = null;
-        $this->apellidos = null;
-        $this->nro_documento = null;
-        $this->tipo_documento = null;
-        $this->fecha_nacimiento = null;
-        $this->genero = null;
-        $this->celular1 = null;
-        $this->celular2 = null;
-        $this->direccion = null;
-        $this->estado_civil = null;
-        $this->lugar_trabajo = null;
-        $this->cargo = null;
-        $this->independiente = null;
-        $this->foto = null;
-    }
-   
-    /**
-     * the livewire render fuction.
-     * 
-     * @return void
-     */
+    //método que se ejecuta después de mount al inciar el componente
+    // se ejecuta despues del mount - index - accion principal.
     public function render()
     {
-        return view('livewire.clientes', [
-            'clientes' => $this->read(),
+        //si la propiedad buscar tiene al menos un caracter, devolvemos el componente y le inyectamos los registros de una búsqueda con like y paginado a  5 
+        if (strlen($this->search) > 0) {
+            $info = Clientes::where('nro_documento', 'like', '%' .  $this->search . '%')
+                ->paginate($this->pagination);
+            return view('livewire.tipos.component', [
+                'info' => $info,
+            ]);
+        } else {
+            // caso contrario solo retornamos el componente inyectado con 5 registros
+            return view('livewire.tipos.component', [
+                'info' => Clientes::paginate($this->pagination),
+            ]);
+        }
+    }
+
+    // Busquedas con paginación - buscando dentro del paginado - para que no se vaya al inicio o se quede en una pagina.
+    //permite la búsqueda cuando se navega entre el paginado
+    public function updatingSearch(): void
+    {
+        $this->gotoPage(1);
+    }
+
+
+    // movernos entre formularios-ventanas   -ocultar o mostrar
+    //activa la vista edición o creación
+    public function doAction($action)
+    {
+        $this->action = $action;
+    }
+
+
+    // limpiar todas las variables
+    //método para reiniciar variables
+    private function resetInput()
+    {
+        $this->nro_documento = '';
+        $this->selected_id = null;
+        $this->action = 1;
+        $this->search = '';
+    }
+
+    // Mostrar la info del registro a editar - Buscar o generar exception que se volcaria en las vistas
+    //buscamos el registro seleccionado y asignamos la info a las propiedades
+    public function edit($id)
+    {
+        $record = Cliente::findOrFail($id);
+        $this->nro_documento = $record->nro_documento;
+        $this->selected_id = $record->id;
+        $this->action = 2;
+    }
+
+
+    //método para registrar y/o actualizar info
+    public function StoreOrUpdate()
+    {
+        //validación campos requeridos
+        $this->validate([
+            'nro_documento' => 'required|min:4' //validamos que descripción no sea vacío o nullo y que tenga al menos 4 caracteres
         ]);
+
+        //valida si existe otro cajón con el mismo nombre (edicion de tipos)
+        if ($this->selected_id > 0) {
+            $existe = Cliente::where('nro_documento', $this->nro_documento)
+                ->where('id', '<>', $this->selected_id)
+                ->select('nro_documento')
+                ->get();
+
+            if ($existe->count() > 0) {
+                session()->flash('msg-error', 'Ya existe el Tipo');
+                $this->resetInput();
+                return;
+            }
+        } else {
+            //valida si existe otro cajón con el mismo nombre (nuevos registros)
+            $existe = Cliente::where('nro_documento', $this->nro_documento)
+                ->select('nro_documento')
+                ->get();
+
+            if ($existe->count() > 0) {
+                session()->flash('msg-error', 'Ya existe el Tipo');
+                $this->resetInput();
+                return;
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+        if ($this->selected_id <= 0) {
+            //creamos el registro
+            $tipo =  Cliente::create([
+                'nro_documento' => $this->nro_documento
+            ]);
+            if ($this->image) {
+                $image = $this->image;
+                $fileName = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                $moved = \Image::make($image)->save('images/' . $fileName);
+
+                if ($moved) {
+                    $tipo->imagen = $fileName;
+                    $tipo->save();
+                }
+            }
+        } else {
+            //buscamos el tipo
+            $record = Cliente::find($this->selected_id);
+            //actualizamos el registro
+            $record->update([
+                'nro_documento' => $this->nro_documento
+            ]);
+            if ($this->image) {
+                $image = $this->image;
+                $fileName = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
+                $moved = \Image::make($image)->save('images/' . $fileName);
+
+                if ($moved) {
+                    $record->imagen = $fileName;
+                    $record->save();
+                }
+            }
+        }
+
+
+        //enviamos feedback al usuario
+        if ($this->selected_id)
+            session()->flash('message', 'Tipo Actualizado');
+        else
+            session()->flash('message', 'Tipo Creado');
+
+        //limpiamos las propiedades
+        $this->resetInput();
+    }
+
+
+    //escuchar eventos y ejecutar acción solicitada
+    protected $listeners = [
+        'deleteRow'     => 'destroy',
+        'fileUpload' => 'handleFileUpload'
+    ];
+
+    public function handleFileUpload($imageData)
+    {
+        $this->image = $imageData;
+    }
+
+
+    //método para eliminar un registro dado
+    public function destroy($id)
+    {
+        if ($id) { //si es un id válido
+            $record = Cliente::where('id', $id); //buscamos el registro
+            $record->delete(); //eliminamos el registro
+            $this->resetInput(); //limpiamos las propiedades
+        }
     }
 }
