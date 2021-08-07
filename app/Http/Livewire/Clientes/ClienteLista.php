@@ -36,18 +36,25 @@ class ClienteLista extends Component
 
   public function render()
   {
-    $clientes = Cliente::where(function($query) {
+    $clientes = Cliente::where(function ($query) {
       $query->select('*')->where('nombres', 'like', "$this->textSearch%")
-      ->orWhere('apellidos', 'like', "$this->textSearch%")
-      ->orWhere('email', 'like', "$this->textSearch%");
+        ->orWhere('apellidos', 'like', "$this->textSearch%")
+        ->orWhere('email', 'like', "$this->textSearch%");
     });
 
-    $clientes = $clientes->orderBy('nombres')->orderBy('apellidos')->paginate(10);
+    $clientes = $clientes->orderBy('nombres')->orderBy('apellidos')->paginate(1);
 
     return view('clientes.cliente-lista', [
       'clientes' => $clientes,
     ]);
   }
 
-
+   /**
+      public function delete($id)
+      {
+        Cliente::find($id)->delete();
+        session()->flash('message', 'Post Deleted Successfully.');
+        $this->render();
+      }
+     */
 }
