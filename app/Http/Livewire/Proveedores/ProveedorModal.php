@@ -37,11 +37,11 @@ class ProveedorModal extends Component
      */
     public function rules()
     {
-        return [         
+        return [
             'nombres' => 'required',
             'apellidos' => 'required',
             'tipo_documento' => 'required',
-            'nro_documento' => 'required',            
+            'nro_documento' => 'required',
             'celular1' => 'required',
             'celular2' => 'required',
             'direccion' => 'required',
@@ -59,7 +59,7 @@ class ProveedorModal extends Component
         $this->validate();
         Proveedor::create($this->modelData());
         $this->resetVars();
-        
+
     }
 
 
@@ -81,13 +81,19 @@ class ProveedorModal extends Component
         $this->resetVars();
         $this->modelId = $proveedor['id'];
         $this->loadModel($proveedor);
-       
-        
+
     }
 
     public function deleteShowModal($id)
     {
-        
+
+    }
+
+    public function closeModal()
+    {
+      $this->modalStyle = 'display:none';
+      $this->reset();
+      $this->dispatchBrowserEvent('cerrarModal');
     }
 
     public function loadModel($proveedor)
@@ -131,11 +137,4 @@ class ProveedorModal extends Component
         $this->email = null;
     }
 
-    public function closeModal() {
-        $this->modalStyle = 'display:none';
-        $this->reset();
-        $this->dispatchBrowserEvent('cerrarModal'); 
-    }
-   
-   
 }

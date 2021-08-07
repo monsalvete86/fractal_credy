@@ -39,17 +39,17 @@ class ClienteModal extends Component
 
     /**
      * The validation rules
-     * 
+     *
      * @return void
      */
     public function rules()
     {
-        return [         
+        return [
             'nombres' => 'required',
             'apellidos' => 'required',
             'tipo_documento' => 'required',
             'nro_documento' => 'required',
-            'email' => 'required',            
+            'email' => 'required',
             'fecha_nacimiento' => 'required',
             'genero' => 'required',
             'celular1' => 'required',
@@ -66,7 +66,7 @@ class ClienteModal extends Component
     /**
      * Runs everytime the title
      * variable is updated.
-     * 
+     *
      * @param mixed $value
      * @return void
      */
@@ -76,10 +76,10 @@ class ClienteModal extends Component
         $this->generateSearch($value);
     }
 
-   
+
     /**
      * The create function.
-     * 
+     *
      * @return void
      */
     public function create()
@@ -87,7 +87,7 @@ class ClienteModal extends Component
         $this->validate();
         Cliente::create($this->modelData());
         $this->resetVars();
-        
+
     }
 
 
@@ -100,7 +100,7 @@ class ClienteModal extends Component
     /**
      * shows the form modal
      * of the create fuction.
-     * 
+     *
      * @return void
      */
     public function createShowModal()
@@ -113,7 +113,7 @@ class ClienteModal extends Component
     /**
      * Shows the form model
      * in update mode.
-     * 
+     *
      * @param mixed $id
      * @return void
      */
@@ -124,19 +124,25 @@ class ClienteModal extends Component
         $this->resetVars();
         $this->modelId = $cliente['id'];
         $this->loadModel($cliente);
-       
-        
+
     }
 
     public function deleteShowModal($id)
     {
-        
+
+    }
+
+    public function closeModal()
+    {
+      $this->modalStyle = 'display:none';
+      $this->reset();
+      $this->dispatchBrowserEvent('cerrarModal');
     }
 
     /**
      * Loads the model data
      * of this component.
-     * 
+     *
      * @return void
      */
     public function loadModel($cliente)
@@ -163,7 +169,7 @@ class ClienteModal extends Component
     /**
      * The data for the model mapped
      * in this component.
-     * 
+     *
      * @return void
      */
     public function modelData()
@@ -191,7 +197,7 @@ class ClienteModal extends Component
     /**
      * Resets all the variables
      * to null.
-     * 
+     *
      * @return void
      */
     public function resetVars()
@@ -214,11 +220,4 @@ class ClienteModal extends Component
         $this->foto = null;
     }
 
-    public function closeModal() {
-        $this->modalStyle = 'display:none';
-        $this->reset();
-        $this->dispatchBrowserEvent('cerrarModal'); 
-    }
-   
-   
 }

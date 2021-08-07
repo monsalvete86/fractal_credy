@@ -8,7 +8,7 @@ use App\Models\User;
 use Livewire\Component;
 
 class UserModal extends Component
-{  
+{
   public $modalStyle = 'display:none';
   protected $listeners = [
     'showData',
@@ -50,14 +50,14 @@ class UserModal extends Component
   }
 
   public function showClean() {
-    $this->reset();    
+    $this->reset();
     $this->getSedes();
     $this->getRoles();
     $this->modalStyle = 'display:block';
   }
 
-  public function showData($user) {    
-    $this->fullUser = $user;    
+  public function showData($user) {
+    $this->fullUser = $user;
     $this->editando = $user['email'];
     $this->idUsuario = $user['id'];
     $this->nombreCorto = $user['name'];
@@ -69,10 +69,10 @@ class UserModal extends Component
     $this->tipoDocumento = $user['tipo_documento'];
     $this->documento = $user['documento'];
     $this->idRol = $user['id_rol'];
-    $this->idSede = $user['id_sede'];   
-    $this->password = ''; 
-    $this->antPass = $user['password'];   
-    
+    $this->idSede = $user['id_sede'];
+    $this->password = '';
+    $this->antPass = $user['password'];
+
     $this->modalStyle = 'display:block';
   }
 
@@ -93,31 +93,31 @@ class UserModal extends Component
   }
 
   public function closeModal() {
-    $this->modalStyle = 'display:none';    
+    $this->modalStyle = 'display:none';
     $this->reset();
     $this->emit('userTableUpdate');
-    $this->dispatchBrowserEvent('cerrarModal'); 
+    $this->dispatchBrowserEvent('cerrarModal');
     $this->getSedes();
     $this->getRoles();
   }
 
   public function crear() {
-    $data = $this->validate();    
+    $data = $this->validate();
     $newUsuario = new User;
    // dd($this->nombreCorto);
     $this->cargarData($newUsuario);
   }
 
-  public function editar() {    
+  public function editar() {
     $this->validate();
     $oldUsuario = User::where('email', '=', $this->fullUser['email'])->firstOrFail();
-    $this->cargarData($oldUsuario);    
+    $this->cargarData($oldUsuario);
   }
 
-  public function cargarData($user) { 
+  public function cargarData($user) {
     $user->name = $this->nombreCorto;
     $user->nombre = $this->nombreUsuario;
-    $user->email = $this->email;    
+    $user->email = $this->email;
     $user->celular = $this->celular;
     $user->direccion = $this->direccion;
     $user->tipo_documento = $this->tipoDocumento;

@@ -11,7 +11,7 @@
         <option value="1">Administrador</option>
         <option value="2">Operario</option>
       </select>
-    </div>    
+    </div>
   </div>
   <div class="form-group row">
     <div class="col-12">
@@ -26,10 +26,10 @@
         <th>Nombre</th>
         <th>Correo</th>
         <th>Documento</th>
-        <td>Celular</td>
-        <td>Sede</td>
-        <td>Rol</td>
-        <td>Estado</td>
+        <th>Celular</th>
+        <th>Sede</th>
+        <th>Rol</th>
+        <th>Estado</th>
         <th>Opciones</th>
       </tr>
     </thead>
@@ -38,20 +38,20 @@
         <tr>
           <td>{{$cont++}} </td>
           <td>{{$user->name}} {{$user->id}}</td>
-          <td>{{$user->nombre}}</td>
+          <td>{{$use  r->nombre}}</td>
           <td>{{$user->email}}</td>
           <td>{{$user->documento}}</td>
           <td>{{$user->celular}}</td>
           <td>{{$user->sede}}</td>
           <td>{{$user->rol}}</td>
           <td>{{$user->estado == 0 ? 'Inactivo' : 'Activo'}}</td>
-          <td>            
+          <td>
             @if($user->estado == 1)
               <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
                 wire:click="showModal({{$user}})"
               >
               <span class="material-icons">create</span>
-                
+
               </button>
               <button class="btn btn-danger" onclick="inactivar('{{$user->email}}','{{$user->name}}')">
                 <span class="material-icons">cancel</span>
@@ -59,7 +59,6 @@
             @else
               <button class="btn btn-warning" onclick="activar('{{$user->email}}','{{$user->name}}')">
                 <span class="material-icons">check_circle</span>
-                
               </button>
             @endif
           </td>
@@ -67,7 +66,7 @@
       @endforeach
     </tbody>
   </table>
-  {{$users->links()}}  
+  {{$users->links()}}
 </div>
 @push('scripts')
 

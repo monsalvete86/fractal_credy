@@ -9,7 +9,7 @@
           </button>
         </div>
         <form wire:submit.prevent="@if($editando) editar() @else crear() @endif">
-          <div class="modal-body">          
+          <div class="modal-body">
             <div class="form-group row">
               <div class="col-12 col-sm-6">
                 <label for="nombreCorto">Usuario</label>
@@ -17,7 +17,7 @@
                 @error('nombreCorto')
                   <p class="text-danger">{{$message }}</p>
                 @enderror
-              </div>            
+              </div>
               <div class="col-12 col-sm-6">
                 <label for="nombreUsuario">Nombre</label>
                 <input type="text" id="nombreUsuario" wire:model="nombreUsuario" class="form-control" required>
@@ -50,7 +50,7 @@
               </div>
               <div class="col-12 col-sm-6">
                 <label for="documento">No. Documento</label>
-                <input type="text" id="documento" wire:model="documento" class="form-control">                
+                <input type="text" id="documento" wire:model="documento" class="form-control">
               </div>
             </div>
             <div class="form-group row">
@@ -68,7 +68,7 @@
                 </select>
               </div>
             </div>
-            <div class="form-group row">            
+            <div class="form-group row">
               <div class="col-12 col-sm-6">
                 <label for="idRol">Rol</label>
                 <select class="form-control" wire:model="idRol" id="idRol" required>
@@ -83,7 +83,7 @@
                 <input type="password" id="password" wire:model="password" class="form-control" value="" @if($editando == '') required @endif>
               </div>
             </div>
-          </div>          
+          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" wire:click="closeModal()" data-dismiss="modal">Cancelar</button>
             <button type="submit" class="btn btn-success" >{{$idUsuario? 'Actualizar' : 'Crear'}}</button>
@@ -98,5 +98,5 @@
   window.addEventListener('cerrarModal', event => {
      $("#exampleModal").modal('hide');
   })
-  
+
 </script>

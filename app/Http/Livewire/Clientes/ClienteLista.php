@@ -22,6 +22,13 @@ class ClienteLista extends Component
     $this->emit('updateShowModal', $id);
   }
 
+  public function delete($id)
+  {
+    Cliente::find($id)->delete();
+    session()->flash('message', 'Post Deleted Successfully.');
+    $this->render();
+  }
+
   public function read()
   {
     return Cliente::paginate(10);
@@ -36,16 +43,11 @@ class ClienteLista extends Component
     });
 
     $clientes = $clientes->orderBy('nombres')->orderBy('apellidos')->paginate(10);
-  
+
     return view('clientes.cliente-lista', [
       'clientes' => $clientes,
     ]);
-  }  
-
-  public function delete($id)
-  {
-    Cliente::find($id)->delete();
-    session()->flash('message', 'Post Deleted Successfully.');
-    $this->render();
   }
+
+
 }

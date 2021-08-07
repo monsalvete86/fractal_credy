@@ -16,10 +16,10 @@
     </div>
 
   </div>
-  <div class="table-responsive"> 
+  <div class="table-responsive">
     <table class="table table-sm table-bordered">
         <thead>
-            <tr class="">                                   
+            <tr class="">
                 <th>#</th>
                 <th>Foto</th>
                 <th>Nombre</th>
@@ -34,7 +34,7 @@
                 <th>Estado civil</th>
                 <th>Lugar Trabajo</th>
                 <th>Cargo</th>
-                <th>Independiente</th>                
+                <th>Independiente</th>
                 <th></th>
             </tr>
         </thead>
@@ -57,20 +57,20 @@
                     <td>{{ $cliente->lugar_trabajo }}</td>
                     <td>{{ $cliente->cargo }}</td>
                     <td>{{ $cliente->independiente }}</td>
-                    
-                    <td class=""> 
-                        <button type="button" class="btn btn-sm btn-success mb-1" 
-                        data-toggle="modal" data-target="#clienteModal" 
+
+                    <td class="">
+                        <button type="button" class="btn btn-sm btn-success mb-1"
+                        data-toggle="modal" data-target="#clienteModal"
                         wire:click="actualizarCliente({{ $cliente }})">
                             {{ __('Actualizar') }}
                         </button>
                         <button class="btn btn-sm btn-danger" wire:click="delete('{{ $cliente->id }}')" type="button"  value="borrar">
                         {{__('Eliminar') }}
-                        </button>    
-                    </td> 
+                        </button>
+                    </td>
                 </tr>
               @endforeach
-            @else 
+            @else
               <tr>
                 <td class="px-6 py-4 text-sm whitespace-no-wrap" colspan="4">No Results Found</td>
               </tr>

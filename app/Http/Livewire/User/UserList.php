@@ -20,16 +20,16 @@ class UserList extends Component
     'borrarUsuario',
     'activarUsuario'
   ];
-  
+
   public function render() {
-    
+
     $users = User::where(function($query) {
       $query->select('*','users.estado as users_estado')->where('nombre', 'like', "$this->textSearch%")
       ->orWhere('name', 'like', "$this->textSearch%")
       ->orWhere('email', 'like', "$this->textSearch%");
     })->join('sedes','sedes.id','id_sede')
       ->join('roles','roles.id','id_rol');
-      
+
     if($this->rolSearch != 0) {
       $users = $users->where('id_rol', "=", "$this->rolSearch");
     }
@@ -48,7 +48,7 @@ class UserList extends Component
     $this->resetPage();
   }
 
-  public function showModal($user) {    
+  public function showModal($user) {
     $this->emit('showData', $user);
   }
 
