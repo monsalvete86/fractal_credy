@@ -15,7 +15,7 @@ class CreateProveedoresTable extends Migration
     {
         Schema::create('proveedores', function (Blueprint $table) {
             $table->id();
-            $table->char('nombres', 100); 
+            $table->char('nombres', 100);
             $table->char('apellidos', 100);
             $table->char('tipo_documento', 40)->default('Cédula de ciudadanía');
             $table->double('nro_documento',20,0);

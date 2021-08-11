@@ -26,7 +26,6 @@
                                 <th>Valor Capital</th>
                                 <th>Id Tercero</th>
                                 <th>Fecha Pago</th>
-                                <th></th>
                             </tr>
                         </thead>
                         <tbody class="bg-white divide-y divide-gray-200">

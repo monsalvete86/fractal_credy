@@ -20,11 +20,10 @@ class Proveedores extends Component
     public $celular2;
     public $direccion;
     public $email;
-    
-    
+
     public function rules()
     {
-        return [         
+        return [
             'nombres' => 'required',
             'apellidos' => 'required',
             'tipo_documento' => 'required',

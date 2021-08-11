@@ -7,63 +7,57 @@
   </div>
 
   <div class="form-row">
-
     <div class="form-group">
-      <button class="btn btn-outline-primary" wire:click="crearProveedor()" data-toggle="modal" data-target="#proveedorModal" >
+      <button class="btn btn-outline-primary" wire:click="crearProveedor()" data-toggle="modal" data-target="#proveedorModal">
         Crear
       </button>
-
     </div>
-
   </div>
   <div class="table-responsive">
     <table class="table table-sm table-bordered">
-        <thead>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Nombre</th>
+          <th>Apellido</th>
+          <th>Tipo Documento</th>
+          <th>Nro Documento</th>
+          <th>Celular1</th>
+          <th>Celular2</th>
+          <th>Direccion</th>
+          <th>Correo</th>
+          <th>Opciones</th>
+        </tr>
+      </thead>
+      <tbody class="bg-white divide-y divide-gray-200">
+        @if ($proveedores->count())
+          @foreach ($proveedores as $proveedor)
             <tr>
-              <th>#</th>
-              <th>Nombre</th>
-              <th>Apellido</th>
-              <th>Tipo Documento</th>
-              <th>Nro Documento</th>
-              <th>Celular1</th>
-              <th>Celular2</th>
-              <th>Direccion</th>
-              <th>Correo</th>
-              <th>O pciones</th>
+              <td>{{ $proveedor->id }}</td>
+              <td>{{ $proveedor->nombres }}</td>
+              <td>{{ $proveedor->apellidos }}</td>
+              <td>{{ $proveedor->tipo_documento }}</td>
+              <td>{{ $proveedor->nro_documento }}</td>
+              <td>{{ $proveedor->celular1 }}</td>
+              <td>{{ $proveedor->celular2 }}</td>
+              <td>{{ $proveedor->direccion }}</td>
+              <td>{{ $proveedor->email }}</td>
+              <td>
+                <button type="button" class="btn btn-sm btn-success mb-1" data-toggle="modal" data-target="#proveedorModal" wire:click="actualizarProveedor({{ $proveedor }})">
+                  Actualizar
+                </button>
+                <button class="btn btn-sm btn-danger" wire:click="delete('{{ $proveedor->id }}')" type="button"  value="borrar">
+                  Eliminar
+                </button>
+              </td>
             </tr>
-        </thead>
-        <tbody class="bg-white divide-y divide-gray-200">
-            @if ($proveedores->count())
-              @foreach ($proveedores as $proveedor)
-                <tr>
-                  <td>{{ $proveedor->id }}</td>
-                  <td>{{ $proveedor->nombres }}</td>
-                  <td>{{ $proveedor->apellidos }}</td>
-                  <td>{{ $proveedor->tipo_documento }}</td>
-                  <td>{{ $proveedor->nro_documento }}</td>
-                  <td>{{ $proveedor->celular1 }}</td>
-                  <td>{{ $proveedor->celular2 }}</td>
-                  <td>{{ $proveedor->direccion }}</td>
-                  <td>{{ $proveedor->email }}</td>
-
-                  <td>
-                    <button type="button" class="btn btn-sm btn-success mb-1"
-                    data-toggle="modal" data-target="#proveedorModal"
-                    wire:click="actualizarProveedor({{ $proveedor }})">
-                      Actualizar
-                    </button>
-                    <button class="btn btn-sm btn-danger" wire:click="delete('{{ $proveedor->id }}')" type="button"  value="borrar">
-                      Eliminar
-                    </button>
-                  </td>
-                </tr>
-              @endforeach
-            @else
-              <tr>
-                <td class="px-6 py-4 text-sm whitespace-no-wrap" colspan="4">No Results Found</td>
-              </tr>
-            @endif
-        </tbody>
+          @endforeach
+        @else
+          <tr>
+            <td class="px-6 py-4 text-sm whitespace-no-wrap" colspan="4">No Results Found</td>
+          </tr>
+        @endif
+      </tbody>
     </table>
   </div>
 </div>

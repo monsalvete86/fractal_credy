@@ -38,7 +38,7 @@
         <tr>
           <td>{{$cont++}} </td>
           <td>{{$user->name}} {{$user->id}}</td>
-          <td>{{$use  r->nombre}}</td>
+          <td>{{$user->nombre}}</td>
           <td>{{$user->email}}</td>
           <td>{{$user->documento}}</td>
           <td>{{$user->celular}}</td>

@@ -171,15 +171,6 @@ class ClienteModal extends Component
             }
         }
 
-
-
-
-
-
-
-
-
-
         if ($this->selected_id <= 0) {
             //creamos el registro
             $tipo =  Cliente::create([

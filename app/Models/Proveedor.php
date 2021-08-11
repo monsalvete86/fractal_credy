@@ -10,8 +10,6 @@ class Proveedor extends Model
 {
     use HasFactory;
 
-    
-
     protected $table = 'proveedores';
 
     protected $fillable = [
@@ -25,7 +23,6 @@ class Proveedor extends Model
        'email'
     ];
 
-    
     protected $attributes = [];
     protected $guarded = [];
     
