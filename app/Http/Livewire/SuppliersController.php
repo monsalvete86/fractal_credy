@@ -4,23 +4,19 @@ namespace App\Http\Livewire;
 
 use Livewire\WithPagination;
 use Livewire\Component;
-use App\Models\Cliente;
+use App\Supplier;
 
-
-class Clientes extends Component
+class SuppliersController extends Component
 {
     use WithPagination;
 
     //public properties
     // Variables o propiedades públicas. Campos de table - filas-search-acciones y pagination
-
-    public $nombres, $apellidos, $tipo_documento, $nro_documento, $fecha_nacimiento, $genero, $celular1, $celular2, $direccion, $email, $estado_civil, $lugar_trabajo, $cargo, $independiente, $image;
-
-    public $modalFormVisible = false;
+    public  $description, $image;            //campos de la tabla tipos
     public  $selected_id, $search;   //para búsquedas y fila seleccionada
     public  $action = 1;             //manejo de ventanas - movernos entre formularios editar o crear
     protected $paginationTheme = 'bootstrap';
-    private $pagination = 1;         //paginación de tabla  
+    private $pagination = 1;         //paginación de tabla
 
     // public $create = 2;
     // public $edit = 2;
@@ -40,7 +36,7 @@ class Clientes extends Component
     {
         //si la propiedad buscar tiene al menos un caracter, devolvemos el componente y le inyectamos los registros de una búsqueda con like y paginado a  5 
         if (strlen($this->search) > 0) {
-            $info = Cliente::where('description', 'like', '%' .  $this->search . '%')
+            $info = Supplier::where('description', 'like', '%' .  $this->search . '%')
                 ->paginate($this->pagination);
             return view('livewire.suppliers.component', [
                 'info' => $info,
@@ -48,7 +44,7 @@ class Clientes extends Component
         } else {
             // caso contrario solo retornamos el componente inyectado con 5 registros
             return view('livewire.suppliers.component', [
-                'info' => Cliente::paginate($this->pagination),
+                'info' => Supplier::paginate($this->pagination),
             ]);
         }
     }
@@ -83,7 +79,7 @@ class Clientes extends Component
     //buscamos el registro seleccionado y asignamos la info a las propiedades
     public function edit($id)
     {
-        $record = Cliente::findOrFail($id);
+        $record = Supplier::findOrFail($id);
         $this->description = $record->description;
         $this->selected_id = $record->id;
         $this->action = 2;
@@ -100,7 +96,7 @@ class Clientes extends Component
 
         //valida si existe otro cajón con el mismo nombre (edicion de tipos)
         if ($this->selected_id > 0) {
-            $existe = Cliente::where('description', $this->description)
+            $existe = Supplier::where('description', $this->description)
                 ->where('id', '<>', $this->selected_id)
                 ->select('description')
                 ->get();
@@ -112,7 +108,7 @@ class Clientes extends Component
             }
         } else {
             //valida si existe otro cajón con el mismo nombre (nuevos registros)
-            $existe = Cliente::where('description', $this->description)
+            $existe = Supplier::where('description', $this->description)
                 ->select('description')
                 ->get();
 
@@ -134,7 +130,7 @@ class Clientes extends Component
 
         if ($this->selected_id <= 0) {
             //creamos el registro
-            $tipo =  Cliente::create([
+            $tipo =  Tipo::create([
                 'description' => $this->description
             ]);
             if ($this->image) {
@@ -149,7 +145,7 @@ class Clientes extends Component
             }
         } else {
             //buscamos el tipo
-            $record = Cliente::find($this->selected_id);
+            $record = Tipo::find($this->selected_id);
             //actualizamos el registro
             $record->update([
                 'description' => $this->description
@@ -194,7 +190,7 @@ class Clientes extends Component
     public function destroy($id)
     {
         if ($id) { //si es un id válido
-            $record = Cliente::where('id', $id); //buscamos el registro
+            $record = Tipo::where('id', $id); //buscamos el registro
             $record->delete(); //eliminamos el registro
             $this->resetInput(); //limpiamos las propiedades
         }

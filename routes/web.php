@@ -1,8 +1,10 @@
 <?php
+
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CreditoController;
 use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\SuppliersController;
 use App\Http\Controllers\ProveedorController;
 
 /*
@@ -20,39 +22,41 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['middleware' => 'auth:sanctum', 'verified'], function() {
+Route::group(['middleware' => 'auth:sanctum', 'verified'], function () {
     Route::get('usuarios', [UserController::class, 'list'])->name('usuarios');
-    
 });
 
-Route::group(['middleware' => 'auth:sanctum', 'verified'], function() {
+Route::group(['middleware' => 'auth:sanctum', 'verified'], function () {
     Route::get('creditos', [CreditosController::class, 'main'])->name('creditos');
 });
 
 Route::group(['middleware' => [
     'auth:sanctum',
     'verified',
-]], function (){
+]], function () {
 
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
 
-    // Route::get('/clientes', function () {
-    //     return view('admin.clientes');
-    // })->name('clientes');
+    // Route::get('/supplier', function () {
+    //     return view('supplier.lista');
+    // })->name('supplier');
 
     Route::get('clientes', [ClienteController::class, 'lista'])->name('clientes');
+    // Route::get('supplier', [SuppliersController::class, 'lista'])->name('supplier');
     Route::get('creditos', [CreditoController::class, 'list'])->name('creditos');
     Route::get('proveedores', [ProveedorController::class, 'lista'])->name('proveedores');
 
     // Route::get('/creditos', function () {
     //     return view('admin.creditos');
     // })->name('creditos');   
-    
+
     Route::get('/pagos', function () {
         return view('admin.pagos');
     })->name('pagos');
+
+    Route::view('suppliers', 'suppliers');
 
     //Route::get('/proveedores', function () {
     //    return view('admin.proveedores');
@@ -62,4 +66,3 @@ Route::group(['middleware' => [
         return view('layouts.navigation-menus');
     })->name('navigation-menus');
 });
-
