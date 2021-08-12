@@ -19,7 +19,7 @@
                     {{ __('Usuarios') }}
                 </x-jet-nav-link>
 
-                <x-jet-nav-link href="{{ route('clientes') }}" :active="request()->routeIs('clientes')">
+                <x-jet-nav-link href="suppliers">
                     {{ __('Clientes') }}
                 </x-jet-nav-link>
 
@@ -119,7 +119,7 @@
 
                             <!-- Authentication -->
                             <x-jet-dropdown-link href="{{ route('logout') }}" onclick="event.preventDefault();
-                             document.getElementById('logout-form').submit();">
+                                                 document.getElementById('logout-form').submit();">
                                 {{ __('Log out') }}
                             </x-jet-dropdown-link>
                             <form method="POST" id="logout-form" action="{{ route('logout') }}">

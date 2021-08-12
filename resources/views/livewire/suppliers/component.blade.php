@@ -37,7 +37,8 @@
                                     <th>Cargo</th>
                                     <th>Independiente</th>
                                     <th>Foto</th>
-                                    <th class="text-center">ACCIONES</th>
+                                    <th style="vertical-align: middle; right: 0.1px; position: sticky; background:#f2f2f2; border:3px;"
+                                        class="text-center">ACCIONES</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,8 +62,9 @@
                                         <td>{{ $r->lugar_trabajo }}</td>
                                         <td>{{ $r->cargo }}</td>
                                         <td>{{ $r->independiente }}</td>
-                                        <td>{{ $r->description }}</td>
-                                        <td class="text-center">
+                                        <td>{{ $r->image }}</td>
+                                        <td style="vertical-align: middle; right: 0.1px; position: sticky; background:#f2f2f2; border:3px;"
+                                            class="text-center">
                                             <!-- botons editar y eliminar -->
                                             @include('common.actions')
                                         </td>

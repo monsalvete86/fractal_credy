@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\CreditoController;
 use App\Http\Controllers\ClienteController;
-use App\Http\Controllers\SuppliersController;
+use App\Http\Livewire\SuppliersController;
 use App\Http\Controllers\ProveedorController;
 
 /*
@@ -43,8 +43,9 @@ Route::group(['middleware' => [
     //     return view('supplier.lista');
     // })->name('supplier');
 
-    Route::get('clientes', [ClienteController::class, 'lista'])->name('clientes');
-    // Route::get('supplier', [SuppliersController::class, 'lista'])->name('supplier');
+    // Route::view('clientes', 'clientes');
+    // Route::get('clientes', [ClienteController::class, 'lista'])->name('clientes');
+    // Route::get('suppliers', [SuppliersController::class, 'render'])->name('suppliers');
     Route::get('creditos', [CreditoController::class, 'list'])->name('creditos');
     Route::get('proveedores', [ProveedorController::class, 'lista'])->name('proveedores');
 
