@@ -21,6 +21,7 @@ class UserList extends Component
     'activarUsuario'
   ];
 
+<<<<<<< HEAD
   public function render()
   {
 
@@ -32,6 +33,18 @@ class UserList extends Component
       ->join('roles', 'roles.id', 'id_rol');
 
     if ($this->rolSearch != 0) {
+=======
+  public function render() {
+
+    $users = User::where(function($query) {
+      $query->select('*','users.estado as users_estado')->where('nombre', 'like', "$this->textSearch%")
+      ->orWhere('name', 'like', "$this->textSearch%")
+      ->orWhere('email', 'like', "$this->textSearch%");
+    })->join('sedes','sedes.id','id_sede')
+      ->join('roles','roles.id','id_rol');
+
+    if($this->rolSearch != 0) {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
       $users = $users->where('id_rol', "=", "$this->rolSearch");
     }
 
@@ -51,8 +64,12 @@ class UserList extends Component
     $this->resetPage();
   }
 
+<<<<<<< HEAD
   public function showModal($user)
   {
+=======
+  public function showModal($user) {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     $this->emit('showData', $user);
   }
 

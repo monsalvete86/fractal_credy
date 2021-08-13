@@ -51,16 +51,24 @@ class UserModal extends Component
     return view('user.user-modal');
   }
 
+<<<<<<< HEAD
   public function showClean()
   {
+=======
+  public function showClean() {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     $this->reset();
     $this->getSedes();
     $this->getRoles();
     $this->modalStyle = 'display:block';
   }
 
+<<<<<<< HEAD
   public function showData($user)
   {
+=======
+  public function showData($user) {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     $this->fullUser = $user;
     $this->editando = $user['email'];
     $this->idUsuario = $user['id'];
@@ -98,8 +106,12 @@ class UserModal extends Component
     $this->sedes = $auxSedes;
   }
 
+<<<<<<< HEAD
   public function closeModal()
   {
+=======
+  public function closeModal() {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     $this->modalStyle = 'display:none';
     $this->reset();
     $this->emit('userTableUpdate');
@@ -108,23 +120,35 @@ class UserModal extends Component
     $this->getRoles();
   }
 
+<<<<<<< HEAD
   public function crear()
   {
+=======
+  public function crear() {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     $data = $this->validate();
     $newUsuario = new User;
     // dd($this->nombreCorto);
     $this->cargarData($newUsuario);
   }
 
+<<<<<<< HEAD
   public function editar()
   {
+=======
+  public function editar() {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     $this->validate();
     $oldUsuario = User::where('email', '=', $this->fullUser['email'])->firstOrFail();
     $this->cargarData($oldUsuario);
   }
 
+<<<<<<< HEAD
   public function cargarData($user)
   {
+=======
+  public function cargarData($user) {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     $user->name = $this->nombreCorto;
     $user->nombre = $this->nombreUsuario;
     $user->email = $this->email;

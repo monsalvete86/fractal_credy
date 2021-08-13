@@ -11,14 +11,22 @@ class ProveedorLista extends Component
   use WithPagination;
   protected $paginationTheme = 'bootstrap';
   public $textSearch = '';
-  
-  public function crearProveedor() {
+
+  public function crearProveedor()
+  {
     $this->emit('createShowModal');
   }
 
   public function actualizarProveedor($id)
   {
     $this->emit('updateShowModal', $id);
+  }
+
+  public function delete($id)
+  {
+    Proveedor::find($id)->delete();
+    session()->flash('message', 'Post Deleted Successfully.');
+    $this->render();
   }
 
   public function read()
@@ -34,9 +42,9 @@ class ProveedorLista extends Component
     });
 
     $proveedores = $proveedores->orderBy('nombres')->orderBy('apellidos')->paginate(10);
-  
+
     return view('proveedores.proveedor-lista', [
       'proveedores' => $proveedores,
     ]);
-  }  
+  }
 }
