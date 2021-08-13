@@ -19,8 +19,14 @@ class ClienteModal extends Component
         'updateShowModal',
         'createShowModal'
     ];
+<<<<<<< HEAD
+    public $fullCliente = null;
+=======
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     public $editando = null;
     public $modelId;
+    public $idCliente = '';
+
     public $nombres;
     public $apellidos;
     public $tipo_documento;
@@ -35,15 +41,55 @@ class ClienteModal extends Component
     public $lugar_trabajo;
     public $cargo;
     public $independiente;
+<<<<<<< HEAD
+    public $foto;
+
+    // protected $rules = [
+    //     'nombres' => 'required|min:3',
+    //     'apellidos' => 'required',
+    //     'email' => 'email|required',
+    //     'nro_documento' => 'required',
+    //     'tipo_documento' => 'required',
+    //     'celular1' => 'required',
+    // ];
+
+    // protected $messages = [
+    //     'nombres.required' => 'El nombre es requerido.',
+    //     'apellidos.required' => 'Apellido requerido.',
+    //     'email.required' => 'Debe ingresar un correo válido.',
+    //     'nro_documento.required' => 'Debe ingresar el numero de documento.',
+    // ];
+
+=======
     public $image;
     public $idCliente = '';
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
 
     public function render()
     {
         return view('clientes.cliente-modal');
     }
+    /**
+     * shows the form modal
+     * of the create fuction.
+     * 
+     * @return void
+     */
+    public function createShowModal()
+    {
+        $this->resetValidation();
+        $this->resetVars();
+        $this->modalStyle = 'display:block';
+    }
 
 
+    /**
+     * Shows the form model
+     * in update mode.
+     * 
+     * @param mixed $id
+     * @return void
+     */
     /**
      * The validation rules
      *
@@ -56,6 +102,10 @@ class ClienteModal extends Component
             'apellidos' => 'required',
             'tipo_documento' => 'required',
             'nro_documento' => 'required',
+<<<<<<< HEAD
+            'email' => 'required',
+=======
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
             'fecha_nacimiento' => 'required',
             'genero' => 'required',
             'celular1' => 'required',
@@ -68,6 +118,37 @@ class ClienteModal extends Component
             'independiente' => 'required',
             // 'image' => 'required',
         ];
+    }
+
+
+
+    public function showData($cliente)
+    {
+        $this->fullCliente = $cliente;
+        $this->idUsuario = $cliente['id'];
+        $this->editando = $cliente['nombred'];
+        $this->nombreCorto = $cliente['apellidos'];
+        $this->nombreUsuario = $cliente['tipo_documento'];
+        $this->email = $cliente['nro_documento'];
+        $this->profilePhotoPath = $cliente['fecha_nacimiento'];
+        $this->celular = $cliente['genero'];
+        $this->direccion = $cliente['celular1'];
+        $this->tipoDocumento = $cliente['culular2'];
+        $this->documento = $cliente['direccion'];
+        $this->idRol = $cliente['email'];
+        $this->idSede = $cliente['estado_civil'];
+        $this->idSede = $cliente['lugar_trabajo'];
+        $this->idSede = $cliente['cargo independiente'];
+        $this->idSede = $cliente['foto'];
+
+        $this->modalStyle = 'display:block';
+    }
+
+    public function closeModal()
+    {
+        $this->modalStyle = 'display:none';
+        $this->reset();
+        $this->dispatchBrowserEvent('cerrarModal');
     }
 
     /**
@@ -84,6 +165,10 @@ class ClienteModal extends Component
     // }
 
 
+<<<<<<< HEAD
+
+=======
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     /**
      * The create function.
      *
@@ -103,6 +188,13 @@ class ClienteModal extends Component
     //método para reiniciar variables
     private function resetInput()
     {
+<<<<<<< HEAD
+        $this->validate();
+        $newCliente = new Cliente;
+        $this->cargarData($newCliente);
+        // Cliente::create($this->modelData());
+        // $this->resetVars();
+=======
         $this->nro_documento = '';
         $this->selected_id = null;
         $this->action = 1;
@@ -118,6 +210,7 @@ class ClienteModal extends Component
         $this->nro_documento = $record->nro_documento;
         $this->selected_id = $record->id;
         $this->action = 2;
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     }
 
 
@@ -257,6 +350,10 @@ class ClienteModal extends Component
     //     Cliente::find($this->modelId)->update($this->modelData());
     // }
 
+<<<<<<< HEAD
+
+    public function cargarData($cliente)
+=======
     /**
      * shows the form modal
      * of the create fuction.
@@ -264,12 +361,33 @@ class ClienteModal extends Component
      * @return void
      */
     public function createShowModal()
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     {
-        // $this->resetValidation();
-        // $this->resetVars();
-        $this->modalStyle = 'display:block';
+        $cliente->nombres = $this->nombres;
+        $cliente->apellidos = $this->apellidos;
+        $cliente->tipo_documento = $this->tipoDocumento;
+        $cliente->nro_documento = $this->nro_documento;
+        $cliente->fecha_nacimiento = $this->fecha_nacimiento;
+        $cliente->genero = $this->genero;
+        $cliente->celular1 = $this->celular1;
+        $cliente->celular2 = $this->celular2;
+        $cliente->direccion = $this->direccion;
+        $cliente->email = $this->email;
+        $cliente->estado_civil = $this->estado_civil;
+        $cliente->lugar_trabajo = $this->lugar_trabajo;
+        $cliente->cargo = $this->cargo;
+        $cliente->independiente = $this->independiente;
+        $cliente->foto = '';
+
+        $cliente->estado = 1;
+        $cliente->id_rol = $this->idRol;
+
+        $cliente->save();
+        $this->closeModal();
     }
 
+<<<<<<< HEAD
+=======
     /**
      * Shows the form model
      * in update mode.
@@ -277,6 +395,7 @@ class ClienteModal extends Component
      * @param mixed $id
      * @return void
      */
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     public function updateShowModal($cliente)
     {
 
@@ -341,7 +460,11 @@ class ClienteModal extends Component
             'lugar_trabajo' => $this->lugar_trabajo,
             'cargo' => $this->cargo,
             'independiente' => $this->independiente,
+<<<<<<< HEAD
+            'foto' => $this->foto,
+=======
             'image' => $this->image,
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
         ];
     }
 
@@ -370,6 +493,8 @@ class ClienteModal extends Component
         $this->independiente = null;
         $this->image = null;
     }
+<<<<<<< HEAD
+=======
 
     public function closeModal()
     {
@@ -377,4 +502,5 @@ class ClienteModal extends Component
         $this->reset();
         $this->dispatchBrowserEvent('cerrarModal');
     }
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
 }

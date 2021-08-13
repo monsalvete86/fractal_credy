@@ -17,6 +17,7 @@ class UserModal extends Component
   public $fullUser = null;
   public $editando = null;
   public $idUsuario = '';
+
   public $nombreCorto = '';
   public $nombreUsuario = '';
   public $email = '';
@@ -36,27 +37,38 @@ class UserModal extends Component
     'nombreUsuario' => 'required|min:3',
     'email' => 'email|required',
     'documento' => 'required',
+    'tipo_documento' => 'required',
   ];
 
   protected $messages = [
     'nombreUsuario.required' => 'El nombre de usuario es requerido.',
     'email.email' => 'Debe ingresar un correo válido.',
     'documento.required' => 'Debe ingresar el numero de documento.',
-];
+  ];
 
   public function render()
   {
     return view('user.user-modal');
   }
 
+<<<<<<< HEAD
+  public function showClean()
+  {
+=======
   public function showClean() {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     $this->reset();
     $this->getSedes();
     $this->getRoles();
     $this->modalStyle = 'display:block';
   }
 
+<<<<<<< HEAD
+  public function showData($user)
+  {
+=======
   public function showData($user) {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     $this->fullUser = $user;
     $this->editando = $user['email'];
     $this->idUsuario = $user['id'];
@@ -76,23 +88,30 @@ class UserModal extends Component
     $this->modalStyle = 'display:block';
   }
 
-  public function mount() {
+  public function mount()
+  {
     $this->getSedes();
     $this->getRoles();
   }
 
-  public function getRoles() {
-    $auxRoles = Rol::where('estado_rol','=','1')->orderBy('rol')->get();
+  public function getRoles()
+  {
+    $auxRoles = Rol::where('estado_rol', '=', '1')->orderBy('rol')->get();
     $this->roles = $auxRoles;
   }
 
-  public function getSedes() {
-    $auxSedes = Sede::where('estado_sede','=','1')->orderBy('sede')->get();
+  public function getSedes()
+  {
+    $auxSedes = Sede::where('estado_sede', '=', '1')->orderBy('sede')->get();
     $this->sedes = $auxSedes;
-
   }
 
+<<<<<<< HEAD
+  public function closeModal()
+  {
+=======
   public function closeModal() {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     $this->modalStyle = 'display:none';
     $this->reset();
     $this->emit('userTableUpdate');
@@ -101,20 +120,35 @@ class UserModal extends Component
     $this->getRoles();
   }
 
+<<<<<<< HEAD
+  public function crear()
+  {
+=======
   public function crear() {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     $data = $this->validate();
     $newUsuario = new User;
-   // dd($this->nombreCorto);
+    // dd($this->nombreCorto);
     $this->cargarData($newUsuario);
   }
 
+<<<<<<< HEAD
+  public function editar()
+  {
+=======
   public function editar() {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     $this->validate();
     $oldUsuario = User::where('email', '=', $this->fullUser['email'])->firstOrFail();
     $this->cargarData($oldUsuario);
   }
 
+<<<<<<< HEAD
+  public function cargarData($user)
+  {
+=======
   public function cargarData($user) {
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     $user->name = $this->nombreCorto;
     $user->nombre = $this->nombreUsuario;
     $user->email = $this->email;
@@ -127,7 +161,7 @@ class UserModal extends Component
     $user->estado = 1;
     $user->id_rol = $this->idRol;
 
-    if(($this->editando != '' && $this->password != '' && $this->antPass != $this->password) || $this->editando == '') {
+    if (($this->editando != '' && $this->password != '' && $this->antPass != $this->password) || $this->editando == '') {
       $user->password = md5($this->password);
     }
 

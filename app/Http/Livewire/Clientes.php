@@ -17,19 +17,65 @@ class Clientes extends Component
     public $nombres, $apellidos, $tipo_documento, $nro_documento, $fecha_nacimiento, $genero, $celular1, $celular2, $direccion, $email, $estado_civil, $lugar_trabajo, $cargo, $independiente, $image;
 
     public $modalFormVisible = false;
+<<<<<<< HEAD
+    public $modelId;
+
+    public $nombres, $apellidos, $tipo_documento, $nro_documento, $fecha_nacimiento, $genero, $celular1, $celular2, $direccion, $estado_civil, $lugar_trabajo, $cargo, $independiente, $foto;
+
+    public $search;
+
+
+
+
+    /**
+     * The validation rules
+     * 
+     * @return void
+     */
+    public function rules()
+    {
+        return [
+            'nombres' => 'required',
+            'apellidos' => 'required',
+            'tipo_documento' => 'required',
+            'nro_documento' => 'required',
+            'fecha_nacimiento' => 'required',
+            'genero' => 'required',
+            'celular1' => 'required',
+            'celular2' => 'required',
+            'direccion' => 'required',
+            'estado_civil' => 'required',
+            'lugar_trabajo' => 'required',
+            'cargo' => 'required',
+            // 'independiente' => 'required',
+            // 'foto' => 'required',
+        ];
+    }
+=======
     public  $selected_id, $search;   //para búsquedas y fila seleccionada
     public  $action = 1;             //manejo de ventanas - movernos entre formularios editar o crear
     protected $paginationTheme = 'bootstrap';
     private $pagination = 1;         //paginación de tabla  
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
 
     // public $create = 2;
     // public $edit = 2;
     // public $destroy = '';
 
 
+<<<<<<< HEAD
+
+    /**
+     * The create function.
+     * 
+     * @return void
+     */
+    public function create()
+=======
     //primer método que se ejecuta al inicializar el componente
     // El primero en ejecutarse al renderizar el componente o iniciarse, sirve por ejemplo para cuando se crea la instancia de este controller nosotros en el mount poder definir variables ocn su información 
     public function mount()
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     {
     }
 
@@ -73,10 +119,13 @@ class Clientes extends Component
     //método para reiniciar variables
     private function resetInput()
     {
+<<<<<<< HEAD
+=======
         $this->description = '';
         $this->selected_id = null;
         $this->action = 1;
         $this->search = '';
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     }
 
     // Mostrar la info del registro a editar - Buscar o generar exception que se volcaria en las vistas
@@ -93,6 +142,25 @@ class Clientes extends Component
     //método para registrar y/o actualizar info
     public function StoreOrUpdate()
     {
+<<<<<<< HEAD
+        return [
+
+            'nombres' => $this->nombres,
+            'apellidos' => $this->apellidos,
+            'tipo_documento' => $this->tipo_documento,
+            'nro_documento' => $this->nro_documento,
+            'genero' => $this->genero,
+            'fecha_nacimiento' => $this->fecha_nacimiento,
+            'celular1' => $this->celular1,
+            'celular2' => $this->celular2,
+            'direccion' => $this->direccion,
+            'estado_civil' => $this->estado_civil,
+            'lugar_trabajo' => $this->lugar_trabajo,
+            'cargo' => $this->cargo,
+            'independiente' => $this->independiente,
+            'foto' => $this->foto,
+        ];
+=======
         //validación campos requeridos
         $this->validate([
             'description' => 'required|min:4' //validamos que descripción no sea vacío o nullo y que tenga al menos 4 caracteres
@@ -175,6 +243,7 @@ class Clientes extends Component
 
         //limpiamos las propiedades
         $this->resetInput();
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     }
 
 
@@ -189,9 +258,18 @@ class Clientes extends Component
         $this->image = $imageData;
     }
 
+<<<<<<< HEAD
+    /**
+     * the livewire render fuction.
+     * 
+     * @return void
+     */
+    public function render()
+=======
 
     //método para eliminar un registro dado
     public function destroy($id)
+>>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     {
         if ($id) { //si es un id válido
             $record = Cliente::where('id', $id); //buscamos el registro
