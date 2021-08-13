@@ -23,7 +23,7 @@
                 <input id="apellidos" class="form-control" type="text" wire:model.debounce.800ms="apellidos">
                 @error('apellidos') <span class="error">{{ $message }}</span> @enderror
               </div>
-
+ 
               <div class="form-group col-md-4">
                 <label for="tipo_documento">Tipo de documento</label>
                 <select name="tipo_documento" id="tipo_documento" class="custom-select"
