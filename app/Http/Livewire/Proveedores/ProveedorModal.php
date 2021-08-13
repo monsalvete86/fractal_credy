@@ -14,20 +14,31 @@ class ProveedorModal extends Component
     'createShowModal'
   ];
   public $editando = null;
+  public $textSearch = '';
   public $modelId;
   public $nombres;
   public $apellidos;
   public $tipo_documento;
   public $nro_documento;
+  public $genero;
   public $celular1;
   public $celular2;
   public $direccion;
   public $email;
   public $idProveedor = '';
 
+
   public function render()
   {
+    $this->proveedores = Proveedor::all();
     return view('proveedores.proveedor-modal');
+  }
+
+
+  public function showClean()
+  {
+    $this->reset();
+    $this->modalStyle = 'display:block';
   }
 
   public function rules()
@@ -37,6 +48,7 @@ class ProveedorModal extends Component
       'apellidos' => 'required',
       'tipo_documento' => 'required',
       'nro_documento' => 'required',
+      'genero' => 'required',
       'celular1' => 'required',
       'celular2' => 'required',
       'direccion' => 'required',
@@ -51,15 +63,17 @@ class ProveedorModal extends Component
 
   public function create()
   {
-    $this->validate();
-    Proveedor::create($this->modelData());
-    $this->resetVars();
+    $data = $this->validate();
+    $newCliente = new Proveedor;
+    $this->cargarData($newCliente);
   }
 
   public function update()
   {
     $this->validate();
     Proveedor::find($this->modelId)->update($this->modelData());
+    $this->closeModal();
+    // return view('proveedores.proveedor-lista');
   }
 
   public function createShowModal()
@@ -77,7 +91,6 @@ class ProveedorModal extends Component
 
   public function deleteShowModal($id)
   {
-
   }
 
   public function closeModal()
@@ -85,6 +98,7 @@ class ProveedorModal extends Component
     $this->modalStyle = 'display:none';
     $this->reset();
     $this->dispatchBrowserEvent('cerrarModal');
+    // $this->render();
   }
 
   public function loadModel($proveedor)
@@ -93,6 +107,7 @@ class ProveedorModal extends Component
     $this->apellidos = $proveedor['apellidos'];
     $this->tipo_documento = $proveedor['tipo_documento'];
     $this->nro_documento = $proveedor['nro_documento'];
+    $this->genero = $proveedor['genero'];
     $this->celular1 = $proveedor['celular1'];
     $this->celular2 = $proveedor['celular2'];
     $this->direccion = $proveedor['direccion'];
@@ -107,11 +122,28 @@ class ProveedorModal extends Component
       'apellidos' => $this->apellidos,
       'tipo_documento' => $this->tipo_documento,
       'nro_documento' => $this->nro_documento,
+      'genero' => $this->genero,
       'celular1' => $this->celular1,
       'celular2' => $this->celular2,
       'direccion' => $this->direccion,
       'email' => $this->email,
     ];
+  }
+
+  public function cargarData($cliente)
+  {
+    $cliente->nombres = $this->nombres;
+    $cliente->apellidos = $this->apellidos;
+    $cliente->tipo_documento = $this->tipo_documento;
+    $cliente->nro_documento = $this->nro_documento;
+    $cliente->genero = $this->genero;
+    $cliente->celular1 = $this->celular1;
+    $cliente->celular2 = $this->celular2;
+    $cliente->direccion = $this->direccion;
+    $cliente->email = $this->email;
+
+    $cliente->save();
+    $this->closeModal();
   }
 
   public function resetVars()
@@ -121,9 +153,26 @@ class ProveedorModal extends Component
     $this->apellidos = null;
     $this->nro_documento = null;
     $this->tipo_documento = null;
+    $this->genero = null;
     $this->celular1 = null;
     $this->celular2 = null;
     $this->direccion = null;
     $this->email = null;
+  }
+
+
+  public function render2()
+  {
+    $proveedores = Proveedor::where(function ($query) {
+      $query->select('*')->where('nombres', 'like', "$this->textSearch%")
+        ->orWhere('apellidos', 'like', "$this->textSearch%")
+        ->orWhere('email', 'like', "$this->textSearch%");
+    });
+
+    $proveedores = $proveedores->orderBy('nombres')->orderBy('apellidos')->paginate(10);
+
+    return view('proveedores.proveedor-lista', [
+      'proveedores' => $proveedores,
+    ]);
   }
 }

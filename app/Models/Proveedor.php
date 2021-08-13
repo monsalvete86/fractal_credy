@@ -13,22 +13,22 @@ class Proveedor extends Model
     protected $table = 'proveedores';
 
     protected $fillable = [
-       'nombres', 
-       'apellidos', 
-       'tipo_documento', 
-       'nro_documento', 
-       'celular1', 
-       'celular2', 
-       'direccion', 
-       'email'
+        'nombres',
+        'apellidos',
+        'tipo_documento',
+        'nro_documento',
+        'genero',
+        'celular1',
+        'celular2',
+        'direccion',
+        'email'
     ];
 
     protected $attributes = [];
     protected $guarded = [];
-    
+
     public function proveedores()
     {
         return $this->hasMany(Proveedor::class);
     }
- 
 }

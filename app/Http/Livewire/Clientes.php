@@ -17,10 +17,9 @@ class Clientes extends Component
     public $nombres, $apellidos, $tipo_documento, $nro_documento, $fecha_nacimiento, $genero, $celular1, $celular2, $direccion, $email, $estado_civil, $lugar_trabajo, $cargo, $independiente, $image;
 
     public $modalFormVisible = false;
-<<<<<<< HEAD
     public $modelId;
 
-    public $nombres, $apellidos, $tipo_documento, $nro_documento, $fecha_nacimiento, $genero, $celular1, $celular2, $direccion, $estado_civil, $lugar_trabajo, $cargo, $independiente, $foto;
+    // public $nombres, $apellidos, $tipo_documento, $nro_documento, $fecha_nacimiento, $genero, $celular1, $celular2, $direccion, $estado_civil, $lugar_trabajo, $cargo, $independiente, $foto;
 
     public $search;
 
@@ -51,19 +50,12 @@ class Clientes extends Component
             // 'foto' => 'required',
         ];
     }
-=======
-    public  $selected_id, $search;   //para búsquedas y fila seleccionada
-    public  $action = 1;             //manejo de ventanas - movernos entre formularios editar o crear
-    protected $paginationTheme = 'bootstrap';
-    private $pagination = 1;         //paginación de tabla  
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
 
     // public $create = 2;
     // public $edit = 2;
     // public $destroy = '';
 
 
-<<<<<<< HEAD
 
     /**
      * The create function.
@@ -71,11 +63,6 @@ class Clientes extends Component
      * @return void
      */
     public function create()
-=======
-    //primer método que se ejecuta al inicializar el componente
-    // El primero en ejecutarse al renderizar el componente o iniciarse, sirve por ejemplo para cuando se crea la instancia de este controller nosotros en el mount poder definir variables ocn su información 
-    public function mount()
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     {
     }
 
@@ -119,13 +106,6 @@ class Clientes extends Component
     //método para reiniciar variables
     private function resetInput()
     {
-<<<<<<< HEAD
-=======
-        $this->description = '';
-        $this->selected_id = null;
-        $this->action = 1;
-        $this->search = '';
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     }
 
     // Mostrar la info del registro a editar - Buscar o generar exception que se volcaria en las vistas
@@ -142,7 +122,6 @@ class Clientes extends Component
     //método para registrar y/o actualizar info
     public function StoreOrUpdate()
     {
-<<<<<<< HEAD
         return [
 
             'nombres' => $this->nombres,
@@ -160,90 +139,6 @@ class Clientes extends Component
             'independiente' => $this->independiente,
             'foto' => $this->foto,
         ];
-=======
-        //validación campos requeridos
-        $this->validate([
-            'description' => 'required|min:4' //validamos que descripción no sea vacío o nullo y que tenga al menos 4 caracteres
-        ]);
-
-        //valida si existe otro cajón con el mismo nombre (edicion de tipos)
-        if ($this->selected_id > 0) {
-            $existe = Cliente::where('description', $this->description)
-                ->where('id', '<>', $this->selected_id)
-                ->select('description')
-                ->get();
-
-            if ($existe->count() > 0) {
-                session()->flash('msg-error', 'Ya existe el Tipo');
-                $this->resetInput();
-                return;
-            }
-        } else {
-            //valida si existe otro cajón con el mismo nombre (nuevos registros)
-            $existe = Cliente::where('description', $this->description)
-                ->select('description')
-                ->get();
-
-            if ($existe->count() > 0) {
-                session()->flash('msg-error', 'Ya existe el Tipo');
-                $this->resetInput();
-                return;
-            }
-        }
-
-
-
-
-
-
-
-
-
-
-        if ($this->selected_id <= 0) {
-            //creamos el registro
-            $tipo =  Cliente::create([
-                'description' => $this->description
-            ]);
-            if ($this->image) {
-                $image = $this->image;
-                $fileName = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-                $moved = \Image::make($image)->save('images/' . $fileName);
-
-                if ($moved) {
-                    $tipo->imagen = $fileName;
-                    $tipo->save();
-                }
-            }
-        } else {
-            //buscamos el tipo
-            $record = Cliente::find($this->selected_id);
-            //actualizamos el registro
-            $record->update([
-                'description' => $this->description
-            ]);
-            if ($this->image) {
-                $image = $this->image;
-                $fileName = time() . '.' . explode('/', explode(':', substr($image, 0, strpos($image, ';')))[1])[1];
-                $moved = \Image::make($image)->save('images/' . $fileName);
-
-                if ($moved) {
-                    $record->imagen = $fileName;
-                    $record->save();
-                }
-            }
-        }
-
-
-        //enviamos feedback al usuario
-        if ($this->selected_id)
-            session()->flash('message', 'Tipo Actualizado');
-        else
-            session()->flash('message', 'Tipo Creado');
-
-        //limpiamos las propiedades
-        $this->resetInput();
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     }
 
 
@@ -258,23 +153,17 @@ class Clientes extends Component
         $this->image = $imageData;
     }
 
-<<<<<<< HEAD
     /**
      * the livewire render fuction.
      * 
      * @return void
      */
-    public function render()
-=======
-
-    //método para eliminar un registro dado
-    public function destroy($id)
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
-    {
-        if ($id) { //si es un id válido
-            $record = Cliente::where('id', $id); //buscamos el registro
-            $record->delete(); //eliminamos el registro
-            $this->resetInput(); //limpiamos las propiedades
-        }
-    }
+    // public function render()
+    // {
+    //     if ($id) { //si es un id válido
+    //         $record = Cliente::where('id', $id); //buscamos el registro
+    //         $record->delete(); //eliminamos el registro
+    //         $this->resetInput(); //limpiamos las propiedades
+    //     }
+    // }
 }

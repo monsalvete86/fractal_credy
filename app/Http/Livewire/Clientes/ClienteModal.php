@@ -19,10 +19,7 @@ class ClienteModal extends Component
         'updateShowModal',
         'createShowModal'
     ];
-<<<<<<< HEAD
     public $fullCliente = null;
-=======
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     public $editando = null;
     public $modelId;
     public $idCliente = '';
@@ -41,8 +38,7 @@ class ClienteModal extends Component
     public $lugar_trabajo;
     public $cargo;
     public $independiente;
-<<<<<<< HEAD
-    public $foto;
+    public $image;
 
     // protected $rules = [
     //     'nombres' => 'required|min:3',
@@ -60,10 +56,6 @@ class ClienteModal extends Component
     //     'nro_documento.required' => 'Debe ingresar el numero de documento.',
     // ];
 
-=======
-    public $image;
-    public $idCliente = '';
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
 
     public function render()
     {
@@ -102,10 +94,7 @@ class ClienteModal extends Component
             'apellidos' => 'required',
             'tipo_documento' => 'required',
             'nro_documento' => 'required',
-<<<<<<< HEAD
             'email' => 'required',
-=======
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
             'fecha_nacimiento' => 'required',
             'genero' => 'required',
             'celular1' => 'required',
@@ -133,13 +122,14 @@ class ClienteModal extends Component
         $this->profilePhotoPath = $cliente['fecha_nacimiento'];
         $this->celular = $cliente['genero'];
         $this->direccion = $cliente['celular1'];
-        $this->tipoDocumento = $cliente['culular2'];
+        $this->tipo_documento = $cliente['culular2'];
         $this->documento = $cliente['direccion'];
-        $this->idRol = $cliente['email'];
-        $this->idSede = $cliente['estado_civil'];
-        $this->idSede = $cliente['lugar_trabajo'];
-        $this->idSede = $cliente['cargo independiente'];
-        $this->idSede = $cliente['foto'];
+        $this->email = $cliente['email'];
+        $this->estado_civil = $cliente['estado_civil'];
+        $this->lugar_trabajo = $cliente['lugar_trabajo'];
+        $this->cargo = $cliente['cargo'];
+        $this->independiente = $cliente['independiente'];
+        $this->image = $cliente['image'];
 
         $this->modalStyle = 'display:block';
     }
@@ -165,10 +155,6 @@ class ClienteModal extends Component
     // }
 
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     /**
      * The create function.
      *
@@ -188,29 +174,11 @@ class ClienteModal extends Component
     //método para reiniciar variables
     private function resetInput()
     {
-<<<<<<< HEAD
         $this->validate();
         $newCliente = new Cliente;
         $this->cargarData($newCliente);
         // Cliente::create($this->modelData());
         // $this->resetVars();
-=======
-        $this->nro_documento = '';
-        $this->selected_id = null;
-        $this->action = 1;
-        $this->search = '';
-    }
-
-
-    // Mostrar la info del registro a editar - Buscar o generar exception que se volcaria en las vistas
-    //buscamos el registro seleccionado y asignamos la info a las propiedades
-    public function edit($id)
-    {
-        $record = Cliente::findOrFail($id);
-        $this->nro_documento = $record->nro_documento;
-        $this->selected_id = $record->id;
-        $this->action = 2;
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     }
 
 
@@ -350,22 +318,12 @@ class ClienteModal extends Component
     //     Cliente::find($this->modelId)->update($this->modelData());
     // }
 
-<<<<<<< HEAD
 
     public function cargarData($cliente)
-=======
-    /**
-     * shows the form modal
-     * of the create fuction.
-     *
-     * @return void
-     */
-    public function createShowModal()
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     {
         $cliente->nombres = $this->nombres;
         $cliente->apellidos = $this->apellidos;
-        $cliente->tipo_documento = $this->tipoDocumento;
+        $cliente->tipo_documento = $this->tipo_documento;
         $cliente->nro_documento = $this->nro_documento;
         $cliente->fecha_nacimiento = $this->fecha_nacimiento;
         $cliente->genero = $this->genero;
@@ -377,25 +335,14 @@ class ClienteModal extends Component
         $cliente->lugar_trabajo = $this->lugar_trabajo;
         $cliente->cargo = $this->cargo;
         $cliente->independiente = $this->independiente;
-        $cliente->foto = '';
+        $cliente->image = '';
 
-        $cliente->estado = 1;
-        $cliente->id_rol = $this->idRol;
+        // $this->estado = 1;
 
         $cliente->save();
         $this->closeModal();
     }
 
-<<<<<<< HEAD
-=======
-    /**
-     * Shows the form model
-     * in update mode.
-     *
-     * @param mixed $id
-     * @return void
-     */
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
     public function updateShowModal($cliente)
     {
 
@@ -460,11 +407,7 @@ class ClienteModal extends Component
             'lugar_trabajo' => $this->lugar_trabajo,
             'cargo' => $this->cargo,
             'independiente' => $this->independiente,
-<<<<<<< HEAD
-            'foto' => $this->foto,
-=======
             'image' => $this->image,
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
         ];
     }
 
@@ -493,14 +436,4 @@ class ClienteModal extends Component
         $this->independiente = null;
         $this->image = null;
     }
-<<<<<<< HEAD
-=======
-
-    public function closeModal()
-    {
-        $this->modalStyle = 'display:none';
-        $this->reset();
-        $this->dispatchBrowserEvent('cerrarModal');
-    }
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
 }

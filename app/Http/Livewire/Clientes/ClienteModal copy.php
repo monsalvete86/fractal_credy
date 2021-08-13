@@ -32,7 +32,7 @@ class ClienteModal extends Component
     public $lugar_trabajo;
     public $cargo;
     public $independiente;
-    public $foto;
+    public $image;
 
     protected $rules = [
         'nombres' => 'required|min:3',
@@ -78,7 +78,7 @@ class ClienteModal extends Component
     //         'lugar_trabajo' => 'required',
     //         'cargo' => 'required',
     //         // 'independiente' => 'required',
-    //         // 'foto' => 'required',
+    //         // 'image' => 'required',
     //     ];
     // }
 
@@ -171,7 +171,7 @@ class ClienteModal extends Component
         $this->lugar_trabajo = $cliente['lugar_trabajo'];
         $this->cargo = $cliente['cargo'];
         $this->independiente = $cliente['independiente'];
-        $this->foto = $cliente['foto'];
+        $this->image = $cliente['image'];
         $this->modalStyle = 'display:block';
     }
 
@@ -199,7 +199,7 @@ class ClienteModal extends Component
             'lugar_trabajo' => $this->lugar_trabajo,
             'cargo' => $this->cargo,
             'independiente' => $this->independiente,
-            'foto' => $this->foto,
+            'image' => $this->image,
         ];
     }
 
@@ -226,7 +226,7 @@ class ClienteModal extends Component
         $this->lugar_trabajo = null;
         $this->cargo = null;
         $this->independiente = null;
-        $this->foto = null;
+        $this->image = null;
     }
 
     public function closeModal()

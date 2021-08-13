@@ -22,12 +22,7 @@ class ClienteLista extends Component
     $this->emit('updateShowModal', $id);
   }
 
-  public function delete($id)
-  {
-    Cliente::find($id)->delete();
-    session()->flash('message', 'Post Deleted Successfully.');
-    $this->render();
-  }
+
 
   public function read()
   {
@@ -42,16 +37,11 @@ class ClienteLista extends Component
         ->orWhere('email', 'like', "$this->textSearch%");
     });
 
-<<<<<<< HEAD
     $clientes = $clientes->orderBy('nombres')->orderBy('apellidos')->paginate(10);
-=======
-    $clientes = $clientes->orderBy('nombres')->orderBy('apellidos')->paginate(1);
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
 
     return view('clientes.cliente-lista', [
       'clientes' => $clientes,
     ]);
-<<<<<<< HEAD
   }
 
   public function delete($id)
@@ -59,16 +49,14 @@ class ClienteLista extends Component
     Cliente::find($id)->delete();
     session()->flash('message', 'Cliente Eliminado.');
     $this->render();
-=======
->>>>>>> 39922ec0d81bc7fa8bd98e5da7da86f7bd39c5b5
   }
 
-   /**
+  /**
       public function delete($id)
       {
         Cliente::find($id)->delete();
         session()->flash('message', 'Post Deleted Successfully.');
         $this->render();
       }
-     */
+   */
 }

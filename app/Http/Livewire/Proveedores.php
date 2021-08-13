@@ -12,10 +12,12 @@ class Proveedores extends Component
     use WithPagination;
     public $modalFormVisible = false;
     public $modelId;
+
     public $nombres;
     public $apellidos;
     public $tipo_documento;
     public $nro_documento;
+    public $genero;
     public $celular1;
     public $celular2;
     public $direccion;
@@ -28,6 +30,7 @@ class Proveedores extends Component
             'apellidos' => 'required',
             'tipo_documento' => 'required',
             'nro_documento' => 'required',
+            'genero' => 'required',
             'celular1' => 'required',
             'celular2' => 'required',
             'direccion' => 'required',
@@ -78,7 +81,6 @@ class Proveedores extends Component
 
     public function deleteShowModal($id)
     {
-        
     }
 
     public function loadModel()
@@ -88,6 +90,7 @@ class Proveedores extends Component
         $this->apellidos = $data->apellidos;
         $this->tipo_documento = $data->tipo_documento;
         $this->nro_documento = $data->nro_documento;
+        $this->genero = $data->genero;
         $this->celular1 = $data->celular1;
         $this->celular2 = $data->celular2;
         $this->direccion = $data->direccion;
@@ -97,14 +100,15 @@ class Proveedores extends Component
     public function modelData()
     {
         return [
-          'nombres' => $this->nombres,
-          'apellidos' => $this->apellidos,
-          'tipo_documento' => $this->tipo_documento,
-          'nro_documento' => $this->nro_documento,
-          'celular1' => $this->celular1,
-          'celular2' => $this->celular2,
-          'direccion' => $this->direccion,
-          'email' => $this->email,
+            'nombres' => $this->nombres,
+            'apellidos' => $this->apellidos,
+            'tipo_documento' => $this->tipo_documento,
+            'nro_documento' => $this->nro_documento,
+            'genero' => $this->genero,
+            'celular1' => $this->celular1,
+            'celular2' => $this->celular2,
+            'direccion' => $this->direccion,
+            'email' => $this->email,
         ];
     }
 
@@ -115,12 +119,13 @@ class Proveedores extends Component
         $this->apellidos = null;
         $this->nro_documento = null;
         $this->tipo_documento = null;
+        $this->genero = null;
         $this->celular1 = null;
         $this->celular2 = null;
         $this->direccion = null;
         $this->email = null;
     }
-   
+
     public function render()
     {
         return view('livewire.proveedores', [
