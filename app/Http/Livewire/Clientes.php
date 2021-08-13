@@ -12,25 +12,13 @@ class Clientes extends Component
     use WithPagination;
     public $modalFormVisible = false;
     public $modelId;
-    public $nombres;
-    public $apellidos;
-    public $tipo_documento;
-    public $nro_documento;
-    public $fecha_nacimiento;
-    public $genero;
-    public $celular1;
-    public $celular2;
-    public $direccion;
-    public $estado_civil;
-    public $lugar_trabajo;
-    public $cargo;
-    public $independiente;
-    public $foto;
-    
-    //public $search;
+
+    public $nombres, $apellidos, $tipo_documento, $nro_documento, $fecha_nacimiento, $genero, $celular1, $celular2, $direccion, $estado_civil, $lugar_trabajo, $cargo, $independiente, $foto;
+
+    public $search;
 
 
-    
+
 
     /**
      * The validation rules
@@ -39,7 +27,7 @@ class Clientes extends Component
      */
     public function rules()
     {
-        return [         
+        return [
             'nombres' => 'required',
             'apellidos' => 'required',
             'tipo_documento' => 'required',
@@ -70,7 +58,7 @@ class Clientes extends Component
         $this->generateSearch($value);
     }
 
-   
+
     /**
      * The create function.
      * 
@@ -132,7 +120,6 @@ class Clientes extends Component
 
     public function deleteShowModal($id)
     {
-        
     }
 
     /**
@@ -170,20 +157,20 @@ class Clientes extends Component
     {
         return [
 
-          'nombres' => $this->nombres,
-          'apellidos' => $this->apellidos,
-          'tipo_documento' => $this->tipo_documento,
-          'nro_documento' => $this->nro_documento,
-          'genero' => $this->genero,
-          'fecha_nacimiento' => $this->fecha_nacimiento,
-          'celular1' => $this->celular1,
-          'celular2' => $this->celular2,
-          'direccion' => $this->direccion,
-          'estado_civil' => $this->estado_civil,
-          'lugar_trabajo' => $this->lugar_trabajo,
-          'cargo' => $this->cargo,
-          'independiente' => $this->independiente,
-          'foto' => $this->foto,
+            'nombres' => $this->nombres,
+            'apellidos' => $this->apellidos,
+            'tipo_documento' => $this->tipo_documento,
+            'nro_documento' => $this->nro_documento,
+            'genero' => $this->genero,
+            'fecha_nacimiento' => $this->fecha_nacimiento,
+            'celular1' => $this->celular1,
+            'celular2' => $this->celular2,
+            'direccion' => $this->direccion,
+            'estado_civil' => $this->estado_civil,
+            'lugar_trabajo' => $this->lugar_trabajo,
+            'cargo' => $this->cargo,
+            'independiente' => $this->independiente,
+            'foto' => $this->foto,
         ];
     }
 
@@ -211,7 +198,7 @@ class Clientes extends Component
         $this->independiente = null;
         $this->foto = null;
     }
-   
+
     /**
      * the livewire render fuction.
      * 

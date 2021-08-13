@@ -20,17 +20,18 @@ class UserList extends Component
     'borrarUsuario',
     'activarUsuario'
   ];
-  
-  public function render() {
-    
-    $users = User::where(function($query) {
-      $query->select('*','users.estado as users_estado')->where('nombre', 'like', "$this->textSearch%")
-      ->orWhere('name', 'like', "$this->textSearch%")
-      ->orWhere('email', 'like', "$this->textSearch%");
-    })->join('sedes','sedes.id','id_sede')
-      ->join('roles','roles.id','id_rol');
-      
-    if($this->rolSearch != 0) {
+
+  public function render()
+  {
+
+    $users = User::where(function ($query) {
+      $query->select('*', 'users.estado as users_estado')->where('nombre', 'like', "$this->textSearch%")
+        ->orWhere('name', 'like', "$this->textSearch%")
+        ->orWhere('email', 'like', "$this->textSearch%");
+    })->join('sedes', 'sedes.id', 'id_sede')
+      ->join('roles', 'roles.id', 'id_rol');
+
+    if ($this->rolSearch != 0) {
       $users = $users->where('id_rol', "=", "$this->rolSearch");
     }
 
@@ -40,23 +41,28 @@ class UserList extends Component
     ]);
   }
 
-  public function updatingTextSearch() {
+  public function updatingTextSearch()
+  {
     $this->resetPage();
   }
 
-  public function updatingRolSearch() {
+  public function updatingRolSearch()
+  {
     $this->resetPage();
   }
 
-  public function showModal($user) {    
+  public function showModal($user)
+  {
     $this->emit('showData', $user);
   }
 
-  public function newUser() {
+  public function newUser()
+  {
     $this->emit('showClean');
   }
 
-  public function borrarUsuario($email, $name) {
+  public function borrarUsuario($email, $name)
+  {
     $user = User::where("email", "like", $email)->where("name", "like", $name)->first();
 
     $user->estado = 0;
@@ -64,7 +70,8 @@ class UserList extends Component
     $this->render();
   }
 
-  public function activarUsuario($email, $name) {
+  public function activarUsuario($email, $name)
+  {
     $user = User::where("email", "like", $email)->where("name", "like", $name)->first();
     $user->estado = 1;
     $user->save();
