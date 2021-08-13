@@ -45,7 +45,50 @@
     @stack('modals')
 
     @livewireScripts
+    {{-- ------------------------------ --}}
+    <!-- SCRIPTS GENERALES -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    </script>
+    <script src="{{ asset('assets/js/libs/jquery-3.1.1.min.js') }}"></script>
+    <script src="{{ asset('assets/js/app.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/popper.min.js') }}"></script>
+    <script src="{{ asset('bootstrap/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('plugins/perfect-scrollbar/perfect-scrollbar.min.js') }}"></script>
 
+
+
+    <script src="/livewire/livewire.js"></script>
+    <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script src="{{ asset('assets/js/toastr.min.js') }}"></script>
+    <script src="{{ asset('plugins/notification/snackbar/snackbar.min.js') }}"></script>
+    <script src="{{ asset('plugins/flatpickr/flatpickr.js') }}"></script>
+    <script src="{{ asset('plugins/flatpickr/flatpickr_es.js') }}"></script>
+
+
+
+    <!-- SECCIÓN PARA INCLUÍR SCRIPTS PERSONALIZADOS EN LOS MÓDULOS DEL SISTEMA -->
+    @yield('scripts')
+    <!-- SCRIPTS PARA LOS MENSAJES Y NOTIFICACIONES -->
+    {{-- <script src="{{ asset('assets/js/sweetalert.min.js') }}"></script> --}}
+
+    {{-- <!-- VALIDACIONES GLOBALES DEL SISTEMA -->
+    @if ($supplier <= 0)
+        <script type="text/javascript">
+            toastr.warning("DEBE EXISTIR AL MENOS UN TIPO DE VEHICULO");
+        </script>
+    @endif --}}
+    <!-- NECESARIO PARA EL FUNCIONAMIENTO DE LIVEWIRE -->
+    <script>
+        window.livewire.on('msgok', msgOK => {
+            toastr.success(msgOK, "info");
+        });
+
+        window.livewire.on('msg-error', msgError => {
+            toastr.error(msgError, "error");
+        });
+    </script>
+    {{-- ------------------------------ --}}
     @stack('scripts')
     <footer id="footer" class="footer text-center col-12">
         <small>

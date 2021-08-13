@@ -27,6 +27,7 @@
                                     <th>Apellido</th>
                                     <th>Tipo Documento</th>
                                     <th>Nro Documento</th>
+                                    <th>Email</th>
                                     <th>Fecha Nacimiento</th>
                                     <th>Genero</th>
                                     <th>Celular1</th>
@@ -53,6 +54,7 @@
                                         <td>{{ $r->apellidos }}</td>
                                         <td>{{ $r->tipo_documento }}</td>
                                         <td>{{ $r->nro_documento }}</td>
+                                        <td>{{ $r->email }}</td>
                                         <td>{{ $r->fecha_nacimiento }}</td>
                                         <td>{{ $r->genero }}</td>
                                         <td>{{ $r->celular1 }}</td>
@@ -83,18 +85,18 @@
             @endif
         </div>
         <script type="text/javascript">
-            // document.addEventListener('DOMContentLoaded', function() {
-            //     window.livewire.on('fileChoosen', () => {
-            //         let inputField = document.getElementById('image')
-            //         let file = inputField.files[0]
-            //         let reader = new FileReader();
-            //         reader.onloadend = () => {
-            //             window.livewire.emit('fileUpload', reader.result)
-            //         }
-            //         reader.readAsDataURL(file);
-            //     });
+            document.addEventListener('DOMContentLoaded', function() {
+                window.livewire.on('fileChoosen', () => {
+                    let inputField = document.getElementById('image')
+                    let file = inputField.files[0]
+                    let reader = new FileReader();
+                    reader.onloadend = () => {
+                        window.livewire.emit('fileUpload', reader.result)
+                    }
+                    reader.readAsDataURL(file);
+                });
 
-            // });
+            });
 
 
             function Confirm(id) {

@@ -127,19 +127,19 @@ class SuppliersController extends Component
         //validación campos requeridos
         $this->validate([
             'nombres' => 'required',
-            // 'apellidos' => 'required',
-            // 'tipo_documento' => 'required',
+            'apellidos' => 'required',
+            'tipo_documento' => 'required',
             'nro_documento' => 'required',
-            // 'fecha_nacimiento' => 'required',
-            // 'genero' => 'required',
-            // 'celular1' => 'required|min:10',
-            // 'celular2' => 'required|min:10',
-            // 'direccion' => 'required',
-            // 'email' => 'required',
-            // 'estado_civil' => 'required',
-            // 'lugar_trabajo' => 'required',
-            // 'cargo' => 'required',
-            // 'independiente' => 'required',
+            'fecha_nacimiento' => 'required',
+            'genero' => 'required',
+            'celular1' => 'required|min:10',
+            'celular2' => 'required|min:10',
+            'direccion' => 'required',
+            'email' => 'required',
+            'estado_civil' => 'required',
+            'lugar_trabajo' => 'required',
+            'cargo' => 'required',
+            'independiente' => 'required',
             // 'image' => 'required'
         ]);
 
@@ -178,6 +178,7 @@ class SuppliersController extends Component
         // Creando registro
         if ($this->selected_id <= 0) {
             //creamos el registro
+            // $this->resetInput();
             $record =  Supplier::create([
 
                 'nombres' => $this->nombres,
@@ -195,6 +196,9 @@ class SuppliersController extends Component
                 'cargo' => $this->cargo,
                 'independiente' => $this->independiente,
                 'image' => $this->image
+            ]);
+            return view('livewire.suppliers.component', [
+                'info' => Supplier::paginate($this->pagination),
             ]);
 
 
@@ -239,6 +243,9 @@ class SuppliersController extends Component
                     $record->save();
                 }
             }
+            return view('livewire.suppliers.component', [
+                'info' => Supplier::paginate($this->pagination),
+            ]);
         }
 
 
