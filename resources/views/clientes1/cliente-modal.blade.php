@@ -1,16 +1,17 @@
 <div>
-    <div wire:ignore.self style="{{ $modalStyle }}" class="modal " id="exampleModal" tabindex="-1" role="dialog"
-        aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div wire:ignore.self style="{{ $modalStyle }}" class="modal " id="clienteModal" tabindex="-1" role="dialog"
+        aria-labelledby="clienteModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Datos Usuario</h5>
+                    <h5 class="modal-title" id="clienteModalLabel">Datos Cliente</h5>
                     <button type="button" wire:click="closeModal()" class="close" data-dismiss="modal"
                         aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form wire:submit.prevent="@if ($editando) editar() @else crear() @endif">
+
+                <form wire:submit.prevent="@if ($fullCliente) update() @else create() @endif">
                     <div class="modal-body">
                         <div class="form-row">
                             <div class="form-group col-md-4">
@@ -44,12 +45,6 @@
                                 <input id="nro_documento" class="form-control" type="text"
                                     wire:model.debounce.800ms="nro_documento">
                                 @error('nro_documento') <span class="error">{{ $message }}</span> @enderror
-                            </div>
-
-                            <div class="form-group col-md-4">
-                                <label for="email">Email</label>
-                                <input id="email" class="form-control" type="text" wire:model.debounce.800ms="email">
-                                @error('email') <span class="error">{{ $message }}</span> @enderror
                             </div>
 
                             <div class="form-group col-md-4">
@@ -130,20 +125,27 @@
 
                         </div>
                     </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" wire:click="closeModal()"
-                            data-dismiss="modal">Cancelar</button>
-                        <button type="submit"
-                            class="btn btn-success">{{ $idCliente ? 'Actualizar' : 'Crear' }}</button>
-                    </div>
                 </form>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" wire:click="closeModal()"
+                        data-dismiss="modal">Cancelar</button>
+                    <button type="submit"
+                        class="btn btn-success">{{ $fullCliente ? 'Actualizar' : 'Crear' }}</button>
+                    {{-- @if ($fullCliente)
+            <button type="button"  class="btn btn-success" wire:click="update" wire:loading.attr="disabled">
+                {{ __('Actualizar') }}
+            </danger-button>
+          @else
+              <button type="button"  class="btn btn-success" wire:click="create" wire:loading.attr="disabled">
+                  {{ __('Crear') }}
+              </danger-button>
+          @endif --}}
+                </div>
             </div>
         </div>
     </div>
-</div>
-
-<script>
-    window.addEventListener('cerrarModal', event => {
-        $("#exampleModal").modal('hide');
-    })
-</script>
+    <script>
+        window.addEventListener('cerrarModal', event => {
+            $("#clienteModal").modal('hide');
+        })
+    </script>
