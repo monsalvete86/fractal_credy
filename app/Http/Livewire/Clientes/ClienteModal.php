@@ -14,10 +14,6 @@ class ClienteModal extends Component
         'showClean'
     ];
 
-    // protected $listeners = [
-    //     'updateShowModal',
-    //     'createShowModal'
-    // ];
     public $fullCliente = null;
     public $editando = null;
     public $modelId;
