@@ -58,9 +58,9 @@
                                 class="img-fluid" alt="..."> @endif
                     </td>
                     <td>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+                        <button type="button" class="btn btn-sm btn-success mb-1" data-toggle="modal" data-target="#exampleModal"
                             wire:click="showModal({{ $cliente }})">
-                            <span class="material-icons">create</span>
+                            <span>Actualizar</span>
                         </button>
                         <button class="btn btn-sm btn-danger" wire:click="delete('{{ $cliente->id }}')" type="button"
                             value="borrar">

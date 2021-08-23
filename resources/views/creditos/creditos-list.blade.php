@@ -39,9 +39,9 @@
                     <td>{{ $credito->cant_cuotas_pagadas }}</td>
                     <td>$5000</td>
                     <td>
-                        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal"
+                        <button type="button" class="btn btn-sm btn-success mb-1" data-toggle="modal" data-target="#exampleModal"
                             wire:click="showModal({{ $credito }})">
-                            <span class="material-icons">create</span>
+                            <span>Actualizar</span>
                         </button>
                         <button class="btn btn-sm btn-danger" wire:click="delete('{{ $credito->id }}')" type="button"
                             value="borrar">
