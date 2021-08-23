@@ -17,9 +17,9 @@
                                 <label>Cliente</label>
                                 <select wire:model="cliente" class="form-control text-center">
                                     <option value="Elegir" disabled="">Elegir</option>
-                                    @foreach ($clientes as $c)
-                                        <option value="{{ $c->id }}">
-                                            {{ $c->nombres }} {{ $c->apellidos }}
+                                    @foreach ($clientes as $t)
+                                        <option value="{{ $t->id }}">
+                                            {{ $t->nombres }} {{ $t->apellidos }}
                                         </option>
                                     @endforeach
                                 </select>

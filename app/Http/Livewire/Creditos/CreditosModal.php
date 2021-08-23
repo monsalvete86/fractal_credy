@@ -3,11 +3,15 @@
 namespace App\Http\Livewire\Creditos;
 
 use App\Models\Credito;
+use App\Models\Cliente;
+use App\Models\Sede;
 use Livewire\Component;
 
 class CreditosModal extends Component
 {
     public $modalStyle = 'display:none';
+    public $textSearch = '';
+    private $pagination = 6;                                 //paginación de tabla
     protected $listeners = [
         'showData',
         'showClean'
@@ -17,6 +21,10 @@ class CreditosModal extends Component
     public $editando = null;
     public $modelId;
     public $idCredito = '';
+    public $cliente = 'Elegir';
+    public $clientes;
+    public $sede = 'Elegir';
+    public $sedes;
 
     public $id_cliente;
     public $id_deudor;
@@ -40,8 +48,10 @@ class CreditosModal extends Component
 
     protected $rules = [
         'id_cliente' => 'required',
+        'cliente'   => 'not_in:Elegir',
         'id_deudor' => 'required',
         'id_sede' => 'email|required',
+        'sede'   => 'not_in:Elegir',
         'cant_cuotas' => 'required',
         'cant_cuotas_pagadas' => 'required',
         'dia_limite' => 'required',
@@ -67,7 +77,24 @@ class CreditosModal extends Component
 
     public function render()
     {
-        return view('creditos.creditos-modal');
+        $this->clientes = Cliente::all();
+        $this->sedes = Sede::all();
+        if (strlen($this->textSearch) > 0) {
+            return view('creditos.creditos-modal', [
+                'info' => Credito::where('id_cliente', 'like', '%' .  $this->textSearch . '%')
+                    ->paginate($this->pagination),
+            ]);
+        } else {
+            $creditos = Credito::leftjoin('clientes as c', 'c.id', 'creditos.id_cliente')
+                ->leftjoin('users as u', 'u.id', 'creditos.usu_crea')
+                ->select('creditos.*', 'c.nombres as cliente')
+                ->orderBy('creditos.id_cliente', 'desc')
+                ->paginate($this->pagination);
+
+            return view('creditos.creditos-modal', [
+                'info' => $creditos,
+            ]);
+        }
     }
 
     public function showClean()

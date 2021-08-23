@@ -3,6 +3,8 @@
 namespace App\Http\Livewire\Creditos;
 
 use App\Models\Credito;
+use App\Models\Cliente;
+use App\Models\Sede;
 use Livewire\{Component, WithPagination};
 
 class CreditosList extends Component
@@ -21,7 +23,8 @@ class CreditosList extends Component
 
     public function render()
     {
-
+        $this->clientes = Cliente::all();
+        $this->sedes = Sede::all();
         $creditos = Credito::where(function ($query) {
             $query->select('*')->where('id_cliente', 'like', "$this->textSearch%")
                 ->orWhere('id_deudor', 'like', "$this->textSearch%")
